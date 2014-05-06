@@ -1,8 +1,8 @@
-ul{
+ul a{
   height: 35px;
   list-style:none;
   padding:0 ;
-  width:410px;
+  width:300px;
   background-color:#CCC;
   color:white;
   border: 1px solid rgba(0,0,0,0.3);
@@ -11,17 +11,17 @@ ul{
 a,li{
   float:left;
   line-height:35px;
-  font-size:0.9em;
-  width:100px;
+  font-size:30px;
+  width:80px;
   text-align:center;
   border-left:1px solid rgba(255,255,255,0.3);
   border-right: 1px solid rgba(0,0,0,0.3);
 }
 
-li:first-child{
+a,li:first-child{
   border-left:none;
 }
 
-li:last-child{
+a,li:last-child{
   border-right:none;
 }
