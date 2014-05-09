@@ -2,6 +2,16 @@ const DB_NAME = 'mylibraries';
 const DB_VERSION = 1;
 
 var dataBase=null;
+var selecionar = document.getElementById("s");
+selecionar.onclick=select;
+var deleta = document.getElementById("d");
+deleta.onclick=deletar;
+
+var del = document.getElementById("sal");
+del.onclick=result;
+
+
+
 
 openDB();
 
@@ -58,6 +68,14 @@ function deleteDB() {
 
 function insert(){
 
+    var form = document.getElementById('for');
+    if(form){
+        form.onsubmit = function(event){
+            alert("aqui");
+            return false;
+        }
+    }
+
     var bib = document.getElementById("bib");
     var item = document.getElementById("item");
     var data = document.getElementById("data");
@@ -68,17 +86,65 @@ function insert(){
     var objectUser = transaction.objectStore("emprestimos");
     var emp = {biblioteca: bib.value, item: item.value, data: data.value, nome: nome.value, descricao: descric.value};
     var request = objectUser.add(emp);
+//teste
+    //result();
 }
 
 function select(){
-    alert("te");
-    /*var transaction = dataBase.transaction(["emprestimos"]);
+    var transaction = dataBase.transaction(["emprestimos"]);
     var objectUser = transaction.objectStore("emprestimos");
-    var request = objectUser.get("7");
+    var request = objectUser.get(11);
+    request.onerror = function(event) {
+        alert("erro");
+    }
+    request.onsuccess = function(event) {
+        alert(request.result.nome);
+    }
+}
 
-    alert(nome.value);
+function selectAll(){
+    var transaction = dataBase.transaction(["emprestimos"], "readonly");
+    var objectUser = transaction.objectStore("emprestimos");
+    var request = objectUser.openCursor();
 
+    request.onerror = function(event) {
+        alert("erro");
+    }
+    request.onsuccess = function(event) {
+        if(request){
+        console.log(request.result.nome);
+        request.continue();
+    }
+    }
+    
+}
+
+
+function deletar(){
+    var request = dataBase.transaction(["emprestimos"], "readwrite").objectStore("emprestimos").delete(6);
     request.onsuccess = function(event){
-        alert("chegou");
-    }*/
+        alert("Dado removido com sucesso");
+    } 
+    request.onerror = function(event){
+        alert("erro");
+    }
+}
+
+
+function result(){
+    
+    var a = document.getElementById('nome').value;
+    alert(a);
+    var table = document.getElementById('tabela');
+    var numRow = table.rows.length;
+    var numCol = table.rows[numRow-1].cells.length;
+    var newRow = table.insertRow(numRow);
+
+    for(var j=0; j<numCol; j++){
+        newCell = newRow.insertCell(j);
+        newCell.innerHTML = a;
+    }
+
+// para atualizar pagina impedir o onload da pagina atualizar
+
 }

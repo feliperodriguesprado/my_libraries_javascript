@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="">
 </head>
 <body>
-	<form action="">
+	<form id="for" action="">
 		<fieldset>
 			<legend>Cadastrar Empréstimos</legend>
 			<select name="teste" id="bib">
@@ -31,10 +31,26 @@
 			<input type="submit" value="Salvar" onclick="insert()">
 
 			<input type="reset" value="Limpar">
-			<input type="submit" value="select" onclick="select()">
+			<input type="submit" value="Buscar" id="s">
+			<input type="submit" value="Deletar" id="d">
 
 		</fieldset>
 	</form>
+
+	<table id="tabela">
+		<thead>
+			<th>Biblioteca:</th>
+			<th>Nome do Item:</th>
+			<th>Nome Emprestador</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
 
 	<script src="js\scriptEmprestimos.js"></script>
 </body>
