@@ -1,0 +1,48 @@
+*{
+	font-family: verdana;
+}
+
+form{
+	width: 400px;
+}
+
+.escolha{
+	width: 180px;
+}
+.escolha, .info{
+	margin-top: 20px;
+	margin-left: 10px;
+}
+
+.info, #name{
+	display: inline-block;
+	margin-top: 20px;
+}
+
+#name{
+	width: 270px;
+	margin-left: 10px;
+	margin-top: 20px;
+}
+
+#data{
+	margin-left: 10px;
+	margin-top: 20px;
+	width:150px;
+}
+
+textarea{
+	margin-top: 20px;
+	margin-left: 155px;
+}
+
+#salvar{
+	margin-left: 20px;
+}
+
+.botao{
+	margin-right: 10px;
+	margin-bottom: 20px;
+	height: 30px;
+
+}

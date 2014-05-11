@@ -4,18 +4,17 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Empréstimos</title>
-	<link rel="stylesheet" href="">
+	<link rel="stylesheet" href="css\styleEmprestimos.css">
 </head>
 <body>
 	<form id="for" action="">
 		<fieldset>
 			<legend>Cadastrar Empréstimos</legend>
-			<select name="teste" id="bib">
+			<select name="teste" id="biblioteca">
 				<option value="0">Escolha a biblioteca</option>
 				<option value="1">CD</option>
 				<option value="2">DVD</option>
 				<option value="3">LIVRO</option>
-
 			</select>
 
 			<select name="" id="item">
@@ -28,11 +27,10 @@
 
 			<textarea id="text" name="" id="" cols="30" rows="10"></textarea>
 
-			<input type="submit" value="Salvar" onclick="insert()">
+			<input id="salvar" type="submit" value="Salvar">
 
 			<input type="reset" value="Limpar">
 			<input type="submit" value="Buscar" id="s">
-			<input type="submit" value="Deletar" id="d">
 
 		</fieldset>
 	</form>
@@ -48,6 +46,7 @@
 				<td></td>
 				<td></td>
 				<td></td>
+				<td id="tabelaLinha_1"></td>
 			</tr>
 		</tbody>
 	</table>
