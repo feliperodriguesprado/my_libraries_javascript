@@ -4,33 +4,33 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>MyLibraries - Acesse sua conta</title>
-	<link rel="stylesheet" href="">
-	<script src="js/scriptLogin.js" type="text/javascript" charset="utf-8" async defer></script>
+	<link rel="stylesheet" href="css/styleLogin.css">
+	<script src="js/ConexaoBancoDadosControle.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="js/LoginControle.js" type="text/javascript" charset="utf-8" async defer></script>
 </head>
 <body>
 
 	<div>
-		<form action="" method="POST" accept-charset="utf-8">
+
+		<form id="formularioLogin">
 			
 			<fieldset>
 				<legend>MyLibraries - Acesse sua conta</legend>
 
-				<label>
-					E-mail
-					<input type="email" id="email" required="required">
-				</label>
+				<label for="email">E-mail</label>
+				<input id="email" type="email" placeholder="E-mail" required="required">
 
-				<label>
-					Senha
-					<input type="password" id="password" required="required">
-				</label>
+				<label for="senha">Senha</label>
+				<input id="senha" type="password" placeholder="Senha" required="required">
 
-				<input type="button" class="btn" value="Acessar">
-
+				<button id="botaoAcessar" class="botao" type="submit">Acessar</button>
+				
+				<a id="botaoCadastrar" class="botao" href="cadastroLogin.html" >Cadastrar-se</a>
 
 			</fieldset>
-			
+
 		</form>
+
 	</div>
 </body>
 </html>

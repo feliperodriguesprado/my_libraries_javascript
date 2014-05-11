@@ -1,0 +1,53 @@
+* {
+	padding: 0;
+	margin: 0;
+	font-family: Lucida, sans-serif;
+}
+
+fieldset {
+    width: 300px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+legend {
+    margin-bottom: 20px;
+}
+
+label, input {
+    display: block;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+input {
+    border: 1px solid #848484;
+    width: 200px;
+    padding: 4px;
+
+}
+
+
+.botao {
+    display: inline-block;
+    font-size: 14px;
+    padding: 5px;
+    color: #FFFFFF;
+    background-color: #2B50BD;
+    border: 1px solid #2B50BD;
+    border-radius: 4px;
+    text-decoration: none;
+    text-align: center;
+    margin: 5px;
+}
+
+.botao:hover {
+    color: #FFFFFF;
+    background-color: #1749DF;
+    border: 1px solid #1749DF;
+    cursor: pointer;
+}
+
+.botoes {
+    margin-left: 30px;
+}
