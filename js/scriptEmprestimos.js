@@ -10,7 +10,7 @@ var selecionar = document.getElementById("s");
 selecionar.onclick=selectAll;
 
 
-openDB();
+//openDB();
 
 function openDB() {
     
@@ -85,7 +85,7 @@ function insert(){
     var request = objectUser.add(emp);
 
     alert("Dado inserido com sucesso");
-    selectAll();
+    //selectAll();
 }
 
 function update(ids){
