@@ -5,30 +5,32 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Novo cadastro</title>
 	<link rel="stylesheet" href="css/styleCadastroLogin.css">
-	<script src="js/scriptCadastrarLogin.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="js/ConexaoBancoDados.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="js/UsuarioDAO.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="js/CadastroLoginControle.js" type="text/javascript" charset="utf-8" async defer></script>
 </head>
 <body>
 	
 	<div>
 
-		<form class="formularioCadastro">
+		<form id="formularioCadastro">
 			<fieldset>
 				
 				<legend>Cadastro MyLibraries</legend>
 
 				<label for="nome">Nome ou apelido</label>
-				<input id="nome" type="text" placeholder="Nome ou apelido">					
+				<input id="nome" type="text" placeholder="Nome ou apelido" required="required">					
 
 				<label for="email">E-mail</label>
-				<input id="email" type="email" placeholder="E-mail">
+				<input id="email" type="email" placeholder="E-mail" required="required">
 
 				<label for="senha1">Senha</label>
-				<input id="senha1" type="password" placeholder="Senha">
+				<input id="senha1" type="password" placeholder="Senha" required="required">
 
 				<label for="senha2">Confirme a senha</label>
-				<input id="senha2" type="password" placeholder="Confirme a senha">
+				<input id="senha2" type="password" placeholder="Confirme a senha" required="required">
 
-				<button id="botaoCadastrar" class="botao" type="button">Cadastrar</button>
+				<button id="botaoCadastrar" class="botao" type="submit">Cadastrar</button>
 				
 				<a id="botaoVoltar" class="botao" href="login.html">Voltar</a>
 
