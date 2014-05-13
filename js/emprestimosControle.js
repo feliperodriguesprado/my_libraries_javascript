@@ -3,6 +3,7 @@ var emprestimosControle = {
 		ConexaoBancoDados.abrirBancoDados();
 		emprestimosControle.salvar();
 		emprestimosControle.buscar();
+		//emprestimosDAO.selectAll();
 	},
 
 	salvar:function(){
@@ -15,7 +16,7 @@ var emprestimosControle = {
 	buscar:function(){
 		var selecionar = document.getElementById("s");
 		selecionar.addEventListener('click', function(){
-			emprestimosDAO.selectAll();
+		emprestimosDAO.selectAll();
 		})
 	}
 }

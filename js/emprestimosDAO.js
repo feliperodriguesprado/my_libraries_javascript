@@ -1,13 +1,18 @@
 var emprestimosDAO = {
-	idnew: null,
 
  	insert: function(){
 
- 		if(emprestimosDAO.idnew != null){
- 			emprestimosDAO.update(id);
+ 		var verifica = document.getElementById("cod").value;
+ 		//alert(verifica);
+
+ 		if(verifica != ""){
+ 			var bib = document.getElementById("biblioteca");
+		    var item = document.getElementById("item");
+		    var data = document.getElementById("data");
+		    var nome = document.getElementById("nome");
+		    var descric = document.getElementById("text");
+ 			emprestimosDAO.atualizar(verifica,bib,item,data,nome,descric);
  		}else{
-
-
 	 		var bancoDados = ConexaoBancoDados.bancoDados;
 
 		    //Para impedir a atualização da pagina.
@@ -45,15 +50,14 @@ var emprestimosDAO = {
 
 	    request.onsuccess = function(event){
 	        var data = request.result;
-	        id = data.key;
-	        alert(id);
 	        document.getElementById("biblioteca").value = data.biblioteca;
 	        document.getElementById("item").value = data.item;
 	        document.getElementById("data").value = data.data;
 	        document.getElementById("nome").value = data.nome;
 	        document.getElementById("text").value = data.descricao;
+	        document.getElementById("cod").value = ids;
 
-	        var requestUpdate = objectStore.put(data);
+	        /*var requestUpdate = objectStore.put(data);
 
 	        requestUpdate.onerror = function(event){
 	        	alert("Houve um erro ao atualizar");
@@ -61,8 +65,39 @@ var emprestimosDAO = {
 
 	        requestUpdate.onsuccess = function(event){
 	        	alert("Dados atualizados com sucesso");
-	        }
+	        }*/
 	    }
+	},
+
+	atualizar:function(ids,bib,item,data,nome,descric){
+			alert(bib.value);
+			var bancoDados = ConexaoBancoDados.bancoDados;
+	    	var objectStore = bancoDados.transaction(["emprestimos"], "readwrite").objectStore("emprestimos");
+	    	var request = objectStore.get(ids);
+			
+	        request.onerror = function(event){
+	        	alert("Houve um erro ao atualizar");
+	        }
+
+	        request.onsuccess = function(event){
+	        	alert(bib.value);
+
+	        	var datas = request.result;
+	        	//alert(bib);
+	        	datas.biblioteca=bib.value;
+	        	//alert(datas.biblioteca);
+	        	datas.item=item.value;
+	        	datas.data=data.value;
+	        	datas.nome=nome.value;
+	        	datas.descricao=descric.value;
+	        	var requestUpdate=objectStore.put(datas);
+	        	requestUpdate.onerror=function(event){
+	        		alert("Houve um erro ao atualizar");
+	        	}
+	        	requestUpdate.onsuccess=function(event){
+	        		alert("Dados atualizados com Sucesso");
+	        	}
+	        }
 	},
 
 	select:function(){
@@ -101,7 +136,6 @@ var emprestimosDAO = {
 	            var item = retorno.value.item;
 	            var name = retorno.value.nome;
 	            var ids = retorno.key;
-	            //alert(ids);
 	            //nome da variavel proncipal. metodo
 	            emprestimosDAO.result(biblioteca,item,name,ids);
 	            retorno.continue();
