@@ -6,25 +6,28 @@
 	<title>MyLibraries - Acesse sua conta</title>
 	<link rel="stylesheet" href="css/styleLogin.css">
 	<script src="js/ConexaoBancoDados.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="js/UsuarioControle.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="js/UsuarioDAO.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="js/LoginControle.js" type="text/javascript" charset="utf-8" async defer></script>
 </head>
 <body>
 
 	<div>
-
-		<form id="formularioLogin">
+		<form id="formularioLogin" action="" method="POST" accept-charset="utf-8">
 			
 			<fieldset>
 				<legend>MyLibraries - Acesse sua conta</legend>
 
 				<label for="email">E-mail</label>
-				<input id="email" type="email" placeholder="E-mail" required="required">
+				<input id="email" type="email" placeholder="E-mail" title="Informe seu e-mail" required="required">
+				<span id="avisoEmail">Informe seu email</span>
+
 
 				<label for="senha">Senha</label>
-				<input id="senha" type="password" placeholder="Senha" required="required">
+				<input id="senha" type="password" placeholder="Senha" title="Informe sua senha" required="required">
+				<span id="avisoSenha">Informe sua senha</span>
 
-				<button id="botaoAcessar" class="botao" type="buttom">Acessar</button>
+				<button id="botaoAcessar" class="botao" type="submit">Acessar</button>
 				
 				<a id="botaoCadastrar" class="botao" href="cadastroLogin.html" >Cadastrar-se</a>
 

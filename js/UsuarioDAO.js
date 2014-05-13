@@ -1,5 +1,11 @@
 var UsuarioDAO = {
 
+    obterTransacaoUsuario: function() {
+        UsuarioDAO.bancoDados = ConexaoBancoDados.bancoDados;
+        UsuarioDAO.transaction = UsuarioDAO.bancoDados.transaction(["usuario"], "readwrite");
+        UsuarioDAO.objectUsuario = UsuarioDAO.transaction.objectStore("usuario");
+    },
+
 	cadastrarUsuario: function(nome, email, senha1, senha2) {
 
         var bancoDados = ConexaoBancoDados.bancoDados;
@@ -19,24 +25,23 @@ var UsuarioDAO = {
     },
 
     // Busca por index: se o index não for unico, será trago o registro de menor primary key
-	buscaPorEmail: function(email){
+	buscarPorEmail: function(emailDigitado, senhaDigitada){
 
         var bancoDados = ConexaoBancoDados.bancoDados;
         var transaction = bancoDados.transaction(["usuario"], "readonly");
         var objectUsuario = transaction.objectStore("usuario");
 
         var index = objectUsuario.index("email");
-        var request = index.get(email.value);
+        var request = index.get(emailDigitado.value);
 
         request.onerror = function(event) {
             console.log("Erro ao localizar usuário");
         };
 
         request.onsuccess = function(event) {
-            console.log("Sucesso ao localizar usuário");
-            console.log("Usuário: " + request.result.nome);
+            UsuarioControle.validarEmailLogin(event.target.result, emailDigitado, senhaDigitada);
         };
-        
+
     },
 
 
