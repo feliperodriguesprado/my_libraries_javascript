@@ -3,14 +3,14 @@ var emprestimosDAO = {
  	insert: function(){
 
  		var verifica = document.getElementById("cod").value;
- 		//alert(verifica);
-
+ 		
  		if(verifica != ""){
- 			var bib = document.getElementById("biblioteca");
-		    var item = document.getElementById("item");
-		    var data = document.getElementById("data");
-		    var nome = document.getElementById("nome");
-		    var descric = document.getElementById("text");
+ 			var bib = document.getElementById("biblioteca").value;
+		    var item = document.getElementById("item").value;
+		    var data = document.getElementById("data").value;
+		    var nome = document.getElementById("nome").value;
+		    var descric = document.getElementById("text").value;
+		    
  			emprestimosDAO.atualizar(verifica,bib,item,data,nome,descric);
  		}else{
 	 		var bancoDados = ConexaoBancoDados.bancoDados;
@@ -34,9 +34,15 @@ var emprestimosDAO = {
 		    var emp = {biblioteca: bib.value, item: item.value, data: data.value, nome: nome.value, descricao: descric.value};
 		    var request = objectUser.add(emp);
 
+		    bib.value = 0;
+		    item.value = 0;
+		    data.value = "";
+		    nome.value = "";
+		    descric.value = "";
+
 		    alert("Dado inserido com sucesso");
-		    //selectAll();
 		}
+		emprestimosDAO.selectAll();
 	},
 
 	update:function(ids){
@@ -56,45 +62,40 @@ var emprestimosDAO = {
 	        document.getElementById("nome").value = data.nome;
 	        document.getElementById("text").value = data.descricao;
 	        document.getElementById("cod").value = ids;
-
-	        /*var requestUpdate = objectStore.put(data);
-
-	        requestUpdate.onerror = function(event){
-	        	alert("Houve um erro ao atualizar");
-	        }
-
-	        requestUpdate.onsuccess = function(event){
-	        	alert("Dados atualizados com sucesso");
-	        }*/
 	    }
 	},
 
 	atualizar:function(ids,bib,item,data,nome,descric){
-			alert(bib.value);
+			 var codigo = parseInt (ids);
 			var bancoDados = ConexaoBancoDados.bancoDados;
 	    	var objectStore = bancoDados.transaction(["emprestimos"], "readwrite").objectStore("emprestimos");
-	    	var request = objectStore.get(ids);
+	    	var request = objectStore.get(codigo);
 			
 	        request.onerror = function(event){
 	        	alert("Houve um erro ao atualizar");
 	        }
 
 	        request.onsuccess = function(event){
-	        	alert(bib.value);
-
+	        	
 	        	var datas = request.result;
-	        	//alert(bib);
-	        	datas.biblioteca=bib.value;
-	        	//alert(datas.biblioteca);
-	        	datas.item=item.value;
-	        	datas.data=data.value;
-	        	datas.nome=nome.value;
-	        	datas.descricao=descric.value;
-	        	var requestUpdate=objectStore.put(datas);
+	        	//datas.Key = ids;
+	        	datas.id=codigo;
+	        	datas.biblioteca=bib;
+	        	datas.item=item;
+	        	datas.data=data;
+	        	datas.nome=nome;
+	        	datas.descricao=descric;
+	        	
+	        	var requestUpdate=objectStore.put(datas,codigo);
 	        	requestUpdate.onerror=function(event){
 	        		alert("Houve um erro ao atualizar");
 	        	}
 	        	requestUpdate.onsuccess=function(event){
+	        		document.getElementById("biblioteca").value = 0;
+			        document.getElementById("item").value = 0;
+			        document.getElementById("data").value = "";
+			        document.getElementById("nome").value = "";
+			        document.getElementById("text").value = "";
 	        		alert("Dados atualizados com Sucesso");
 	        	}
 	        }
@@ -164,8 +165,8 @@ var emprestimosDAO = {
 	    document.getElementById("tabela").innerHTML += col1 + col2 + col3;
 	    document.getElementById("tabela").innerHTML += "</td></tr>";
 	    
-	    /*var nome = document.getElementById('nome').value;
-	    var table = document.getElementById('tabela');
+	    //var nome = document.getElementById('nome').value;
+	    /*var table = document.getElementById('tabela');
 	    var numRow = table.rows.length;
 	    var numCol = table.rows[numRow-1].cells.length;
 	    var newRow = table.insertRow(numRow);
@@ -180,10 +181,5 @@ var emprestimosDAO = {
 	    alert(id);
 	    var remove = document.getElementById(id);
 	    remove.removeChild(remove);
-	    /*if(remove.parentNode){
-	        remove.parentNode.removeChild(remove);
-	    }else{
-	        alert("erro");
-	    }*/
 	}
 };

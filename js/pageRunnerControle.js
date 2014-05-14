@@ -1,13 +1,13 @@
 var pageRunner = {
 	inicializar:function(){
-		ConexaoBancoDados.abrirBancoDados();
+		//ConexaoBancoDados.abrirBancoDados();
 		pageRunner.emprestimosButton();
 	}
 
 	emprestimosButton:function(){
 		var emp = document.getElementById("emprestimo");
 		emp.addEventListener('click', function(){
-			emprestimosDAO.selectAll();
+		emprestimosDAO.selectAll();
 		})
 	}
 
