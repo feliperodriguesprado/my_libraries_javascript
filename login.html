@@ -12,29 +12,34 @@
 </head>
 <body>
 
-	<div>
-		<form id="formularioLogin" action="" method="POST" accept-charset="utf-8">
-			
-			<fieldset>
-				<legend>MyLibraries - Acesse sua conta</legend>
+	<fieldset id = "painelPrincipal">
 
-				<label for="email">E-mail</label>
-				<input id="email" type="email" placeholder="E-mail" title="Informe seu e-mail" required="required">
-				<span id="avisoEmail">Informe seu email</span>
+		<h1>MyLibraries - Acesse sua conta</h1>
 
-
-				<label for="senha">Senha</label>
-				<input id="senha" type="password" placeholder="Senha" title="Informe sua senha" required="required">
-				<span id="avisoSenha">Informe sua senha</span>
-
-				<button id="botaoAcessar" class="botao" type="submit">Acessar</button>
+			<form id="formularioLogin" action="" method="POST" accept-charset="utf-8">
 				
-				<a id="botaoCadastrar" class="botao" href="cadastroLogin.html" >Cadastrar-se</a>
+				<fieldset id = "painelLogin">
+	
+					<label for="email">E-mail</label>
+					<input id="email" type="email" placeholder="E-mail" title="Informe seu e-mail" required="required">
+	
+					<label for="senha">Senha</label>
+					<input id="senha" type="password" placeholder="Senha" title="Informe sua senha" required="required">
 
-			</fieldset>
+					<div class="botoes">
+						<button id="botaoAcessar" class="botao" type="submit">Acessar</button>
+						
+						<a id="botaoCadastrar" class="botao" href="cadastroLogin.html" >Cadastrar-se</a>
+					</div>
+	
+				</fieldset>
 
-		</form>
+			</form>
 
-	</div>
+			<div id = "painelAvisos">
+					
+			</div>
+
+	</fieldset>
 </body>
 </html>

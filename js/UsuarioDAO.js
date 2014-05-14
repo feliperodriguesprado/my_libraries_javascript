@@ -1,19 +1,28 @@
 var UsuarioDAO = {
 
+    limparSessao: function() {
+
+        var bancoDados = ConexaoBancoDados.bancoDados;
+        var transaction = bancoDados.transaction(["sessao"], "readwrite");
+        var objectStore = transaction.objectStore("sessao");
+
+        objectStore.clear();
+    },
+
     obterTransacaoUsuario: function() {
         UsuarioDAO.bancoDados = ConexaoBancoDados.bancoDados;
         UsuarioDAO.transaction = UsuarioDAO.bancoDados.transaction(["usuario"], "readwrite");
-        UsuarioDAO.objectUsuario = UsuarioDAO.transaction.objectStore("usuario");
+        UsuarioDAO.objectStore = UsuarioDAO.transaction.objectStore("usuario");
     },
 
 	cadastrarUsuario: function(nome, email, senha1, senha2) {
 
         var bancoDados = ConexaoBancoDados.bancoDados;
         var transaction = bancoDados.transaction(["usuario"], "readwrite");
-        var objectUsuario = transaction.objectStore("usuario");
+        var objectStore = transaction.objectStore("usuario");
 
         var usuario = {nome: nome.value, email: email.value, senha: senha1.value};
-        var request = objectUsuario.add(usuario);
+        var request = objectStore.add(usuario);
 
         request.onerror = function(event) {
             console.log("Erro ao cadastrar usuário");
@@ -24,35 +33,58 @@ var UsuarioDAO = {
         };
     },
 
+    iniciarSessao: function(usuarioid) {
+
+        var bancoDados = ConexaoBancoDados.bancoDados;
+        var transaction = bancoDados.transaction(["sessao"], "readwrite");
+        var objectStore = transaction.objectStore("sessao");
+
+        var sessao = {usuarioid: usuarioid};
+        var request = objectStore.add(sessao);
+
+        request.onerror = function(event) {
+            console.log("Erro ao iniciar sessao");
+        };
+
+        request.onsuccess = function(event) {
+            console.log("Sucesso ao iniciar sessao");
+        };
+    },
+
     // Busca por index: se o index não for unico, será trago o registro de menor primary key
 	buscarPorEmail: function(emailDigitado, senhaDigitada){
 
         var bancoDados = ConexaoBancoDados.bancoDados;
         var transaction = bancoDados.transaction(["usuario"], "readonly");
-        var objectUsuario = transaction.objectStore("usuario");
+        var objectStore = transaction.objectStore("usuario");
 
-        var index = objectUsuario.index("email");
-        var request = index.get(emailDigitado.value);
+        var index = objectStore.index("email");
+        var range = IDBKeyRange.only(emailDigitado.value); 
+        var request = index.openCursor(range);
 
         request.onerror = function(event) {
             console.log("Erro ao localizar usuário");
         };
 
         request.onsuccess = function(event) {
-            UsuarioControle.validarEmailLogin(event.target.result, emailDigitado, senhaDigitada);
+            var cursor = event.target.result;
+            
+            UsuarioControle.validarEmailLogin(cursor, emailDigitado, senhaDigitada);
+            if (cursor) {
+                cursor.continue();
+            }
         };
 
     },
-
 
     // Busca o usuário pelo primary key
     buscaPorPrimaryKey: function(primaryKey) {
         
         var bancoDados = ConexaoBancoDados.bancoDados;
         var transaction = bancoDados.transaction(["usuario"], "readonly");
-        var objectUsuario = transaction.objectStore("usuario");
+        var objectStore = transaction.objectStore("usuario");
     
-        var request = objectUsuario.get(primaryKey);
+        var request = objectStore.get(primaryKey);
 
         request.onerror = function(event) {
             console.log("Erro ao localizar usuário");
@@ -70,10 +102,10 @@ var UsuarioDAO = {
         
         var bancoDados = ConexaoBancoDados.bancoDados;
         var transaction = bancoDados.transaction(["usuario"], "readonly");
-        var objectUsuario = transaction.objectStore("usuario");
+        var objectStore = transaction.objectStore("usuario");
         
         var usuario = [];
-        var request = objectUsuario.openCursor();
+        var request = objectStore.openCursor();
 
         request.onerror = function(event) {
             console.log("Erro ao localizar usuário");
@@ -94,7 +126,7 @@ var UsuarioDAO = {
 
 	// nao_implementada:function(){
  //    	// Buscando vários registros pelo index:
- //    	var index=objectUsuario.index("nome");
+ //    	var index=objectStore.index("nome");
  //    	var range=IDBKeyRange.only("busca"); // Somente se for igual "busca"
  //    	var range=IDBKeyRange.lowerBound("busca"); // Combinações menores que "busca", incluindo "busca"
  //    	var range=IDBKeyRange.lowerBound("busca", true); // Combinações menores que "busca", sem incluir "busca" 

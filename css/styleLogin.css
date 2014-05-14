@@ -4,14 +4,51 @@
 	font-family: Lucida, sans-serif;
 }
 
-fieldset {
-    width: 300px;
-    margin: 10px;
-    border-radius: 5px;
+h1 {
+    margin-bottom: 30px;
+    margin-top: 30px;
+    margin-left: 30px; 
+    font-size: 24px;
+    color: #191970;
 }
 
-legend {
-    margin-bottom: 20px;
+#painelPrincipal {
+    border-radius: 5px;
+    width: 420px;
+    border: none;
+    /*height: 260px;*/
+    padding: 5px;
+    background-color: #DCDCDC;
+    margin: 100px auto;
+    
+}
+
+#painelLogin {
+    border-radius: 5px;
+    width: 300px;
+    border: none;
+    padding: 20px;
+    background-color: #A9A9A9;
+    margin: 5% auto;
+}
+
+#loginIncorreto {
+    display: inline-block;
+    width: 360px;
+    border-radius: 5px;
+    background-color: #BA5656;
+    margin-left: 7%;
+    margin-bottom: 7%;
+    text-align: center;
+}
+
+#avisoSenha {
+    display: inline-block;
+    margin: 5px;
+    font-style: italic;
+    font-size: 12px;
+    color: #8B0000;
+    
 }
 
 label, input {
@@ -22,44 +59,59 @@ label, input {
 
 input {
     border: 1px solid #848484;
-    width: 200px;
+    width: 300px;
     padding: 4px;
-
+    color: #191970;
+    font-style: italic;
 }
 
+label {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #191970;
+    font-weight: bold;
+}
+
+.botoes {
+    margin-top: 30px;
+}
 
 .botao {
     display: inline-block;
-    font-size: 14px;
+    font-size: 12px;
     padding: 5px;
     color: #FFFFFF;
-    background-color: #2B50BD;
-    border: 1px solid #2B50BD;
+    background-color: #191970;
+    border: 1px solid #191970;
     border-radius: 4px;
     text-decoration: none;
     text-align: center;
-    margin: 5px;
+    margin-right: 5px;
+    margin-left: 6px;
 }
 
 .botao:hover {
     color: #FFFFFF;
-    background-color: #1749DF;
-    border: 1px solid #1749DF;
+    focus: #00008B ;
+    background-color: #00008B;
+    border: 1px solid #00008B;
     cursor: pointer;
 }
 
-.botoes {
-    margin-left: 30px;
-}
 
-#avisoEmail, #avisoSenha{
+/*#avisoEmail, #avisoSenha{
     display: none;
+    font-style: italic;
+    font-size: 12px;
+    margin: 5px;
+    margin-right: 200px;
 }
 
 #email:focus~#avisoEmail, #senha:focus~#avisoSenha {
+    color: black;
     display: inline-block;
     font-style: italic;
     font-size: 12px;
     margin: 5px;
     margin-right: 160px;
-}
+}*/

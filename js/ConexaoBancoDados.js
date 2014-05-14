@@ -72,6 +72,16 @@ var ConexaoBancoDados = {
                 console.log("Tabela emprestimos criada.");             
             };
 
+            // Tabela "sessao"
+            if (!bancoDadosOnUpgradeNeeded.objectStoreNames[3]) {
+
+                // Criando a tabela "sessao" com uma primary Key "sessaoid" auto incremento.
+                var objectUser = bancoDadosOnUpgradeNeeded.createObjectStore("sessao", {KeyPath: "sessaoid", autoIncrement: true});
+
+                // Criando os indices da tabela "sessao".
+                objectUser.createIndex("usuarioid", "usuarioid", {unique: false});
+            };
+
             bancoDadosOnUpgradeNeeded.onversionchange = function(event) {
                 console.log("Versão alterada.");
             };

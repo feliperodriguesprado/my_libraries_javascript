@@ -4,6 +4,7 @@ var LoginControle = {
         LoginControle.formularioLogin();
         LoginControle.botaoAcessar();
         ConexaoBancoDados.abrirBancoDados();
+        //ConexaoBancoDados.excluirBancoDados();
     },
 
     formularioLogin:function(){
@@ -20,19 +21,45 @@ var LoginControle = {
 
 
     botaoAcessar:function(){
-        
+
         var botaoAcessar = document.getElementById("botaoAcessar");
+        var email = document.getElementById("email");
+        var senha = document.getElementById("senha");
 
         botaoAcessar.addEventListener("click", function() {
                 
                 var email = document.getElementById("email");
                 var senha = document.getElementById("senha");
+
+                UsuarioDAO.limparSessao();
                 
                 if(email.value != "" && senha.value != "") {
                     UsuarioDAO.buscarPorEmail(email, senha);
                 };
             }
-        );       
+        );
+
+        /*
+        email.addEventListener("focus", function() {
+                document.getElementById("avisoEmail").innerHTML = "Informe seu email";
+            }
+        );
+
+        email.addEventListener("blur", function() {
+                document.getElementById("avisoEmail").innerHTML = "";
+            }
+        );
+
+        senha.addEventListener("focus", function() {
+                document.getElementById("avisoSenha").innerHTML = "Informe sua senha";
+            }
+        );
+        senha.addEventListener("blur", function() {
+                document.getElementById("avisoSenha").innerHTML = " ";
+            }
+        );
+        */
+
     },
 };
 
