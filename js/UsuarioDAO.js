@@ -1,39 +1,30 @@
 var UsuarioDAO = {
 
-    limparSessao: function() {
+    teste: function() {
+        var bancoDados = ConexaoBancoDados.bancoDados;
+        var transaction = bancoDados.transaction(["sessao"], "readwrite");
+        var objectStore = transaction.objectStore("sessao");
+
+        console.log(objectStore);
+    },
+
+    iniciarSessao: function(emailDigitado, senhaDigitada) {
 
         var bancoDados = ConexaoBancoDados.bancoDados;
         var transaction = bancoDados.transaction(["sessao"], "readwrite");
         var objectStore = transaction.objectStore("sessao");
 
-        objectStore.clear();
-    },
+        var request = objectStore.clear();
 
-    obterTransacaoUsuario: function() {
-        UsuarioDAO.bancoDados = ConexaoBancoDados.bancoDados;
-        UsuarioDAO.transaction = UsuarioDAO.bancoDados.transaction(["usuario"], "readwrite");
-        UsuarioDAO.objectStore = UsuarioDAO.transaction.objectStore("usuario");
-    },
-
-	cadastrarUsuario: function(nome, email, senha1, senha2) {
-
-        var bancoDados = ConexaoBancoDados.bancoDados;
-        var transaction = bancoDados.transaction(["usuario"], "readwrite");
-        var objectStore = transaction.objectStore("usuario");
-
-        var usuario = {nome: nome.value, email: email.value, senha: senha1.value};
-        var request = objectStore.add(usuario);
-
-        request.onerror = function(event) {
-            console.log("Erro ao cadastrar usuário");
-        };
+        var emailDigitado = emailDigitado.value;
+        var senhaDigitada = senhaDigitada.value;
 
         request.onsuccess = function(event) {
-            console.log("Sucesso ao cadastrar usuário");
-        };
+            UsuarioDAO.buscarPorEmail(emailDigitado, senhaDigitada);
+        }
     },
 
-    iniciarSessao: function(usuarioid) {
+    gravarSessao: function(usuarioid) {
 
         var bancoDados = ConexaoBancoDados.bancoDados;
         var transaction = bancoDados.transaction(["sessao"], "readwrite");
@@ -47,19 +38,41 @@ var UsuarioDAO = {
         };
 
         request.onsuccess = function(event) {
-            console.log("Sucesso ao iniciar sessao");
+            ConexaoBancoDados.bancoDados.close();
+            window.location = "principal.html";
         };
     },
 
-    // Busca por index: se o index não for unico, será trago o registro de menor primary key
-	buscarPorEmail: function(emailDigitado, senhaDigitada){
+    cadastrarUsuario: function(nome, email, senha1, senha2) {
+
+        var bancoDados = ConexaoBancoDados.bancoDados;
+        var transaction = bancoDados.transaction(["usuario"], "readwrite");
+        var objectStore = transaction.objectStore("usuario");
+
+        var usuario = {nome: nome.value, email: email.value, senha: senha1.value};
+        var request = objectStore.add(usuario);
+
+        request.onerror = function(event) {
+            console.log("Erro ao cadastrar usuário");
+            alert("Usuario já existe, favor fazer login.");
+            window.location = "login.html";
+        };
+
+        request.onsuccess = function(event) {
+            console.log("Sucesso ao cadastrar usuário");
+            UsuarioDAO.iniciarSessao(email, senha1);
+        };
+    },
+
+    // Busca por index com cursor: é criado um range que irá trazer somente valores iguais a esse range.
+	buscarPorEmail: function(emailDigitado, senhaDigitada) {
 
         var bancoDados = ConexaoBancoDados.bancoDados;
         var transaction = bancoDados.transaction(["usuario"], "readonly");
         var objectStore = transaction.objectStore("usuario");
 
         var index = objectStore.index("email");
-        var range = IDBKeyRange.only(emailDigitado.value); 
+        var range = IDBKeyRange.only(emailDigitado); 
         var request = index.openCursor(range);
 
         request.onerror = function(event) {
@@ -68,85 +81,84 @@ var UsuarioDAO = {
 
         request.onsuccess = function(event) {
             var cursor = event.target.result;
-            
             UsuarioControle.validarEmailLogin(cursor, emailDigitado, senhaDigitada);
-            if (cursor) {
-                cursor.continue();
-            }
         };
 
-    },
-
-    // Busca o usuário pelo primary key
-    buscaPorPrimaryKey: function(primaryKey) {
-        
-        var bancoDados = ConexaoBancoDados.bancoDados;
-        var transaction = bancoDados.transaction(["usuario"], "readonly");
-        var objectStore = transaction.objectStore("usuario");
-    
-        var request = objectStore.get(primaryKey);
-
-        request.onerror = function(event) {
-            console.log("Erro ao localizar usuário");
-        };
-
-        request.onsuccess = function(event) {
-            console.log("Sucesso ao localizar usuário");
-            console.log("Usuário: " + request.result.nome);
-        };
-    },
-
-
-    // Busca todos os registros usando "openCursor()"
-    buscaTodos: function() {        
-        
-        var bancoDados = ConexaoBancoDados.bancoDados;
-        var transaction = bancoDados.transaction(["usuario"], "readonly");
-        var objectStore = transaction.objectStore("usuario");
-        
-        var usuario = [];
-        var request = objectStore.openCursor();
-
-        request.onerror = function(event) {
-            console.log("Erro ao localizar usuário");
-        };
-
-        request.onsuccess = function(event) {
-            var cursor = request.result;
-            if (cursor) {
-                usuario.push(cursor.value);
-                console.log("Usuario :" + cursor.value.nome);
-                cursor.continue();
-            } else {
-            console.log("Usuários: " + usuario);
-            console.log("Sucesso ao localizar usuários");
-            };
-        };
     }
+};
 
-	// nao_implementada:function(){
- //    	// Buscando vários registros pelo index:
- //    	var index=objectStore.index("nome");
- //    	var range=IDBKeyRange.only("busca"); // Somente se for igual "busca"
- //    	var range=IDBKeyRange.lowerBound("busca"); // Combinações menores que "busca", incluindo "busca"
- //    	var range=IDBKeyRange.lowerBound("busca", true); // Combinações menores que "busca", sem incluir "busca" 
- //    	var range=IDBKeyRange.upperBound("busca", true); // Combinações maiores que "busca", não incluindo "busca"
- //    	var range=IDBKeyRange.bound("busca", "busca", false, true); // Combinações entre "busca" e "busca", sem incluir "busca"
+ //    // As buscas abaixo não estão sendo utilizadas, foram feitas para aprendizado.
+
+ //    // Busca o usuário pelo primary key
+ //    buscaPorPrimaryKey: function(primaryKey) {
+        
+ //        var bancoDados = ConexaoBancoDados.bancoDados;
+ //        var transaction = bancoDados.transaction(["usuario"], "readonly");
+ //        var objectStore = transaction.objectStore("usuario");
     
- //    	var request=index.openCursor(range); // Usando o range criado acima
- //    	var request=index.openCursor(); // Traz todos os dados
+ //        var request = objectStore.get(primaryKey);
 
- //    	request.onerror=function(event){
+ //        request.onerror = function(event) {
+ //            console.log("Erro ao localizar usuário");
+ //        };
+
+ //        request.onsuccess = function(event) {
+ //            console.log("Sucesso ao localizar usuário");
+ //            console.log("Usuário: " + request.result.nome);
+ //        };
+ //    },
+
+
+ //    // Busca todos os registros usando "openCursor()"
+ //    buscaTodos: function() {        
+        
+ //        var bancoDados = ConexaoBancoDados.bancoDados;
+ //        var transaction = bancoDados.transaction(["usuario"], "readonly");
+ //        var objectStore = transaction.objectStore("usuario");
+        
+ //        var usuario = [];
+ //        var request = objectStore.openCursor();
+
+ //        request.onerror = function(event) {
+ //            console.log("Erro ao localizar usuário");
+ //        };
+
+ //        request.onsuccess = function(event) {
+ //            var cursor = request.result;
+ //            if (cursor) {
+ //                usuario.push(cursor.value);
+ //                console.log("Usuario :" + cursor.value.nome);
+ //                cursor.continue();
+ //            } else {
+ //            console.log("Usuários: " + usuario);
+ //            console.log("Sucesso ao localizar usuários");
+ //            };
+ //        };
+ //    }
+
+ //    // Buscando vários registros pelo index:
+ //    nao_implementada:function() {
+
+ //    	var index = objectStore.index("nome");
+ //    	var range = IDBKeyRange.only("busca"); // Somente se for igual "busca"
+ //    	var range = IDBKeyRange.lowerBound("busca"); // Combinações menores que "busca", incluindo "busca"
+ //    	var range = IDBKeyRange.lowerBound("busca", true); // Combinações menores que "busca", sem incluir "busca" 
+ //    	var range = IDBKeyRange.upperBound("busca", true); // Combinações maiores que "busca", não incluindo "busca"
+ //    	var range = IDBKeyRange.bound("busca", "busca", false, true); // Combinações entre "busca" e "busca", sem incluir "busca"
+    
+ //    	var request = index.openCursor(range); // Usando o range criado acima
+ //    	var request = index.openCursor(); // Traz todos os dados
+
+ //    	request.onerror = function(event) {
  //        	console.log("Erro ao localizar usuário");
  //    	};
 
- //    	request.onsuccess=function(event) {
- //        	var cursor=request.result;
- //        	if(cursor){
- //            	console.log("Usuário: "+cursor.value.nome);
+ //    	request.onsuccess = function(event) {
+ //        	var cursor = request.result;
+ //        	if (cursor) {
+ //            	console.log("Usuário: " + cursor.value.nome);
  //            	cursor.continue();
  //        	}
  //        	console.log("Sucesso ao localizar usuários");
  //    	};
 	// }
-};

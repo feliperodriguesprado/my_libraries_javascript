@@ -26,6 +26,7 @@ var ConexaoBancoDados = {
             // -> usuario = indice 0.
             // -> biblioteca = indice 1.
             // -> emprestimos = indice 2.
+            // -> sessao = indice 3.
 
             // Tabela "usuario".
             if (!bancoDadosOnUpgradeNeeded.objectStoreNames[0]) {
@@ -80,6 +81,8 @@ var ConexaoBancoDados = {
 
                 // Criando os indices da tabela "sessao".
                 objectUser.createIndex("usuarioid", "usuarioid", {unique: false});
+
+                console.log("Tabela sessao criada."); 
             };
 
             bancoDadosOnUpgradeNeeded.onversionchange = function(event) {

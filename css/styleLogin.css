@@ -36,7 +36,7 @@ h1 {
     display: inline-block;
     width: 360px;
     border-radius: 5px;
-    background-color: #BA5656;
+    background-color: #B22222;
     margin-left: 7%;
     margin-bottom: 7%;
     text-align: center;
@@ -47,8 +47,8 @@ h1 {
     margin: 5px;
     font-style: italic;
     font-size: 12px;
-    color: #8B0000;
-    
+    color: #FFFFFF;
+    /*font-weight: bold;*/
 }
 
 label, input {
