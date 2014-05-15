@@ -109,6 +109,7 @@ var ConexaoBancoDados = {
             console.log("Banco de dados inicializado.");
             console.log("Banco de dados: " + ConexaoBancoDados.bancoDados.name)
             console.log("Versão: " + ConexaoBancoDados.bancoDados.version);
+            PrincipalControle.obterSessaoUsuario();
         };
     },
 

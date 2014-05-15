@@ -1,17 +1,14 @@
 var PrincipalControle = {
 
 	inicializar: function() {
-		PrincipalControle.acessarContaUsuario();
+		ConexaoBancoDados.abrirBancoDados();
 	},
 
-	acessarContaUsuario: function() {
-		var linkContaUsuario = document.getElementById("linkContaUsuario");
+	obterSessaoUsuario: function() {
+		UsuarioDAO.buscaPorPrimaryKey(43);
+	},
 
-		linkContaUsuario.addEventListener("click", function() {
-             	console.log("Acessar conta do usuário.");
-            }
-        );
-	}
+	
 };
 
 PrincipalControle.inicializar();

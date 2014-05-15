@@ -9,7 +9,7 @@
 	<script src="js/ConexaoBancoDados.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="js/UsuarioDAO.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="js/UsuarioControle.js" type="text/javascript" charset="utf-8" async defer></script>
-	<script src="js/CadastroLoginControle.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="js/CadastroUsuarioControle.js" type="text/javascript" charset="utf-8" async defer></script>
 </head>
 <body>
 	
@@ -23,7 +23,9 @@
 				<input id="nome" type="text" placeholder="Nome ou apelido" required="required">					
 
 				<label for="email">E-mail</label>
-				<input id="email" type="email" placeholder="E-mail" required="required">
+				<input id="email" type="email" placeholder="E-mail"
+					   pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$"
+					   required="required">
 
 				<label for="senha1">Senha</label>
 				<input id="senha1" type="password" placeholder="Senha" required="required">
@@ -38,6 +40,11 @@
 			</fieldset>
 			
 		</form>
+
+		<div id = "painelAvisos">
+					
+		</div>
+
 	</div>
 
 </body>

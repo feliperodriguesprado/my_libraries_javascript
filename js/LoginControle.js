@@ -28,13 +28,15 @@ var LoginControle = {
                 
                 var emailDigitado = document.getElementById("email");
                 var senhaDigitada = document.getElementById("senha");
+                //var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+                var pattern = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
                 
-                if(emailDigitado.value != "" && senhaDigitada.value != "") {
+                if(emailDigitado.value.match(pattern) && senhaDigitada.value != "") {
                     UsuarioDAO.iniciarSessao(emailDigitado, senhaDigitada);
                 };
             }
         );
-    },
+    }
 };
 
 LoginControle.inicializar();

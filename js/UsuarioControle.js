@@ -1,6 +1,6 @@
 UsuarioControle = {
 
-	validarEmailLogin: function(usuario, emailDigitado, senhaDigitada) {
+	validarLogin: function(usuario, emailDigitado, senhaDigitada) {
 
 		if (usuario) {
 			if (emailDigitado == usuario.value.email) {

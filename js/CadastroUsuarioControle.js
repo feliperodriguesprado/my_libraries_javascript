@@ -28,31 +28,20 @@ var CadastroLoginControle = {
                 var senha1=document.getElementById("senha1");
                 var senha2=document.getElementById("senha2");
                 
-                if (senha1.value == senha2.value) {
-                    UsuarioDAO.cadastrarUsuario(nome, email, senha1, senha2);
-                } else {
-                    document.getElementById("painelAvisos").innerHTML = "<div id = \"loginIncorreto\"> <span id = \"avisoSenha\">A senha informada e a confirmação da senha não são iguais.</span></div>";
+                //var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+                var pattern = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+
+                if (nome.value != "" && email.value.match(pattern) && senha1.value != "" && senha2 != "") {
+                    if (senha1.value == senha2.value) {
+                        UsuarioDAO.cadastrarUsuario(nome, email, senha1, senha2);
+                    } else {
+                        document.getElementById("painelAvisos").innerHTML = "<div id = \"loginIncorreto\"> <span id = \"avisoSenha\">A senha informada e a confirmação da senha não são iguais.</span></div>";
+                    };
                 };
+
             }
         );
-    },
-
-    // cadastrarUsuario:function(nome, email, senha1, senha2){
-
-    //     var transaction=CadastroLoginControle.obterConexaoBancoDados.dataBase.transaction(["usuario"], "readwrite");
-    //     var objectUsuario=transaction.objectStore("usuario");
-
-    //     var usuario={nome:nome.value, email:email.value, senha:senha1.value};
-    //     var request=objectUsuario.add(usuario);
-
-    //     request.onerror=function(event) {
-    //         console.log("Erro ao cadastrar usuário");
-    //     };
-
-    //     request.onsuccess=function(event) {
-    //         console.log("Sucesso ao cadastrar usuário");
-    //     };
-    // }
+    }
 };
 
 CadastroLoginControle.inicializar();

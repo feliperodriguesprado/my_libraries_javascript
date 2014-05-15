@@ -20,7 +20,7 @@ var UsuarioDAO = {
         var senhaDigitada = senhaDigitada.value;
 
         request.onsuccess = function(event) {
-            UsuarioDAO.buscarPorEmail(emailDigitado, senhaDigitada);
+            UsuarioDAO.validarEmailLogin(emailDigitado, senhaDigitada);
         }
     },
 
@@ -65,7 +65,7 @@ var UsuarioDAO = {
     },
 
     // Busca por index com cursor: é criado um range que irá trazer somente valores iguais a esse range.
-	buscarPorEmail: function(emailDigitado, senhaDigitada) {
+	validarEmailLogin: function(emailDigitado, senhaDigitada) {
 
         var bancoDados = ConexaoBancoDados.bancoDados;
         var transaction = bancoDados.transaction(["usuario"], "readonly");
@@ -81,32 +81,35 @@ var UsuarioDAO = {
 
         request.onsuccess = function(event) {
             var cursor = event.target.result;
-            UsuarioControle.validarEmailLogin(cursor, emailDigitado, senhaDigitada);
+            UsuarioControle.validarLogin(cursor, emailDigitado, senhaDigitada);
+        };
+    },
+
+    // Busca o usuário pelo primary key
+    buscaPorPrimaryKey: function(primaryKey) {
+        
+        var bancoDados = ConexaoBancoDados.bancoDados;
+        var transaction = bancoDados.transaction(["usuario"], "readonly");
+        var objectStore = transaction.objectStore("usuario");
+    
+        var request = objectStore.get(primaryKey);
+
+        request.onerror = function(event) {
+            console.log("Erro ao localizar usuário");
         };
 
+        request.onsuccess = function(event) {
+            console.log("Sucesso ao localizar usuário");
+            console.log("Usuário: " + request.result.nome);
+        };
+    },
+
+    obterSessao = function() {
+        
     }
 };
 
  //    // As buscas abaixo não estão sendo utilizadas, foram feitas para aprendizado.
-
- //    // Busca o usuário pelo primary key
- //    buscaPorPrimaryKey: function(primaryKey) {
-        
- //        var bancoDados = ConexaoBancoDados.bancoDados;
- //        var transaction = bancoDados.transaction(["usuario"], "readonly");
- //        var objectStore = transaction.objectStore("usuario");
-    
- //        var request = objectStore.get(primaryKey);
-
- //        request.onerror = function(event) {
- //            console.log("Erro ao localizar usuário");
- //        };
-
- //        request.onsuccess = function(event) {
- //            console.log("Sucesso ao localizar usuário");
- //            console.log("Usuário: " + request.result.nome);
- //        };
- //    },
 
 
  //    // Busca todos os registros usando "openCursor()"
