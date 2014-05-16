@@ -2,12 +2,12 @@ var ConexaoBancoDados = {
 
     bancoDados: null,
     nomeBancoDados: "mylibraries",
-    versaoBancoDados: 2,
+    versaoBancoDados: 1,
 
-    abrirBancoDados: function() {
+    abrirBancoDados: function(callback) {
 
         // Abrindo o banco. A funcão open() retorna um objeto IDBOpenDBRequest recebido por request
-        var request = indexedDB.open(ConexaoBancoDados.nomeBancoDados, ConexaoBancoDados.versaoBancoDados);
+        var request = window.indexedDB.open(ConexaoBancoDados.nomeBancoDados, ConexaoBancoDados.versaoBancoDados);
 
         // Criando ou atualizando a versão do banco
         request.onupgradeneeded = function(event) {
@@ -109,7 +109,10 @@ var ConexaoBancoDados = {
             console.log("Banco de dados inicializado.");
             console.log("Banco de dados: " + ConexaoBancoDados.bancoDados.name)
             console.log("Versão: " + ConexaoBancoDados.bancoDados.version);
-            PrincipalControle.obterSessaoUsuario();
+            //callback(ConexaoBancoDados.bancoDados.name);
+            if (typeof callback != "undefined") {
+                callback();
+            };
         };
     },
 

@@ -1,13 +1,22 @@
 var PrincipalControle = {
 
 	inicializar: function() {
-		ConexaoBancoDados.abrirBancoDados();
+		ConexaoBancoDados.abrirBancoDados(function() {
+			PrincipalControle.obterSessaoUsuario();
+		});
 	},
 
 	obterSessaoUsuario: function() {
-		UsuarioDAO.buscaPorPrimaryKey(43);
+		UsuarioDAO.obterSessao(function(usuario) {
+			PrincipalControle.exibirUsuarioTelaPrincipal(usuario);
+		});
 	},
 
+	exibirUsuarioTelaPrincipal: function(usuario) {
+		console.log(usuario.value.nome);
+
+		document.getElementById("areaUsuario").innerHTML = "<span>Olá " + usuario.value.nome + "!</span>";
+	}
 	
 };
 

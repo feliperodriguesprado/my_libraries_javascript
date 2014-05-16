@@ -1,13 +1,5 @@
 var UsuarioDAO = {
 
-    teste: function() {
-        var bancoDados = ConexaoBancoDados.bancoDados;
-        var transaction = bancoDados.transaction(["sessao"], "readwrite");
-        var objectStore = transaction.objectStore("sessao");
-
-        console.log(objectStore);
-    },
-
     iniciarSessao: function(emailDigitado, senhaDigitada) {
 
         var bancoDados = ConexaoBancoDados.bancoDados;
@@ -86,12 +78,13 @@ var UsuarioDAO = {
     },
 
     // Busca o usuário pelo primary key
-    buscaPorPrimaryKey: function(primaryKey) {
+    buscaUsuarioPorPrimaryKey: function(primaryKey, callback) {
         
         var bancoDados = ConexaoBancoDados.bancoDados;
         var transaction = bancoDados.transaction(["usuario"], "readonly");
         var objectStore = transaction.objectStore("usuario");
     
+        /*
         var request = objectStore.get(primaryKey);
 
         request.onerror = function(event) {
@@ -99,13 +92,46 @@ var UsuarioDAO = {
         };
 
         request.onsuccess = function(event) {
-            console.log("Sucesso ao localizar usuário");
-            console.log("Usuário: " + request.result.nome);
+            var usuario = request.result;
+            callback(usuario);
         };
+        */
+
+        ///var index = objectStore.index("usuarioid");
+        //var range = IDBKeyRange.only(primaryKey); 
+        var request = objectStore.openCursor(primaryKey);
+
+        request.onerror = function(event) {
+            console.log("Erro ao localizar usuário");
+        };
+
+        request.onsuccess = function(event) {
+            var usuario = event.target.result;
+            callback(usuario);
+            //UsuarioControle.validarLogin(cursor, emailDigitado, senhaDigitada);
+        };
+
     },
 
-    obterSessao = function() {
-        
+    obterSessao: function(callback) {
+        var bancoDados = ConexaoBancoDados.bancoDados;
+        var transaction = bancoDados.transaction(["sessao"], "readonly");
+        var objectStore = transaction.objectStore("sessao");
+
+        var request = objectStore.openCursor();
+
+        request.onerror = function() {
+            console.log("Erro ao obter sessão.");
+        };
+
+        request.onsuccess = function() {
+
+            var cursor = event.target.result;
+            
+            if (cursor) {
+                UsuarioDAO.buscaUsuarioPorPrimaryKey(cursor.value.usuarioid, callback);
+            };
+        };
     }
 };
 

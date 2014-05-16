@@ -1,10 +1,20 @@
 var ContaUsuarioControle = {
 
 	inicializar: function() {
-		ConexaoBancoDados.abrirBancoDados();
+		ConexaoBancoDados.abrirBancoDados(function() {
+			ContaUsuarioControle.obterSessaoUsuario();
+		});
 	},
 
-	obterUsuario: function() {
+	obterSessaoUsuario: function() {
+		UsuarioDAO.obterSessao(function(usuario) {
+			ContaUsuarioControle.exibirDadosUsuario(usuario);
+		});
+	},
+
+	exibirDadosUsuario: function(usuario) {
+		document.getElementById("nome").value = usuario.value.nome;
+		document.getElementById("email").value = usuario.value.email;
 		
 	}
 };

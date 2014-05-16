@@ -12,8 +12,8 @@ var LoginControle = {
         // Desabilitando o envio do submit
         LoginControle.formulario = document.getElementById("formularioLogin");
         
-        if (LoginControle.formulario){
-            LoginControle.formulario.onsubmit=function(event){
+        if (LoginControle.formulario) {
+            LoginControle.formulario.onsubmit = function(event) {
                 return false;
               }
         };
