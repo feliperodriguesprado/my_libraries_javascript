@@ -4,28 +4,32 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Conta do usuário</title>
-	<link rel="stylesheet" href="">
+	<link rel="stylesheet" href="css/styleContaUsuario.css">
 
 
 </head>
 <body>
-	<fieldset>
-		<h1>Conta do usuário</h1>
-
-			<label for="nome">Nome</label>
-			<input id="nome" type="text" placeholder="Nome ou apelido" required="required">					
-
-			<label for="email">E-mail</label>
-			<input id="email" type="email" placeholder="E-mail" readonly="true">
-
-			<label for="senha1">Senha</label>
-			<input id="senha1" type="password" placeholder="Senha" required="required">
-
-			<label for="senha2">Confirme a senha</label>
-			<input id="senha2" type="password" placeholder="Confirme a senha" required="required">
-			
-	</fieldset>
+	<div>
+		<form id = "formularioLogin">
+			<fieldset>
+				<h1>Conta do usuário</h1>
 	
+					<label id="email"></label>
+
+					<label for="nome">Nome</label>
+					<input id="nome" type="text" required="required">					
+		
+					<label for="senha1">Nova Senha</label>
+					<input id="senha1" type="password" required="required">
+		
+					<label for="senha2">Confirme a senha</label>
+					<input id="senha2" type="password" required="required">
+
+					<button id="botaoSalvarAlteracoes" class="botao" type="submit">Salvar alterações</button>
+			</fieldset>
+		</form>
+	</div>
+
 	<script src="js/ConexaoBancoDados.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="js/UsuarioDAO.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="js/ContaUsuarioControle.js" type="text/javascript" charset="utf-8" async defer></script>

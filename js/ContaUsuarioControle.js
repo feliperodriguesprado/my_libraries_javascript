@@ -4,6 +4,8 @@ var ContaUsuarioControle = {
 		ConexaoBancoDados.abrirBancoDados(function() {
 			ContaUsuarioControle.obterSessaoUsuario();
 		});
+		ContaUsuarioControle.formularioLogin();
+		ContaUsuarioControle.botaoSalvarAlteracoes();
 	},
 
 	obterSessaoUsuario: function() {
@@ -13,9 +15,31 @@ var ContaUsuarioControle = {
 	},
 
 	exibirDadosUsuario: function(usuario) {
+		document.getElementById("email").innerHTML = usuario.value.email;
 		document.getElementById("nome").value = usuario.value.nome;
-		document.getElementById("email").value = usuario.value.email;
+	},
+
+	formularioLogin: function() {
+
+        // Desabilitando o envio do submit
+        var formulario = document.getElementById("formularioLogin");
+        
+        if (formulario) {
+            formulario.onsubmit = function(event) {
+                return false;
+              }
+        };
+    },
+
+	botaoSalvarAlteracoes: function() {
 		
+		botaoSalvarAlteracoes = document.getElementById("botaoSalvarAlteracoes");
+
+		botaoSalvarAlteracoes.addEventListener("click", function() {
+                
+                console.log("Clicou em salvar alterações.");
+            }
+        );
 	}
 };
 

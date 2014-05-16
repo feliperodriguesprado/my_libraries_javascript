@@ -1,19 +1,19 @@
 var LoginControle = {
 
-    inicializar:function() {
+    inicializar: function() {
         LoginControle.formularioLogin();
         LoginControle.botaoAcessar();
         ConexaoBancoDados.abrirBancoDados();
         //ConexaoBancoDados.excluirBancoDados();
     },
 
-    formularioLogin:function() {
+    formularioLogin: function() {
 
         // Desabilitando o envio do submit
-        LoginControle.formulario = document.getElementById("formularioLogin");
+        var formulario = document.getElementById("formularioLogin");
         
-        if (LoginControle.formulario) {
-            LoginControle.formulario.onsubmit = function(event) {
+        if (formulario) {
+            formulario.onsubmit = function(event) {
                 return false;
               }
         };

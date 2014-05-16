@@ -83,22 +83,7 @@ var UsuarioDAO = {
         var bancoDados = ConexaoBancoDados.bancoDados;
         var transaction = bancoDados.transaction(["usuario"], "readonly");
         var objectStore = transaction.objectStore("usuario");
-    
-        /*
-        var request = objectStore.get(primaryKey);
 
-        request.onerror = function(event) {
-            console.log("Erro ao localizar usuário");
-        };
-
-        request.onsuccess = function(event) {
-            var usuario = request.result;
-            callback(usuario);
-        };
-        */
-
-        ///var index = objectStore.index("usuarioid");
-        //var range = IDBKeyRange.only(primaryKey); 
         var request = objectStore.openCursor(primaryKey);
 
         request.onerror = function(event) {
@@ -108,7 +93,6 @@ var UsuarioDAO = {
         request.onsuccess = function(event) {
             var usuario = event.target.result;
             callback(usuario);
-            //UsuarioControle.validarLogin(cursor, emailDigitado, senhaDigitada);
         };
 
     },
