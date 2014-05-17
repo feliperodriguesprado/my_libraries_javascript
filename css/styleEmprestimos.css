@@ -1,10 +1,13 @@
 *{
 	font-family: verdana;
+	font-size: 15px;
 }
 
 form{
 	width: 400px;
 }
+
+
 
 .escolha{
 	width: 180px;

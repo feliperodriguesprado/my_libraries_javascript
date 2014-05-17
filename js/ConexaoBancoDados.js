@@ -68,7 +68,9 @@ var ConexaoBancoDados = {
                 objectUser.createIndex("item", "item", {unique: false});
                 objectUser.createIndex("data", "data", {unique: false});
                 objectUser.createIndex("nome", "nome", {unique: false});
-                objectUser.createIndex("descricao", "descricao", {unique: false});   
+                objectUser.createIndex("descricao", "descricao", {unique: false}); 
+                objectUser.createIndex("status", "status", {unique: false});
+                objectUser.createIndex("dataEncerramento", "dataEncerramento", {unique: false});  
 
                 console.log("Tabela emprestimos criada.");             
             };

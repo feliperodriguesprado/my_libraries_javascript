@@ -10,14 +10,18 @@
 	<form id="for" action="">
 		<fieldset>
 			<legend>Cadastrar Empréstimos</legend>
-			<select name="teste" id="biblioteca">
+
+			
+			<span id="bib" class="biblioteca">Biblioteca:</span>
+			<select name="teste" id="biblioteca" class="biblioteca">
 				<option value="0">Escolha a biblioteca</option>
-				<option value="1">MUSICAS</option>
-				<option value="2">FILMES</option>
-				<option value="3">LIVROS</option>
+				<option value="MUSICAS">MUSICAS</option>
+				<option value="FILMES">FILMES</option>
+				<option value="LIVROS">LIVROS</option>
 			</select>
 
-			<select name="" id="item">
+			<span id="i" class="item">Item:</span>
+			<select name="" id="item" class="item">
 				<option value="0">Escolha o item</option>
 			</select>
 
@@ -37,11 +41,12 @@
 		</fieldset>
 	</form>
 
+	<p>Itens Emprestados</p>
 	<table id="tabela">
 		<thead>
-			<th>Biblioteca:</th>
-			<th>Nome do Item:</th>
-			<th>Nome Emprestador</th>
+			<th>BIBLIOTECA</th>
+			<th>ITEM</th>
+			<th>NOME</th>
 		</thead>
 		<tbody>
 			<tr>
