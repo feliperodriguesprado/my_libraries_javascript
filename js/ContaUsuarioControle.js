@@ -6,27 +6,27 @@ var ContaUsuarioControle = {
 
     window.setTimeout( function() {
                 ConexaoBancoDados.abrirBancoDados(function() {
-                    ContaUsuarioControle.obterSessaoUsuario();
+                    ContaUsuarioControle.obterSessaoUsuario(function(){
+                        UsuarioDAO.obterSessao(function(usuario) {
+                            ContaUsuarioControle.exibirDadosUsuario(usuario);
+                        });
+                    });
                 });
                 ContaUsuarioControle.formularioLogin();
                 ContaUsuarioControle.botaoSalvarAlteracoes();
+                ContaUsuarioControle.botaoExcluirConta();
             } , 1000
         );
 	},
 
-	obterSessaoUsuario: function() {
-		UsuarioDAO.obterSessao(function(usuario) {
-			ContaUsuarioControle.exibirDadosUsuario(usuario);
-		});
+	obterSessaoUsuario: function(callback) {
+        callback();
 	},
 
 	exibirDadosUsuario: function(usuario) {
-
 		ContaUsuarioControle.usuario = usuario;
-
 		document.getElementById("email").innerHTML = usuario.value.email;
 		document.getElementById("nome").value = usuario.value.nome;
-
 	},
 
 	formularioLogin: function() {
@@ -69,7 +69,36 @@ var ContaUsuarioControle = {
 
             }
         );
-	}
+	},
+
+    botaoExcluirConta: function() {
+
+        botaoExcluirConta = document.getElementById("botaoExcluirConta");
+
+        botaoExcluirConta.addEventListener("click", function() {
+            
+            document.getElementById("confirmacao").innerHTML = 
+            "<label>Tem certeza que deseja excluir sua conta? Todas suas bibliotecas serão apagadas.</label>" + 
+            "<button id = \"botaoConfirmacaoSim\" type = \"button\">Sim</button>" +
+            "<button id = \"botaoConfirmacaoNao\" type = \"button\">Não</button>"
+
+            botaoSim = document.getElementById("botaoConfirmacaoSim");
+            botaoNao = document.getElementById("botaoConfirmacaoNao");
+
+            botaoSim.addEventListener("click", function(){
+                document.getElementById("confirmacao").innerHTML = "";
+                console.log("Confirmou exclusão");
+
+                BibliotecaDAO.listarBibliotecas(function(biblioteca) {
+                    BibliotecaDAO.excluirBiblioteca(biblioteca.primaryKey, 1);
+                });
+            });
+
+            botaoNao.addEventListener("click", function(){
+                document.getElementById("confirmacao").innerHTML = "";
+            });
+        });
+    }
 };
 
 ContaUsuarioControle.inicializar();

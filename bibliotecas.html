@@ -8,93 +8,91 @@
 </head>
 <body>
 
-	<fieldset id = "painelPrincipal">
-		
+	<fieldset id = "painelPrincipal">	
 		<h1>Bibliotecas</h1>
-
 		<form id = "formularioBiblioteca" action="" method = "POST" accept-charset = "utf-8">
-			
 			<input id = "bibliotecaId" type="number" hidden = "true">
-
 			<label for = "nome">Nome</label>
 			<input id = "nome" type = "text" title = "Informe o nome da biblioteca" required = "required">
-			
 			<select id = "tipo" title = "Informe qual é o tipo da sua biblioteca">
 				<option value = "0">Escolha o tipo da biblioteca</option>
-				<option value = "1">Filmes</option>
-				<option value = "2">Livros</option>
-				<option value = "3">Músicas</option>
+				<option value = "1">Livros</option>
+				<option value = "2">Músicas</option>
+				<option value = "3">Vídeos</option>
 			</select>
-
+			<select id = "classificacao" title = "Classifique sua biblioteca">
+				<option value = "0">Classifique sua biblioteca</option>
+				<option value = "1">Adorei</option>
+				<option value = "2">Gostei muito</option>
+				<option value = "3">Gostei</option>
+				<option value = "4">Não gostei</option>
+				<option value = "5">Detestei</option>
+			</select>
+			<input id = "desejado" type="checkbox">
+			<label for = "desejado">Adicionar a minha lista de bibliotecas desejadas</label>
 			<button id="botaoSalvar" class="botao" type="submit">Salvar</button>
 			<a id="botaoVoltar" class="botao" href="principal.html">Voltar</a>
-
 		</form>
-		
 	</fieldset>
 
 	<fieldset>
-		<div id = "Filmes">
-			
-			<table id = "tabelaFilmes">
-				<thead>
-					<tr>
-						<th colspan="2" rowspan="" headers="" scope="">Filmes</th>
-					</tr>
-					<tr>
-						<th colspan="1" rowspan="" headers="">Nome</th>
-						<th colspan="2" rowspan="" headers="" scope="">Ações</th>
-					</tr>
-				</thead>
-				
-				<tbody id = "dadosTabelaFilmes">
-					
-				</tbody>
-			</table>
-		</div>
-
-
 		<div id = "Livros">
 			<table id = "tabelaLivros">
-				
 				<thead>
 					<tr>
-						<th colspan="2" rowspan="" headers="" scope="">Livros</th>
+						<th colspan="4" rowspan="" headers="" scope="">Livros</th>
 					</tr>
 					<tr>
 						<th colspan="1" rowspan="" headers="">Nome</th>
-						<th colspan="2" rowspan="" headers="" scope="">Ações</th>
+						<th colspan="2" rowspan="" headers="" scope="">Classificação</th>
+						<th colspan="3" rowspan="" headers="" scope="">Lista de bibliotecas desejadas</th>
+						<th colspan="4" rowspan="" headers="" scope="">Ações</th>
 					</tr>
 				</thead>
-				
 				<tbody id = "dadosTabelaLivros">
-					
 				</tbody>
 			</table>
 		</div>
 
-
-		<div id = "Músicas">
+		<div id = "Musicas">
 			<table id = "tabelaMusicas">
-				
 				<thead>
 					<tr>
-						<th colspan="2" rowspan="" headers="" scope="">Músicas</th>
+						<th colspan="4" rowspan="" headers="" scope="">Músicas</th>
 					</tr>
 					<tr>
 						<th colspan="1" rowspan="" headers="">Nome</th>
-						<th colspan="2" rowspan="" headers="" scope="">Ações</th>
+						<th colspan="2" rowspan="" headers="" scope="">Classificação</th>
+						<th colspan="3" rowspan="" headers="" scope="">Lista de bibliotecas desejadas</th>
+						<th colspan="4" rowspan="" headers="" scope="">Ações</th>
 					</tr>
 				</thead>
-				
 				<tbody id = "dadosTabelaMusicas">
-					
 				</tbody>
 			</table>
 		</div>
 
+		<div id = "Videos">
+			<table id = "tabelaVideos">
+				<thead>
+					<tr>
+						<th colspan="4" rowspan="" headers="" scope="">Vídeos</th>
+					</tr>
+					<tr>
+						<th colspan="1" rowspan="" headers="">Nome</th>
+						<th colspan="2" rowspan="" headers="" scope="">Classificação</th>
+						<th colspan="3" rowspan="" headers="" scope="">Lista de bibliotecas desejadas</th>
+						<th colspan="4" rowspan="" headers="" scope="">Ações</th>
+					</tr>
+				</thead>
+				<tbody id = "dadosTabelaVideos">
+				</tbody>
+			</table>
+		</div>
 	</fieldset>
 
+	<div id = "painelAvisos">
+	</div>
 	
 	<script src="js/ConexaoBancoDados.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="js/BibliotecaDAO.js" type="text/javascript" charset="utf-8" async defer></script>

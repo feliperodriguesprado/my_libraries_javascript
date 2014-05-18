@@ -2,6 +2,7 @@ var LoginControle = {
 
     inicializar: function() {
         window.setTimeout( function() {
+                document.getElementById("email").focus();
                 LoginControle.formularioLogin();
                 LoginControle.botaoAcessar();
                 ConexaoBancoDados.abrirBancoDados();

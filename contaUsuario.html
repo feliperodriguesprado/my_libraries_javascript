@@ -29,7 +29,8 @@
 					<label for="senha2">Confirme a senha</label>
 					<input id="senha2" type="password" required="required">
 
-					<button id="botaoSalvarAlteracoes" class="botao" type="submit">Salvar alterações</button>
+					<button id = "botaoSalvarAlteracoes" class = "botao" type = "submit">Salvar alterações</button>
+					<button id = "botaoExcluirConta" class = "botao" type="button">Excluir conta</button>
 					<a id="botaoVoltar" class="botao" href="principal.html">Voltar</a>
 			</fieldset>
 		</form>
@@ -39,8 +40,12 @@
 		
 	</div>
 
+	<div id = "confirmacao">
+	</div>
+
 	<script src="js/ConexaoBancoDados.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="js/UsuarioDAO.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="js/BibliotecaDAO.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="js/ContaUsuarioControle.js" type="text/javascript" charset="utf-8" async defer></script>
 	
 </body>

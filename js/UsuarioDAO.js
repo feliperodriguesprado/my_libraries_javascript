@@ -84,6 +84,19 @@ var UsuarioDAO = {
         window.location = "principal.html";
     },
 
+    excluirConta: function(usuarioid) {
+
+        var bancoDados = ConexaoBancoDados.bancoDados;
+        var transaction = bancoDados.transaction(["usuario"], "readwrite");
+        var objectStore = transaction.objectStore("usuario");
+
+        var request = objectStore.delete(usuarioid);
+
+        request.onsuccess = function() {
+            UsuarioDAO.finalizarSessao();
+        };
+    },
+
     // Busca por index com cursor: é criado um range que irá trazer somente valores iguais a esse range.
 	validarEmailLogin: function(emailDigitado, senhaDigitada) {
 

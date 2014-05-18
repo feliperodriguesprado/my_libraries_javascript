@@ -3,6 +3,7 @@ var CadastroLoginControle = {
     inicializar: function() {
 
         window.setTimeout( function() {
+                document.getElementById("nome").focus();
                 ConexaoBancoDados.abrirBancoDados();
                 CadastroLoginControle.botaoCadastrar();
                 CadastroLoginControle.formularioCadastro();
