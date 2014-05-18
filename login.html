@@ -18,7 +18,9 @@
 				<fieldset id = "painelLogin">
 	
 					<label for="email">E-mail</label>
-					<input id="email" type="email" placeholder="E-mail" title="Informe seu e-mail" required="required">
+					<input id="email" type="email" placeholder="E-mail" title="Informe seu e-mail" 
+						   pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$"
+						   required="required">
 	
 					<label for="senha">Senha</label>
 					<input id="senha" type="password" placeholder="Senha" title="Informe sua senha" required="required">

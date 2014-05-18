@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Bibliotecas</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+
+	<fieldset id = "painelPrincipal">
+		
+		<h1>Bibliotecas</h1>
+
+		<form id = "formularioBiblioteca" action="" method = "POST" accept-charset = "utf-8">
+			
+			<input id = "bibliotecaId" type="number" hidden = "true">
+
+			<label for = "nome">Nome</label>
+			<input id = "nome" type = "text" title = "Informe o nome da biblioteca" required = "required">
+			
+			<select id = "tipo" title = "Informe qual é o tipo da sua biblioteca">
+				<option value = "0">Escolha o tipo da biblioteca</option>
+				<option value = "1">Filmes</option>
+				<option value = "2">Livros</option>
+				<option value = "3">Músicas</option>
+			</select>
+
+			<button id="botaoSalvar" class="botao" type="submit">Salvar</button>
+			<a id="botaoVoltar" class="botao" href="principal.html">Voltar</a>
+
+		</form>
+		
+	</fieldset>
+
+	<fieldset>
+		<div id = "Filmes">
+			
+			<table id = "tabelaFilmes">
+				<thead>
+					<tr>
+						<th colspan="2" rowspan="" headers="" scope="">Filmes</th>
+					</tr>
+					<tr>
+						<th colspan="1" rowspan="" headers="">Nome</th>
+						<th colspan="2" rowspan="" headers="" scope="">Ações</th>
+					</tr>
+				</thead>
+				
+				<tbody id = "dadosTabelaFilmes">
+					
+				</tbody>
+			</table>
+		</div>
+
+
+		<div id = "Livros">
+			<table id = "tabelaLivros">
+				
+				<thead>
+					<tr>
+						<th colspan="2" rowspan="" headers="" scope="">Livros</th>
+					</tr>
+					<tr>
+						<th colspan="1" rowspan="" headers="">Nome</th>
+						<th colspan="2" rowspan="" headers="" scope="">Ações</th>
+					</tr>
+				</thead>
+				
+				<tbody id = "dadosTabelaLivros">
+					
+				</tbody>
+			</table>
+		</div>
+
+
+		<div id = "Músicas">
+			<table id = "tabelaMusicas">
+				
+				<thead>
+					<tr>
+						<th colspan="2" rowspan="" headers="" scope="">Músicas</th>
+					</tr>
+					<tr>
+						<th colspan="1" rowspan="" headers="">Nome</th>
+						<th colspan="2" rowspan="" headers="" scope="">Ações</th>
+					</tr>
+				</thead>
+				
+				<tbody id = "dadosTabelaMusicas">
+					
+				</tbody>
+			</table>
+		</div>
+
+	</fieldset>
+
+	
+	<script src="js/ConexaoBancoDados.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="js/BibliotecaDAO.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="js/BibliotecaControle.js" type="text/javascript" charset="utf-8" async defer></script>
+</body>
+</html>

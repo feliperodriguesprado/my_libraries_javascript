@@ -7,22 +7,31 @@ UsuarioControle = {
 				if (senhaDigitada == usuario.value.senha) {
 					UsuarioDAO.gravarSessao(usuario.primaryKey);
 				} else {
-					document.getElementById("email").value = "";
-					document.getElementById("senha").value = "";
-					document.getElementById("email").focus();
 					document.getElementById("painelAvisos").innerHTML = "<div id = \"loginIncorreto\"> <span id = \"avisoSenha\">E-mail ou a senha informada estão incorretos.</span></div>";
+					
+					window.setTimeout( function() {
+							document.getElementById("painelAvisos").innerHTML = "";
+							document.getElementById("senha").focus();
+						} , 3000
+					);
 				};
 			} else{
-				document.getElementById("email").value = "";
-				document.getElementById("senha").value = "";
-				document.getElementById("email").focus();
 				document.getElementById("painelAvisos").innerHTML = "<div id = \"loginIncorreto\"> <span id = \"avisoSenha\">E-mail ou a senha informada estão incorretos.</span></div>";
+					
+				window.setTimeout( function() {
+						document.getElementById("painelAvisos").innerHTML = "";
+						document.getElementById("senha").focus();
+					} , 3000
+				);
 			};
 		} else {
-			document.getElementById("email").value = "";
-			document.getElementById("senha").value = "";
-			document.getElementById("email").focus();
 			document.getElementById("painelAvisos").innerHTML = "<div id = \"loginIncorreto\"> <span id = \"avisoSenha\">E-mail ou a senha informada estão incorretos.</span></div>";
+			
+			window.setTimeout( function() {
+					document.getElementById("painelAvisos").innerHTML = "";
+					document.getElementById("senha").focus();
+				} , 3000
+			);
 		};
 	}
 };

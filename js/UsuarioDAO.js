@@ -35,6 +35,20 @@ var UsuarioDAO = {
         };
     },
 
+    finalizarSessao: function() {
+
+        var bancoDados = ConexaoBancoDados.bancoDados;
+        var transaction = bancoDados.transaction(["sessao"], "readwrite");
+        var objectStore = transaction.objectStore("sessao");
+
+        var request = objectStore.clear();
+
+        request.onsuccess = function(event) {
+            ConexaoBancoDados.bancoDados.close();
+            window.location = "login.html";
+        }
+    },
+
     cadastrarUsuario: function(nome, email, senha1, senha2) {
 
         var bancoDados = ConexaoBancoDados.bancoDados;
@@ -54,6 +68,20 @@ var UsuarioDAO = {
             console.log("Sucesso ao cadastrar usuário");
             UsuarioDAO.iniciarSessao(email, senha1);
         };
+    },
+
+    alterarUsuario: function(usuario) {
+
+        var bancoDados = ConexaoBancoDados.bancoDados;
+        var transaction = bancoDados.transaction(["usuario"], "readwrite");
+        var objectStore = transaction.objectStore("usuario");
+
+        var dadosUsuario = {nome: usuario.value.nome, email: usuario.value.email, senha: usuario.value.senha};
+        var idUsuario = usuario.primaryKey;
+
+        var request = objectStore.put(dadosUsuario, idUsuario);
+        ConexaoBancoDados.bancoDados.close();
+        window.location = "principal.html";
     },
 
     // Busca por index com cursor: é criado um range que irá trazer somente valores iguais a esse range.
@@ -117,6 +145,7 @@ var UsuarioDAO = {
             };
         };
     }
+
 };
 
  //    // As buscas abaixo não estão sendo utilizadas, foram feitas para aprendizado.

@@ -1,10 +1,13 @@
 var LoginControle = {
 
     inicializar: function() {
-        LoginControle.formularioLogin();
-        LoginControle.botaoAcessar();
-        ConexaoBancoDados.abrirBancoDados();
-        //ConexaoBancoDados.excluirBancoDados();
+        window.setTimeout( function() {
+                LoginControle.formularioLogin();
+                LoginControle.botaoAcessar();
+                ConexaoBancoDados.abrirBancoDados();
+                //ConexaoBancoDados.excluirBancoDados();
+            } , 1000
+        );
     },
 
     formularioLogin: function() {

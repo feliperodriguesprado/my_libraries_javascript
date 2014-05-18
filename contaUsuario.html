@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
 	<title>Conta do usuário</title>
 	<link rel="stylesheet" href="css/styleContaUsuario.css">
 
@@ -17,7 +18,10 @@
 					<label id="email"></label>
 
 					<label for="nome">Nome</label>
-					<input id="nome" type="text" required="required">					
+					<input id="nome" type="text" required="required">
+
+					<label for="senhaAtual">Informe sua senha atual</label>
+					<input id = "senhaAtual" type="password" required = "required">										
 		
 					<label for="senha1">Nova Senha</label>
 					<input id="senha1" type="password" required="required">
@@ -26,8 +30,13 @@
 					<input id="senha2" type="password" required="required">
 
 					<button id="botaoSalvarAlteracoes" class="botao" type="submit">Salvar alterações</button>
+					<a id="botaoVoltar" class="botao" href="principal.html">Voltar</a>
 			</fieldset>
 		</form>
+	</div>
+
+	<div id = "painelAvisos">
+		
 	</div>
 
 	<script src="js/ConexaoBancoDados.js" type="text/javascript" charset="utf-8" async defer></script>

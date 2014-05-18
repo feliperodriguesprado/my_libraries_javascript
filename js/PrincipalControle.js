@@ -1,9 +1,23 @@
 var PrincipalControle = {
 
 	inicializar: function() {
-		ConexaoBancoDados.abrirBancoDados(function() {
-			PrincipalControle.obterSessaoUsuario();
-		});
+		window.setTimeout( function() {
+                PrincipalControle.botaoSair();
+				ConexaoBancoDados.abrirBancoDados(function() {
+					PrincipalControle.obterSessaoUsuario();
+				});
+            } , 1000
+        );
+	},
+
+	botaoSair: function() {
+		botaoSair = document.getElementById("botaoSair");
+
+		botaoSair.addEventListener("click", function() {
+				console.log("Usuario saiu.");
+				UsuarioDAO.finalizarSessao();
+            }
+        );
 	},
 
 	obterSessaoUsuario: function() {

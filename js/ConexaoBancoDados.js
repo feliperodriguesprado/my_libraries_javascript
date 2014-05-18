@@ -50,8 +50,8 @@ var ConexaoBancoDados = {
 
                 // Criando os indices da tabela "biblioteca".
                 objectBiblioteca.createIndex("tipo", "tipo", {unique: false});
-                objectBiblioteca.createIndex("titulo", "titulo", {unique: true});
-                objectBiblioteca.createIndex("descricao", "descricao", {unique: false});
+                objectBiblioteca.createIndex("usuarioid", "usuarioid", {unique: false});
+                objectBiblioteca.createIndex("nome", "nome", {unique: false});
 
                 console.log("Tabela biblioteca criada.");
             };
@@ -112,7 +112,9 @@ var ConexaoBancoDados = {
             console.log("Banco de dados: " + ConexaoBancoDados.bancoDados.name)
             console.log("Versão: " + ConexaoBancoDados.bancoDados.version);
             if (typeof callback != "undefined") {
-                callback();
+                callback();                
+            } else {
+
             };
         };
     },

@@ -1,9 +1,13 @@
 var CadastroLoginControle = {
 
     inicializar: function() {
-        ConexaoBancoDados.abrirBancoDados();
-        CadastroLoginControle.botaoCadastrar();
-        CadastroLoginControle.formularioCadastro();
+
+        window.setTimeout( function() {
+                ConexaoBancoDados.abrirBancoDados();
+                CadastroLoginControle.botaoCadastrar();
+                CadastroLoginControle.formularioCadastro();
+            } , 1000
+        );
     },
 
     formularioCadastro: function() {
