@@ -84,13 +84,17 @@ var UsuarioDAO = {
         window.location = "principal.html";
     },
 
-    excluirConta: function(usuarioid) {
+    excluirConta: function(usuario) {
 
         var bancoDados = ConexaoBancoDados.bancoDados;
         var transaction = bancoDados.transaction(["usuario"], "readwrite");
         var objectStore = transaction.objectStore("usuario");
 
-        var request = objectStore.delete(usuarioid);
+        var request = objectStore.delete(usuario.primaryKey);
+
+        request.onerror = function() {
+            console.log("Erro ao excluir conta.");
+        };
 
         request.onsuccess = function() {
             UsuarioDAO.finalizarSessao();

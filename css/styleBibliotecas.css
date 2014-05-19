@@ -1,0 +1,47 @@
+table {
+	border: 1px solid #cbcbcb;
+	border-spacing: 0;
+	border-radius: 4px;
+	width: 1000px;
+	margin: 30px auto;
+	text-align: left;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+}
+
+table:last-child {
+	border-bottom-width: 0;
+}
+
+td {
+	border-left: 1px solid #cbcbcb;
+	border-bottom: 1px solid #cbcbcb;
+	width: 200px;
+	padding: 5px;
+}
+
+td:first-child {
+	border-left-width: 0;
+}
+
+tr:nth-child(2n-1) {
+	background-color: #f2f2f2;
+}
+
+.titulo {
+	padding: 5px;
+	border-left: 1px solid #cbcbcb;
+	border-bottom: 1px solid #cbcbcb;
+}
+
+.titulo:first-child {
+	border-left-width: 0;
+}
+
+.cabecalho {
+	padding: 10px;
+	text-align: center;
+	background-color: #e0e0e0;
+	border-bottom: 1px solid #cbcbcb;
+	font-size: 18px;
+}

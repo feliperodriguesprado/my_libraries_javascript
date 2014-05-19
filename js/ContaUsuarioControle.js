@@ -87,10 +87,9 @@ var ContaUsuarioControle = {
 
             botaoSim.addEventListener("click", function(){
                 document.getElementById("confirmacao").innerHTML = "";
-                console.log("Confirmou exclusão");
 
-                BibliotecaDAO.listarBibliotecas(function(biblioteca) {
-                    BibliotecaDAO.excluirBiblioteca(biblioteca.primaryKey, 1);
+                UsuarioDAO.obterSessao(function(usuario) {
+                    UsuarioDAO.excluirConta(usuario);
                 });
             });
 

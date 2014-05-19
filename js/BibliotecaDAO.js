@@ -63,15 +63,12 @@ var BibliotecaDAO = {
         };
     },
 
-    listarBibliotecas: function(callback) {
+    listarBibliotecas: function() {
     	
-        if (typeof callback == "undefined" /*&& typeof callback2 == "undefined"*/) {
-            document.getElementById("dadosTabelaVideos").innerHTML = "";
-            document.getElementById("dadosTabelaLivros").innerHTML = "";
-            document.getElementById("dadosTabelaMusicas").innerHTML = "";
-        };
+        document.getElementById("dadosTabelaVideos").innerHTML = "";
+        document.getElementById("dadosTabelaLivros").innerHTML = "";
+        document.getElementById("dadosTabelaMusicas").innerHTML = "";
 
-    	
     	ConexaoBancoDados.abrirBancoDados(function() {
     		
             BibliotecaDAO.obterSessao(null, function(sessao) {
@@ -83,7 +80,7 @@ var BibliotecaDAO = {
 	
         		request.onerror = function(event) {
         	   	console.log("Erro ao listar bibliotecas");
-				};
+                };
         	   	
         	   	request.onsuccess = function(event) {
         	   		
@@ -92,14 +89,8 @@ var BibliotecaDAO = {
                     var desejado = null;
 
                     if (biblioteca) {
-                        
-                        if (typeof callback != "undefined") {
-                            if (biblioteca.value.usuarioid == sessao.value.usuarioid) {
-                                callback(biblioteca);
-                            };
-                        } else if (typeof callback == "undefined") {
                             
-                            switch(biblioteca.value.classificacao) {
+                        switch(biblioteca.value.classificacao) {
                                 case "1":
                                 classificacao = "Adorei";
                                 break;
@@ -115,17 +106,17 @@ var BibliotecaDAO = {
                                 case "5":
                                 classificacao = "Detestei";
                                 break;
-                            };
+                        };
 
-                            switch(biblioteca.value.desejado) {
+                        switch(biblioteca.value.desejado) {
                                 case true:
                                 desejado = "checked = \"true\"";
                                 break;
                                 case false:
                                 desejado = "";
-                            };
+                        };
 
-                            if (biblioteca.value.tipo == 1 && biblioteca.value.usuarioid == sessao.value.usuarioid) {
+                        if (biblioteca.value.tipo == 1 && biblioteca.value.usuarioid == sessao.value.usuarioid) {
                                 document.getElementById("dadosTabelaLivros").innerHTML += "<tr>" +
                                 "<td colspan = \"1\">" + biblioteca.value.nome + "</td>" + 
                                 "<td colspan = \"2\">" + classificacao +"</td>" +
@@ -135,9 +126,9 @@ var BibliotecaDAO = {
                                     "<button type=\"button\" onClick = BibliotecaControle.botaoEditar(" + biblioteca.primaryKey + ");>Editar</button>" +
                                     "<button type=\"button\" onClick = BibliotecaControle.botaoExcluir(" + biblioteca.primaryKey + ");>Excluir</button>" +
                                 "</td></tr>";
-                            };
-                        
-                            if (biblioteca.value.tipo == 2 && biblioteca.value.usuarioid == sessao.value.usuarioid) {
+                        };
+                    
+                        if (biblioteca.value.tipo == 2 && biblioteca.value.usuarioid == sessao.value.usuarioid) {
                                 document.getElementById("dadosTabelaMusicas").innerHTML += "<tr>" +
                                 "<td colspan = \"1\">" + biblioteca.value.nome + "</td>" + 
                                 "<td colspan = \"2\">" + classificacao +"</td>" +
@@ -147,9 +138,9 @@ var BibliotecaDAO = {
                                     "<button type=\"button\" onClick = BibliotecaControle.botaoEditar(" + biblioteca.primaryKey + ");>Editar</button>" +
                                     "<button type=\"button\" onClick = BibliotecaControle.botaoExcluir(" + biblioteca.primaryKey + ");>Excluir</button>" +
                                 "</td></tr>";
-                            };
-                        
-                            if (biblioteca.value.tipo == 3 && biblioteca.value.usuarioid == sessao.value.usuarioid) {
+                        };
+                    
+                        if (biblioteca.value.tipo == 3 && biblioteca.value.usuarioid == sessao.value.usuarioid) {
                                 document.getElementById("dadosTabelaVideos").innerHTML += "<tr>" +
                                 "<td colspan = \"1\">" + biblioteca.value.nome + "</td>" + 
                                 "<td colspan = \"2\">" + classificacao +"</td>" +
@@ -159,14 +150,11 @@ var BibliotecaDAO = {
                                     "<button type=\"button\" onClick = BibliotecaControle.botaoEditar(" + biblioteca.primaryKey + ");>Editar</button>" +
                                     "<button type=\"button\" onClick = BibliotecaControle.botaoExcluir(" + biblioteca.primaryKey + ");>Excluir</button>" +
                                 "</td></tr>";
-                            };
                         };
-                        
+
                         biblioteca.continue();
-                    } else if (typeof callback != "undefined") {
-                        UsuarioDAO.excluirConta(sessao.value.usuarioid);
-                    };            
-        	   };
+                    };
+                };
             });
     	});
 	},
