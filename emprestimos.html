@@ -11,19 +11,22 @@
 		<fieldset>
 			<legend>Cadastrar Empréstimos</legend>
 
-			
-			<span id="bib" class="biblioteca">Biblioteca:</span>
-			<select name="teste" id="biblioteca" class="biblioteca">
-				<option value="0">Escolha a biblioteca</option>
-				<option value="MUSICAS">MUSICAS</option>
-				<option value="FILMES">FILMES</option>
-				<option value="LIVROS">LIVROS</option>
-			</select>
-
+			<div id="bibliotecas">
+					<span>Biblioteca:</span>
+					<select name="teste" id="biblioteca" class="biblioteca">
+					<option value="0">Escolha a biblioteca</option>
+					<option value="livros">Livros</option>
+					<option value="musicas">Músicas</option>
+					<option value="videos">Vídeos</option>
+					</select>
+			</div>
+			<div id="itens">
 			<span id="i" class="item">Item:</span>
 			<select name="" id="item" class="item">
 				<option value="0">Escolha o item</option>
 			</select>
+			</div>
+
 
 			<input type="date" id="data">
 

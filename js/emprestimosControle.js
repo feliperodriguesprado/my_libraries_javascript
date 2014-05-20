@@ -1,9 +1,11 @@
 var emprestimosControle = {
 	inicializar:function(){
-		ConexaoBancoDados.abrirBancoDados();
+		ConexaoBancoDados.abrirBancoDados(function(){
+			emprestimosDAO.selectAll();
+		});
 		emprestimosControle.salvar();
 		emprestimosControle.buscar();
-		//emprestimosDAO.selectAll();
+		
 	},
 
 	salvar:function(){
