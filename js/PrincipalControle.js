@@ -6,7 +6,7 @@ var PrincipalControle = {
 				ConexaoBancoDados.abrirBancoDados(function() {
 					PrincipalControle.obterSessaoUsuario();
 				});
-            } , 1000
+            } , 0000
         );
 	},
 

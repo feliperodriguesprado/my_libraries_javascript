@@ -45,7 +45,7 @@ var UsuarioDAO = {
 
         request.onsuccess = function(event) {
             ConexaoBancoDados.bancoDados.close();
-            window.location = "login.html";
+            window.location = "index.html";
         }
     },
 
@@ -61,7 +61,7 @@ var UsuarioDAO = {
         request.onerror = function(event) {
             console.log("Erro ao cadastrar usuário");
             alert("Usuario já existe, favor fazer login.");
-            window.location = "login.html";
+            window.location = "index.html";
         };
 
         request.onsuccess = function(event) {
