@@ -5,48 +5,68 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Empréstimos</title>
 	<link rel="stylesheet" href="css\styleEmprestimos.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300italic' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<form id="for" action="">
-		<fieldset>
-			<legend>Cadastrar Empréstimos</legend>
 
-				<label>Biblioteca:</label>
-					<select name="teste" id="biblioteca" class="biblioteca">
-						<option value="0">Escolha a biblioteca</option>
-						<option value="livros">Livros</option>
-						<option value="musicas">Músicas</option>
-						<option value="videos">Vídeos</option>
+
+	<fieldset id = "painelPrincipal">
+
+		<h1>My Libraries</h1>
+		<h2>Empréstimos</h2>
+
+
+	<div id = "menuPrincipal">
+		<a class = "menu" href="principal.html">Principal</a>
+		<a class = "menu" href="bibliotecas.html">Bibliotecas</a>
+		<a class = "menu" href="emprestimos.html">Empréstimos</a>
+		<a class = "menu" href="">Relatórios</a>
+	</div>
+
+
+		<form id="for" action="">
+			<fieldset>
+				<legend>Cadastrar Empréstimos</legend>
+
+					<label>Biblioteca:</label>
+						<select name="teste" id="biblioteca" class="biblioteca">
+							<option value="0">Escolha a biblioteca</option>
+							<option value="livros">Livros</option>
+							<option value="musicas">Músicas</option>
+							<option value="videos">Vídeos</option>
+						</select>
+				
+				
+				<label>Item:</label>
+					<select name="" id="item" class="item">
+						<option value="0">Escolha o item</option>
 					</select>
-			
-			
-			<label>Item:</label>
-				<select name="" id="item" class="item">
-					<option value="0">Escolha o item</option>
-				</select>
-			
+				
 
 
-			<input type="date" id="data">
+				<input type="date" id="data">
 
-			<input type="text" id="nome" placeholder="Nome">
+				<input type="text" id="nome" placeholder="Nome">
 
-			<input type="hidden" id="cod">
+				<input type="hidden" id="cod">
 
-			<textarea id="text" name="" id="" cols="30" rows="10"></textarea>
+				<textarea id="text" name="" id="" cols="30" rows="10"></textarea>
 
-			<input id="salvar" type="submit" value="Salvar">
+				<input id="salvar" type="submit" value="Salvar" class="botao" onclick="window.location.reload()">
 
-			<input type="reset" value="Limpar">
-			<a href="principal.html">Voltar</a>
+				<input type="reset" value="Limpar" class="botao">
+				<a href="principal.html" class="botao">Voltar</a>
 
-			<label id="error" for=""></label>
+				<label id="error" for=""></label>
 
-		</fieldset>
-	</form>
+			</fieldset>
+		</form>
+	</fieldset>
+
+	
 
 	<fieldset>
-		<h2>Itens Emprestados</h2>
+		<h2 id="titleEmp">Itens Emprestados</h2>
 
 			<div id="livros">
 				<table id="tableLivros">

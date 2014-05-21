@@ -1,4 +1,4 @@
-h2{
+#titleEmp{
 	text-align: center;
 }
 
@@ -48,6 +48,81 @@ tr:nth-child(2n-1) {
 	background-color: #e0e0e0;
 	border-bottom: 1px solid #cbcbcb;
 	font-size: 18px;
+}
+
+* {
+  font-family: Lucida, sans-serif;
+    margin: 0;
+    padding: 0;
+    border-spacing: 0;
+}
+
+body {
+    background-image: url(images/fundoLogin2.jpg);
+    background-repeat: no-repeat;
+}
+
+h1 {
+    color: white;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 50px;
+    font-style: italic;
+    font-weight: normal;
+    opacity: 0.4;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+h2 {
+    color: white;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: normal;
+    opacity: 0.4;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+#menuPrincipal {
+  background-color: #696969;
+  opacity: 0.4;
+  margin: 30px auto;
+  padding: 14px;
+}
+
+.menu {
+  padding: 14px;
+  color: #FFFFFF;
+  text-align: center;
+  text-decoration: none;
+}
+
+.menu:hover {
+    background-color: #000000;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.botao {
+    background-color: #696969;
+    border: 1px solid #696969;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-size: 12px;
+    margin-right: 5px;
+    margin-left: 6px;
+    opacity: 0.5;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.botao:hover {
+    border: 1px solid #696969;
+    background-color: #696969;
+    color: #FFFFFF;
+    cursor: pointer;
 }
 
 

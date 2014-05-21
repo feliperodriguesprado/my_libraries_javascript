@@ -49,9 +49,6 @@ var emprestimosDAO = {
 			    nome.value = "";
 			    descric.value = "";
 
-			    ConexaoBancoDados.bancoDados.close();
-			    ConexaoBancoDados.abrirBancoDados(emprestimosDAO.selectAll());
-
 			    alert("Dado inserido com sucesso");	    	
 		    }  
 		}
