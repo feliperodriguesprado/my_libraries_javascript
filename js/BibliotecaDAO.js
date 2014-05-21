@@ -37,7 +37,7 @@ var BibliotecaDAO = {
 
         request.onsuccess = function() {
 
-            var sessao = event.target.result;
+            var sessao = request.result;
 
             if (typeof callback != "undefined") {
                 callback(sessao, biblioteca);
@@ -58,7 +58,7 @@ var BibliotecaDAO = {
         };
 
         request.onsuccess = function(event) {
-            var usuario = event.target.result;
+            var usuario = request.result;
             callback(biblioteca, usuario);
         };
     },
@@ -84,7 +84,7 @@ var BibliotecaDAO = {
         	   	
         	   	request.onsuccess = function(event) {
         	   		
-                    var biblioteca = event.target.result;
+                    var biblioteca = request.result;
                     var classificacao = null;
                     var desejado = null;
 
@@ -172,7 +172,7 @@ var BibliotecaDAO = {
         };
 
         request.onsuccess = function(event) {
-            var biblioteca = event.target.result;
+            var biblioteca = request.result;
             callback(biblioteca);
         };
     },

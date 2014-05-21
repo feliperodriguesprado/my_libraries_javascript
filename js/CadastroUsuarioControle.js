@@ -7,6 +7,10 @@ var CadastroLoginControle = {
                 ConexaoBancoDados.abrirBancoDados();
                 CadastroLoginControle.botaoCadastrar();
                 CadastroLoginControle.formularioCadastro();
+                document.getElementById("nome").value = "";
+                document.getElementById("email").value = "";
+                document.getElementById("senha1").value = "";
+                document.getElementById("senha2").value = "";
             } , 1000
         );
     },
@@ -41,6 +45,11 @@ var CadastroLoginControle = {
                         UsuarioDAO.cadastrarUsuario(nome, email, senha1, senha2);
                     } else {
                         document.getElementById("painelAvisos").innerHTML = "<div id = \"loginIncorreto\"> <span id = \"avisoSenha\">A senha informada e a confirmação da senha não são iguais.</span></div>";
+
+                        window.setTimeout( function() {
+                        document.getElementById("painelAvisos").innerHTML = "";
+                    } , 5000
+                );
                     };
                 };
 

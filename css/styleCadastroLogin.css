@@ -1,53 +1,119 @@
 * {
-	padding: 0;
-	margin: 0;
-	font-family: Lucida, sans-serif;
+    font-family: Lucida, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-fieldset {
-    width: 300px;
-    margin: 10px;
+h1 {
+    color: white;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 60px;
+    font-style: italic;
+    font-weight: normal;
+    opacity: 0.4;
+}
+
+h2 {
+    color: white;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: normal;
+    opacity: 0.4;
+}
+
+body {
+    background-image: url(images/fundoLogin2.jpg);
+    background-repeat: no-repeat;
+}
+
+#painelPrincipal {
+    margin: 50px auto;
+    width: 1000px;
+}
+
+#painelAvisos{
+    margin-left: -25px;
+}
+
+#loginIncorreto {
+    background-color: #800000;
+    border-color: #800000;
     border-radius: 5px;
+    display: block;
+    margin-top: 30px;
+    opacity: 0.4;
+    text-align: center;
+    width: 300px;
 }
 
-legend {
-    margin-bottom: 20px;
+#avisoSenha {
+    color: #FFFFFF;
+    display: inline-block;
+    font-size: 12px;
+    font-style: italic;
+    opacity: 0.8;
+    padding: 10px;
 }
 
 label, input {
+    border-radius: 5px;
     display: block;
     margin: 5px;
-    border-radius: 5px;
 }
 
 input {
-    border: 1px solid #848484;
-    width: 200px;
-    padding: 4px;
-
+    border: 1px solid #FFFFFF;
+    color: #000000;
+    font-style: italic;
+    margin-top: 20px;
+    opacity: 0.5;
+    padding: 10px;
+    width: 220px;
 }
 
-
-.botao {
-    display: inline-block;
-    font-size: 14px;
-    padding: 5px;
-    color: #FFFFFF;
-    background-color: #2B50BD;
-    border: 1px solid #2B50BD;
-    border-radius: 4px;
-    text-decoration: none;
-    text-align: center;
-    margin: 5px;
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: #000000; 
+    opacity:1; filter: alpha(opacity = 100);
 }
 
-.botao:hover {
-    color: #FFFFFF;
-    background-color: #1749DF;
-    border: 1px solid #1749DF;
-    cursor: pointer;
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #000000; 
+    opacity:1; filter: alpha(opacity = 100);
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #000000; 
+    opacity: 1; 
+    filter: alpha(opacity = 100);
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #000000; 
+    opacity: 1; 
+    filter: alpha(opacity = 100);
 }
 
 .botoes {
-    margin-left: 30px;
+    margin-top: 30px;
+}
+
+.botao {
+    background-color: #696969;
+    border: 1px solid #696969;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-size: 12px;
+    margin-right: 5px;
+    margin-left: 6px;
+    opacity: 0.5;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.botao:hover {
+    border: 1px solid #000000;
+    background-color: #000000;
+    color: #FFFFFF;
+    cursor: pointer;
 }

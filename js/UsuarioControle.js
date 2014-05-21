@@ -11,8 +11,7 @@ UsuarioControle = {
 					
 					window.setTimeout( function() {
 							document.getElementById("painelAvisos").innerHTML = "";
-							document.getElementById("senha").focus();
-						} , 3000
+						} , 5000
 					);
 				};
 			} else{
@@ -20,8 +19,7 @@ UsuarioControle = {
 					
 				window.setTimeout( function() {
 						document.getElementById("painelAvisos").innerHTML = "";
-						document.getElementById("senha").focus();
-					} , 3000
+					} , 5000
 				);
 			};
 		} else {
@@ -29,8 +27,7 @@ UsuarioControle = {
 			
 			window.setTimeout( function() {
 					document.getElementById("painelAvisos").innerHTML = "";
-					document.getElementById("senha").focus();
-				} , 3000
+				} , 5000
 			);
 		};
 	}

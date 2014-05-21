@@ -6,48 +6,52 @@
 	<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
 	<title>Novo cadastro</title>
 	<link rel="stylesheet" href="css/styleCadastroLogin.css">
-	<script src="js/ConexaoBancoDados.js" type="text/javascript" charset="utf-8" async defer></script>
-	<script src="js/UsuarioDAO.js" type="text/javascript" charset="utf-8" async defer></script>
-	<script src="js/UsuarioControle.js" type="text/javascript" charset="utf-8" async defer></script>
-	<script src="js/CadastroUsuarioControle.js" type="text/javascript" charset="utf-8" async defer></script>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300italic' rel='stylesheet' type='text/css'>
 </head>
 <body>
 	
 	<div>
 		<form id="formularioCadastro" action="" method="get" accept-charset="utf-8">
-			<fieldset>
-				
-				<legend>Cadastro MyLibraries</legend>
+			<div id = "painelPrincipal">
 
-				<label for="nome">Nome ou apelido</label>
+				<h1>My Libraries</h1>
+				<h2>Cadastro de novo usuário</h2>
+
+				<!-- <label for="nome">Nome ou apelido</label> -->
 				<input id="nome" type="text" placeholder="Nome ou apelido" required="required">					
 
-				<label for="email">E-mail</label>
+				<!-- <label for="email">E-mail</label> -->
 				<input id="email" type="email" placeholder="E-mail"
 					   pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$"
 					   required="required">
 
-				<label for="senha1">Senha</label>
+				<!-- <label for="senha1">Senha</label> -->
 				<input id="senha1" type="password" placeholder="Senha" required="required">
 
-				<label for="senha2">Confirme a senha</label>
+				<!-- <label for="senha2">Confirme a senha</label> -->
+
 				<input id="senha2" type="password" placeholder="Confirme a senha" required="required">
 
-				<button id="botaoCadastrar" class="botao" type="submit">Cadastrar</button>
-				
-				<a id="botaoVoltar" class="botao" href="login.html">Voltar</a>
+				<div class = "botoes">
+					<button id="botaoCadastrar" class="botao" type="submit">Cadastrar</button>
+					
+					<a id="botaoVoltar" class="botao" href="login.html">Voltar</a>
+				</div>
 
-			</fieldset>
+
+				<div id = "painelAvisos">
+					
+		</div>
+			</div>
 			
 		</form>
 
-		<div id = "painelAvisos">
-					
-		</div>
-
 	</div>
 
-
+	<script src="js/ConexaoBancoDados.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="js/UsuarioDAO.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="js/UsuarioControle.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="js/CadastroUsuarioControle.js" type="text/javascript" charset="utf-8" async defer></script>
 	
 </body>
 </html>

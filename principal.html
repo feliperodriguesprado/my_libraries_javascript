@@ -5,25 +5,30 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
 	<title>My Libraries</title>
-	<link rel="stylesheet" href="">
+	<link rel="stylesheet" href="css/stylePrincipal.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300italic' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
-	<div>
-		<ul>
-		  <a href="bibliotecas.html"><li>Bibliotecas</li></a>
-		  <a id="emprestimo" href="emprestimos.html"><li>Empréstimos</li></a>
-		  <a href=""><li>Relatórios</li></a>
-		</ul> 
+	<h1>My Libraries</h1>
+
+	<div id = "painelUsuario">
+		<div id = "areaUsuarioBotoes">
+			<a id = "linkContaUsuario" class = "botao" href="contaUsuario.html">Conta</a>
+			<button id = "botaoSair" class = "botao" type="button">Sair</button>
+		</div>
+
+		<div id = "areaUsuario">
+			
+		</div>
 	</div>
 
-	<div id = "areaUsuario">
-		
-	</div>
 
-	<div>
-		<a id = "linkContaUsuario" href="contaUsuario.html">Conta</a>
-		<button id = "botaoSair" type="button">Sair</button>
+	<div id = "menuPrincipal">
+		<a class = "menu" href="principal.html">Principal</a>
+		<a class = "menu" href="bibliotecas.html">Bibliotecas</a>
+		<a class = "menu" href="emprestimos.html">Empréstimos</a>
+		<a class = "menu" href="">Relatórios</a>
 	</div>
 
 	<script src="js/ConexaoBancoDados.js" type="text/javascript" charset="utf-8" async defer></script>

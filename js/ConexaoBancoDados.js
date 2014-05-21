@@ -12,7 +12,7 @@ var ConexaoBancoDados = {
         // Criando ou atualizando a versão do banco
         request.onupgradeneeded = function(event) {
             console.log("Atualizando banco de dados.");
-            var bancoDadosOnUpgradeNeeded = event.target.result;
+            var bancoDadosOnUpgradeNeeded = request.result;
             
             bancoDadosOnUpgradeNeeded.onerror = function(event) {
                 console.log("Erro ao abrir banco de dados para atualizar.");
@@ -101,7 +101,7 @@ var ConexaoBancoDados = {
 
         // Caso aconteça algum erro ao abrir o banco de dados
         request.onerror = function(event) {
-            ConexaoBancoDados.bancoDados = event.target.result;
+            ConexaoBancoDados.bancoDados = request.result;
             console.log("Erro ao abrir banco de dados.");
             console.log("Banco de dados: " + ConexaoBancoDados.bancoDados.name)
             console.log("Versão atual: " + ConexaoBancoDados.bancoDados.version);
@@ -109,7 +109,7 @@ var ConexaoBancoDados = {
 
         // Caso o banco de dados abra corretamente
         request.onsuccess = function(event) {
-            ConexaoBancoDados.bancoDados = event.target.result;
+            ConexaoBancoDados.bancoDados = request.result;
             console.log("Banco de dados inicializado.");
             console.log("Banco de dados: " + ConexaoBancoDados.bancoDados.name)
             console.log("Versão: " + ConexaoBancoDados.bancoDados.version);

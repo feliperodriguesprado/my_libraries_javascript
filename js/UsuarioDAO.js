@@ -117,7 +117,7 @@ var UsuarioDAO = {
         };
 
         request.onsuccess = function(event) {
-            var cursor = event.target.result;
+            var cursor = request.result;
             UsuarioControle.validarLogin(cursor, emailDigitado, senhaDigitada);
         };
     },
@@ -136,7 +136,7 @@ var UsuarioDAO = {
         };
 
         request.onsuccess = function(event) {
-            var usuario = event.target.result;
+            var usuario = request.result;
             callback(usuario);
         };
 
@@ -155,7 +155,7 @@ var UsuarioDAO = {
 
         request.onsuccess = function() {
 
-            var cursor = event.target.result;
+            var cursor = request.result;
             
             if (cursor) {
                 UsuarioDAO.buscaUsuarioPorPrimaryKey(cursor.value.usuarioid, callback);
