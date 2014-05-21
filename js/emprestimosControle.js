@@ -3,22 +3,13 @@ var emprestimosControle = {
 		ConexaoBancoDados.abrirBancoDados(function(){
 			emprestimosDAO.selectAll();
 		});
-		emprestimosControle.salvar();
-		emprestimosControle.buscar();
-		
+		emprestimosControle.salvar();		
 	},
 
 	salvar:function(){
 		var inserir = document.getElementById("salvar");
 		inserir.addEventListener('click', function(){
 			emprestimosDAO.insert();
-		})
-	},
-
-	buscar:function(){
-		var selecionar = document.getElementById("s");
-		selecionar.addEventListener('click', function(){
-		emprestimosDAO.selectAll();
 		})
 	}
 }

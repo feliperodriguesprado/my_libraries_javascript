@@ -11,21 +11,20 @@
 		<fieldset>
 			<legend>Cadastrar Empréstimos</legend>
 
-			<div id="bibliotecas">
-					<span>Biblioteca:</span>
+				<label>Biblioteca:</label>
 					<select name="teste" id="biblioteca" class="biblioteca">
-					<option value="0">Escolha a biblioteca</option>
-					<option value="livros">Livros</option>
-					<option value="musicas">Músicas</option>
-					<option value="videos">Vídeos</option>
+						<option value="0">Escolha a biblioteca</option>
+						<option value="livros">Livros</option>
+						<option value="musicas">Músicas</option>
+						<option value="videos">Vídeos</option>
 					</select>
-			</div>
-			<div id="itens">
-			<span id="i" class="item">Item:</span>
-			<select name="" id="item" class="item">
-				<option value="0">Escolha o item</option>
-			</select>
-			</div>
+			
+			
+			<label>Item:</label>
+				<select name="" id="item" class="item">
+					<option value="0">Escolha o item</option>
+				</select>
+			
 
 
 			<input type="date" id="data">
@@ -36,30 +35,109 @@
 
 			<textarea id="text" name="" id="" cols="30" rows="10"></textarea>
 
-			<input id="salvar" type="submit" value="Salvar" onclick="window.location.reload()">
+			<input id="salvar" type="submit" value="Salvar">
 
 			<input type="reset" value="Limpar">
-			<input type="submit" value="Buscar" id="s">
+			<a href="principal.html">Voltar</a>
+
+			<label id="error" for=""></label>
 
 		</fieldset>
 	</form>
 
-	<p>Itens Emprestados</p>
-	<table id="tabela">
-		<thead>
-			<th>BIBLIOTECA</th>
-			<th>ITEM</th>
-			<th>NOME</th>
-		</thead>
-		<tbody>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td id="tabelaLinha_1"></td>
-			</tr>
-		</tbody>
-	</table>
+	<fieldset>
+		<h2>Itens Emprestados</h2>
+
+			<div id="livros">
+				<table id="tableLivros">
+					<thead>
+						<tr>
+							<th class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Livros</th>
+						</tr>
+						<tr>
+							<th class = "titulo" colspan="1" rowspan="" headers="" scope="">Item</th>
+							<th class = "titulo" colspan="1" rowspan="" headers="" scope="">Nome</th>
+							<th class = "titulo" colspan="4" rowspan="" headers="" scope="">Ações</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>		
+				</table>
+			</div>
+
+			<div id="Musicas">
+				<table id="tableMusicas">
+					<thead>
+						<tr>
+							<th class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Músicas</th>
+						</tr>
+						<tr>
+							<th class = "titulo" colspan="1" rowspan="" headers="" scope="">Item</th>
+							<th class = "titulo" colspan="1" rowspan="" headers="" scope="">Nome</th>
+							<th class = "titulo" colspan="4" rowspan="" headers="" scope="">Ações</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>		
+				</table>
+			</div>
+
+			<div id="videos">
+				<table id="tableVideos">
+					<thead>
+						<tr>
+							<th class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Vídeos</th>
+						</tr>
+						<tr>
+							<th class = "titulo" colspan="1" rowspan="" headers="" scope="">Item</th>
+							<th class = "titulo" colspan="1" rowspan="" headers="" scope="">Nome</th>
+							<th class = "titulo" colspan="4" rowspan="" headers="" scope="">Ações</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>		
+				</table>
+			</div>
+
+
+
+
+			<!--<table id="tabela">
+			
+				
+			
+			<thead>
+				<th>BIBLIOTECA</th>
+				<th>ITEM</th>
+				<th>NOME</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td id="tabelaLinha_1"></td>
+				</tr>
+			</tbody>
+		</table>
+		-->
+	</fieldset>
+
 
 	<script src="js\ConexaoBancoDados.js"></script>
 	<script src="js\emprestimosDAO.js"></script>

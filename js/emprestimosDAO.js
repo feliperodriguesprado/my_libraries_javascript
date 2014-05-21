@@ -12,8 +12,8 @@ var emprestimosDAO = {
 		    var nome = document.getElementById("nome").value;
 		    var descric = document.getElementById("text").value;
 
-		    if((bib==0) || (data=="") || (nome=="")){
-		    	alert("Por favor, Preencha todos os campos!");
+		    if((bib=="") || (data=="") || (nome=="")){
+		    	alert("Por favor, preencha todos os campos");
 		    }else{
  				emprestimosDAO.atualizar(verifica,bib,item,data,nome,descric);
 		    }
@@ -35,7 +35,7 @@ var emprestimosDAO = {
 		    var nome = document.getElementById("nome");
 		    var descric = document.getElementById("text");  
 
-		    if((bib.value==0) || (data.value=="") || (nome.value=="")){
+		    if((bib.value=="") || (data.value=="") || (nome.value=="")){
 		    	alert("Por favor, preencha todos os campos");
 		    }else{
 			    var transaction = bancoDados.transaction(["emprestimos"], "readwrite");
@@ -48,6 +48,9 @@ var emprestimosDAO = {
 			    data.value = "";
 			    nome.value = "";
 			    descric.value = "";
+
+			    ConexaoBancoDados.bancoDados.close();
+			    ConexaoBancoDados.abrirBancoDados(emprestimosDAO.selectAll());
 
 			    alert("Dado inserido com sucesso");	    	
 		    }  
@@ -210,12 +213,39 @@ var emprestimosDAO = {
 	},
 
 	result:function(biblioteca,item,nome,ids){
+
+		if(biblioteca == 'musicas'){
+
+			var col1 = "<tr><td> " + item + "</td><td> " + nome + "</td>";
+		    var col2 = "<td><input type='button' ";
+		    var col3 = " value='Excluir' onclick=\"javascript:emprestimosDAO.deletar("+ids+"); window.location.reload();\"></input> <input id='a' type='button' value='Alterar' onclick=\"javascript:emprestimosDAO.update("+ids+")\"></input> <input id='e' type='button' value='Encerrar' onclick=\"javascript:emprestimosDAO.concluir("+ids+"); window.location.reload();\"></input>";
+		    document.getElementById("tableMusicas").innerHTML += col1 + col2 + col3;
+		    document.getElementById("tableMusicas").innerHTML += "</td></tr>";
+
+		}else{
+			if(biblioteca == 'livros'){
+
+					var col1 = "<tr><td> " + item + "</td><td> " + nome + "</td>";
+				    var col2 = "<td><input type='button' ";
+				    var col3 = " value='Excluir' onclick=\"javascript:emprestimosDAO.deletar("+ids+"); window.location.reload();\"></input> <input id='a' type='button' value='Alterar' onclick=\"javascript:emprestimosDAO.update("+ids+")\"></input> <input id='e' type='button' value='Encerrar' onclick=\"javascript:emprestimosDAO.concluir("+ids+"); window.location.reload();\"></input>";
+				    document.getElementById("tableLivros").innerHTML += col1 + col2 + col3;
+				    document.getElementById("tableLivros").innerHTML += "</td></tr>";
+
+			}else{
+					var col1 = "<tr><td> " + item + "</td><td> " + nome + "</td>";
+				    var col2 = "<td><input type='button' ";
+				    var col3 = " value='Excluir' onclick=\"javascript:emprestimosDAO.deletar("+ids+"); window.location.reload();\"></input> <input id='a' type='button' value='Alterar' onclick=\"javascript:emprestimosDAO.update("+ids+")\"></input> <input id='e' type='button' value='Encerrar' onclick=\"javascript:emprestimosDAO.concluir("+ids+"); window.location.reload();\"></input>";
+				    document.getElementById("tableVideos").innerHTML += col1 + col2 + col3;
+				    document.getElementById("tableVideos").innerHTML += "</td></tr>";
+			}
+
+		}
 	    
-	    var col1 = "<tr><td> " + biblioteca + "</td><td> " + item + "</td><td> " + nome + "</td>";
+	    /*var col1 = "<tr><td> " + biblioteca + "</td><td> " + item + "</td><td> " + nome + "</td>";
 	    var col2 = "<td id='tabelaLinha_>" +ids + "'><input type='button' ";
 	    var col3 = " value='Excluir' onclick=\"javascript:emprestimosDAO.deletar("+ids+"); window.location.reload();\"></input> <input id='a' type='button' value='Alterar' onclick=\"javascript:emprestimosDAO.update("+ids+")\"></input> <input id='e' type='button' value='Encerrar' onclick=\"javascript:emprestimosDAO.concluir("+ids+"); window.location.reload();\"></input>";
 	    document.getElementById("tabela").innerHTML += col1 + col2 + col3;
-	    document.getElementById("tabela").innerHTML += "</td></tr>";
+	    document.getElementById("tabela").innerHTML += "</td></tr>";*/
 	 
 	}
 };
