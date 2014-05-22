@@ -1,15 +1,12 @@
 var BibliotecaControle = {
 
 	inicializar: function() {
-        window.setTimeout( function() {
-        		document.getElementById("nome").focus();
-        		BibliotecaControle.formularioBiblioteca();
-        		BibliotecaControle.botaoSalvar();
-                ConexaoBancoDados.abrirBancoDados(function() {
-                	BibliotecaDAO.listarBibliotecas();
-                });
-            } , 0000
-        );
+        ConexaoBancoDados.abrirBancoDados(function() {
+            BibliotecaDAO.listarBibliotecas();
+        });
+        document.getElementById("nome").focus();
+        BibliotecaControle.formularioBiblioteca();
+        BibliotecaControle.botaoSalvar();
     },
 
     formularioBiblioteca: function() {
