@@ -26,15 +26,15 @@ var emprestimosControle = {
 
 		switch(document.getElementById('biblioteca').value){
 			case "livros":
-				if((biblioteca.value.tipo == 1)&&(biblioteca.value.desejo==false))
+				if((biblioteca.value.tipo == 1) && (biblioteca.value.desejado == false))
 					document.getElementById("item").innerHTML +=  "<option>"+ biblioteca.value.nome+"</option>";
 				break;
 			case "musicas":
-				if((biblioteca.value.tipo == 2)&&(biblioteca.value.desejo==false))
+				if((biblioteca.value.tipo == 2)&&(biblioteca.value.desejado == false))
 					document.getElementById("item").innerHTML += "<option>"+ biblioteca.value.nome+"</option>";
 				break;
 			case "videos":
-				if((biblioteca.value.tipo == 3)&&(biblioteca.value.desejo==false))
+				if((biblioteca.value.tipo == 3)&&(biblioteca.value.desejado == false))
 					document.getElementById("item").innerHTML += "<option>"+ biblioteca.value.nome+"</option>";
 				break;
 						
