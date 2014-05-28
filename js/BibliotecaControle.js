@@ -2,7 +2,9 @@ var BibliotecaControle = {
 
 	inicializar: function() {
         ConexaoBancoDados.abrirBancoDados(function() {
-            BibliotecaDAO.listarBibliotecas();
+            BibliotecaDAO.obterBibliotecas(function(biblioteca) {
+                BibliotecaControle.listarBibliotecas(biblioteca);
+            });
         });
         document.getElementById("nome").focus();
         BibliotecaControle.formularioBiblioteca();
@@ -18,6 +20,74 @@ var BibliotecaControle = {
             formularioBiblioteca.onsubmit = function(event) {
                 return false;
               }
+        };
+    },
+
+    listarBibliotecas: function(biblioteca) {
+
+        var classificacao = null;
+        var desejado = null;
+                
+        switch(biblioteca.value.classificacao) {
+                case "1":
+                classificacao = "Adorei";
+                break;
+                case "2":
+                classificacao = "Gostei muito";
+                break;
+                case "3":
+                classificacao = "Gostei";
+                break;
+                case "4":
+                classificacao = "Não gostei";
+                break;
+                case "5":
+                classificacao = "Detestei";
+                break;
+        };
+
+        switch(biblioteca.value.desejado) {
+                case true:
+                desejado = "checked = \"true\"";
+                break;
+                case false:
+                desejado = "";
+        };
+
+        if (biblioteca.value.tipo == 1) {
+                document.getElementById("dadosTabelaLivros").innerHTML += "<tr>" +
+                "<td colspan = \"1\">" + biblioteca.value.nome + "</td>" + 
+                "<td colspan = \"2\">" + classificacao +"</td>" +
+                "<td colspan = \"3\">" +
+                    "<input type = \"checkbox\" disabled " + desejado + ">" +
+                "<td colspan = \"4\">" +
+                    "<button id = \"botaoEditar\" type=\"button\" onClick = BibliotecaControle.botaoEditar(" + biblioteca.primaryKey + ");>Editar</button>" +
+                    "<button id = \"botaoExcluir\" type=\"button\" onClick = BibliotecaControle.botaoExcluir(" + biblioteca.primaryKey + ");>Excluir</button>" +
+                "</td></tr>";
+        };
+
+        if (biblioteca.value.tipo == 2) {
+                document.getElementById("dadosTabelaMusicas").innerHTML += "<tr>" +
+                "<td colspan = \"1\">" + biblioteca.value.nome + "</td>" + 
+                "<td colspan = \"2\">" + classificacao +"</td>" +
+                "<td colspan = \"3\">" +
+                    "<input type = \"checkbox\" disabled " + desejado + ">" +
+                "<td colspan = \"4\">" +
+                    "<button id = \"botaoEditar\" type=\"button\" onClick = BibliotecaControle.botaoEditar(" + biblioteca.primaryKey + ");>Editar</button>" +
+                    "<button id = \"botaoExcluir\" type=\"button\" onClick = BibliotecaControle.botaoExcluir(" + biblioteca.primaryKey + ");>Excluir</button>" +
+                "</td></tr>";
+        };
+
+        if (biblioteca.value.tipo == 3) {
+                document.getElementById("dadosTabelaVideos").innerHTML += "<tr>" +
+                "<td colspan = \"1\">" + biblioteca.value.nome + "</td>" + 
+                "<td colspan = \"2\">" + classificacao +"</td>" +
+                "<td colspan = \"3\">" +
+                    "<input type = \"checkbox\" disabled " + desejado + ">" +
+                "<td colspan = \"4\">" +
+                    "<button id = \"botaoEditar\" type=\"button\" onClick = BibliotecaControle.botaoEditar(" + biblioteca.primaryKey + ");>Editar</button>" +
+                    "<button id = \"botaoExcluir\" type=\"button\" onClick = BibliotecaControle.botaoExcluir(" + biblioteca.primaryKey + ");>Excluir</button>" +
+                "</td></tr>";
         };
     },
 

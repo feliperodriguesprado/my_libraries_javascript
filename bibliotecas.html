@@ -9,22 +9,22 @@
 </head>
 <body>
 
-	<fieldset id = "painelPrincipal">
-
 		<h1>My Libraries</h1>
 		<h2>Bibliotecas</h2>
 
 
-	<div id = "menuPrincipal">
+		<div id = "menuPrincipal">
 		<a class = "menu" href="principal.html">Principal</a>
 		<a class = "menu" href="bibliotecas.html">Bibliotecas</a>
 		<a class = "menu" href="emprestimos.html">Empréstimos</a>
 		<a class = "menu" href="">Relatórios</a>
-	</div>
+		</div>
 
+	<div id = "painelPrincipal">
 
+		<div>
 		<form id = "formularioBiblioteca" action="" method = "POST" accept-charset = "utf-8">
-			<input id = "bibliotecaId" type="number" hidden = "true">
+			<input id = "bibliotecaId" type="number" hidden = true>
 			<label for = "nome">Nome</label>
 			<input id = "nome" type = "text" title = "Informe o nome da biblioteca" required = "required">
 			<select id = "tipo" title = "Informe qual é o tipo da sua biblioteca">
@@ -46,9 +46,9 @@
 			<button id="botaoSalvar" class="botao" type="submit">Salvar</button>
 			<!-- <a id="botaoVoltar" class="botao" href="principal.html">Voltar</a> -->
 		</form>
-	</fieldset>
+		</div>
 
-	<fieldset>
+		<div id = "painelLista">
 		<div id = "Livros">
 			<table id = "tabelaLivros">
 				<thead>
@@ -102,11 +102,13 @@
 				</tbody>
 			</table>
 		</div>
-	</fieldset>
+		</div>
 
-	<div id = "painelAvisos">
-	</div>
+		<div id = "painelAvisos">
+		</div>
 	
+	</div>
+
 	<script src="js/ConexaoBancoDados.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="js/BibliotecaDAO.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="js/BibliotecaControle.js" type="text/javascript" charset="utf-8" async defer></script>

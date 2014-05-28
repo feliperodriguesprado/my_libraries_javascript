@@ -5,6 +5,30 @@
     border-spacing: 0;
 }
 
+.titulo {
+  padding: 8px;
+  /*border-left: 1px solid #696969;*/
+  background-color: #BEBEBE;
+  /*border-bottom: 1px solid #000000;*/
+  font-weight: bold;
+}
+
+.titulo:first-child {
+  border-left-width: 0;
+}
+
+.cabecalho {
+  padding: 10px;
+  text-align: center;
+  /*background-color: #000000;*/
+  border-top: 1px solid #BEBEBE;
+  font-size: 20px;
+}
+
+.cabecalho:bottom-child{
+  border-radius: 0px;
+}
+
 body {
     background-image: url(images/fundoLogin2.jpg);
     background-repeat: no-repeat;
@@ -30,45 +54,60 @@ h2 {
     opacity: 0.4;
     margin-left: 30px;
     margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+
+#painelPrincipal {
+  background-color: #FFFFFF;
+  margin: 20px auto;
+  width: 1000px;
+  padding: 30px;
+  border-radius: 4px;
+  opacity: 0.8;
 }
 
 #menuPrincipal {
-  background-color: #696969;
-  opacity: 0.4;
-  margin: 32px auto;
+  background-color: #FFFFFF;
+  opacity: 0.6;
+  /*margin: 30px auto;*/
   padding: 14px;
+  font-weight: bolder;
+
 }
 
 .menu {
   padding: 14px;
-  color: #FFFFFF;
   text-align: center;
   text-decoration: none;
+  color: #000000;
+  opacity: 0.8;
 }
 
 .menu:hover {
-    background-color: #000000;
-    color: #FFFFFF;
+    background-color: #BEBEBE;
     cursor: pointer;
 }
 
+
 #painelUsuario {
   float: right;
-  color: #FFFFFF;
+  color: #000000;
   padding: 10px;
-  background-color: #000000;
+  background-color: #FFFFFF;
   border-radius: 4px;
-  opacity: 0.5;
+  opacity: 0.6;
   width: 400px;
   margin-right: 20px;
-  margin-top: -30px;
+  margin-top: -60px;
 }
 
 #areaUsuario {
   margin-top: 5px;
   float: right;
   margin-right: 20px;
-  opacity: 0.5;
+  font-weight: bolder;
+  opacity: 0.8;
 }
 
 #areaUsuarioBotoes {
