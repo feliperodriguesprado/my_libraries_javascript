@@ -23,13 +23,13 @@
 		<a class = "menu" href="">Relatórios</a>
 	</div>
 
-
+	<div id="painel">
 		<form id="for" name="formEmp" action="">
 			<fieldset>
 				<legend>Cadastrar Empréstimos</legend>
 
 					<label>Biblioteca:</label>
-						<select name="lib" id="biblioteca" class="biblioteca" onchange="emprestimosDAO.select()">
+						<select name="lib" id="biblioteca" class="biblioteca" onchange="emprestimosControle.obterItens()">
 							<option value="0">Escolha a biblioteca</option>
 							<option value="livros">Livros</option>
 							<option value="musicas">Músicas</option>
@@ -38,7 +38,7 @@
 				
 				
 					<label>Item:</label>
-						<select name="" id="item" class="item" id="selectItem">
+						<select name="" id="item" class="item">
 							<option value="0">Escolha o item</option>
 						</select>
 				
@@ -55,7 +55,6 @@
 				<input id="salvar" type="submit" value="Salvar" class="botao" onclick="window.location.reload()">
 
 				<input type="reset" value="Limpar" class="botao">
-				<a href="principal.html" class="botao">Voltar</a>
 
 				<label id="error" for=""></label>
 
@@ -135,11 +134,12 @@
 			</div>
 
 	</fieldset>
-
+</div>
 
 	<script src="js\ConexaoBancoDados.js"></script>
 	<script src="js\emprestimosDAO.js"></script>
 	<script src="js\emprestimosControle.js"></script>
+	<script src="js\BibliotecaDAO.js"></script>
 
 </body>
 </html>

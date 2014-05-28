@@ -265,7 +265,7 @@ var emprestimosDAO = {
 
 			var col1 = "<tr><td> " + item + "</td><td> " + nome + "</td>";
 		    var col2 = "<td><input type='button' ";
-		    var col3 = " value='Excluir' onclick=\"javascript:emprestimosDAO.deletar("+ids+"); window.location.reload();\"></input> <input id='a' type='button' value='Alterar' onclick=\"javascript:emprestimosDAO.update("+ids+")\"></input> <input id='e' type='button' value='Encerrar' onclick=\"javascript:emprestimosDAO.concluir("+ids+"); window.location.reload();\"></input>";
+		    var col3 = " value='Excluir' id='d' onclick=\"javascript:emprestimosDAO.deletar("+ids+"); window.location.reload();\"></input> <input id='a' type='button' value='Alterar' onclick=\"javascript:emprestimosDAO.update("+ids+")\"></input> <input id='e' type='button' value='Encerrar' onclick=\"javascript:emprestimosDAO.concluir("+ids+"); window.location.reload();\"></input>";
 		    document.getElementById("tableMusicas").innerHTML += col1 + col2 + col3;
 		    document.getElementById("tableMusicas").innerHTML += "</td></tr>";
 
@@ -274,14 +274,14 @@ var emprestimosDAO = {
 
 					var col1 = "<tr><td> " + item + "</td><td> " + nome + "</td>";
 				    var col2 = "<td><input type='button' ";
-				    var col3 = " value='Excluir' onclick=\"javascript:emprestimosDAO.deletar("+ids+"); window.location.reload();\"></input> <input id='a' type='button' value='Alterar' onclick=\"javascript:emprestimosDAO.update("+ids+")\"></input> <input id='e' type='button' value='Encerrar' onclick=\"javascript:emprestimosDAO.concluir("+ids+"); window.location.reload();\"></input>";
+				    var col3 = " value='Excluir' id='d' onclick=\"javascript:emprestimosDAO.deletar("+ids+"); window.location.reload();\"></input> <input id='a' type='button' value='Alterar' onclick=\"javascript:emprestimosDAO.update("+ids+")\"></input> <input id='e' type='button' value='Encerrar' onclick=\"javascript:emprestimosDAO.concluir("+ids+"); window.location.reload();\"></input>";
 				    document.getElementById("tableLivros").innerHTML += col1 + col2 + col3;
 				    document.getElementById("tableLivros").innerHTML += "</td></tr>";
 
 			}else{
 					var col1 = "<tr><td> " + item + "</td><td> " + nome + "</td>";
 				    var col2 = "<td><input type='button' ";
-				    var col3 = " value='Excluir' onclick=\"javascript:emprestimosDAO.deletar("+ids+"); window.location.reload();\"></input> <input id='a' type='button' value='Alterar' onclick=\"javascript:emprestimosDAO.update("+ids+")\"></input> <input id='e' type='button' value='Encerrar' onclick=\"javascript:emprestimosDAO.concluir("+ids+"); window.location.reload();\"></input>";
+				    var col3 = " value='Excluir' id='d' onclick=\"javascript:emprestimosDAO.deletar("+ids+"); window.location.reload();\"></input> <input id='a' type='button' value='Alterar' onclick=\"javascript:emprestimosDAO.update("+ids+")\"></input> <input id='e' type='button' value='Encerrar' onclick=\"javascript:emprestimosDAO.concluir("+ids+"); window.location.reload();\"></input>";
 				    document.getElementById("tableVideos").innerHTML += col1 + col2 + col3;
 				    document.getElementById("tableVideos").innerHTML += "</td></tr>";
 			}
