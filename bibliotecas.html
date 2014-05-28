@@ -9,6 +9,7 @@
 </head>
 <body>
 
+	<div>
 		<h1>My Libraries</h1>
 		<h2>Bibliotecas</h2>
 
@@ -19,96 +20,93 @@
 		<a class = "menu" href="emprestimos.html">Empréstimos</a>
 		<a class = "menu" href="">Relatórios</a>
 		</div>
+	</div>
 
 	<div id = "painelPrincipal">
 
-		<div>
-		<form id = "formularioBiblioteca" action="" method = "POST" accept-charset = "utf-8">
-			<input id = "bibliotecaId" type="number" hidden = true>
-			<label for = "nome">Nome</label>
-			<input id = "nome" type = "text" title = "Informe o nome da biblioteca" required = "required">
-			<select id = "tipo" title = "Informe qual é o tipo da sua biblioteca">
-				<option value = "0">Escolha o tipo da biblioteca</option>
-				<option value = "1">Livros</option>
-				<option value = "2">Músicas</option>
-				<option value = "3">Vídeos</option>
-			</select>
-			<select id = "classificacao" title = "Classifique sua biblioteca">
-				<option value = "0">Classifique sua biblioteca</option>
-				<option value = "1">Adorei</option>
-				<option value = "2">Gostei muito</option>
-				<option value = "3">Gostei</option>
-				<option value = "4">Não gostei</option>
-				<option value = "5">Detestei</option>
-			</select>
-			<input id = "desejado" type="checkbox">
-			<label for = "desejado">Adicionar a minha lista de bibliotecas desejadas</label>
-			<button id="botaoSalvar" class="botao" type="submit">Salvar</button>
-			<!-- <a id="botaoVoltar" class="botao" href="principal.html">Voltar</a> -->
-		</form>
+		<div id = "painelFormulario">
+
+			<form id = "formularioBiblioteca" action="" method = "POST" accept-charset = "utf-8">
+				<input id = "bibliotecaId" type="hidden">
+				<input id = "nome" type = "text" placeholder = "Nome da biblioteca" title = "Informe o nome da biblioteca" required = "required">
+				<select id = "tipo" title = "Informe qual é o tipo da sua biblioteca">
+					<option value = "0">Escolha o tipo da biblioteca</option>
+					<option value = "1">Livros</option>
+					<option value = "2">Músicas</option>
+					<option value = "3">Vídeos</option>
+				</select>
+				<select id = "classificacao" title = "Classifique sua biblioteca">
+					<option value = "0">Classifique sua biblioteca</option>
+					<option value = "1">Exelente</option>
+					<option value = "2">Muito bom</option>
+					<option value = "3">Bom</option>
+					<option value = "4">Regular</option>
+					<option value = "5">Ruim</option> 
+				</select>
+				
+				<input id = "desejado" type="checkbox">
+				<label for = "desejado">Adicionar a minha lista de bibliotecas desejadas</label>
+				<button id="botaoSalvar" class="botao" type="submit">Salvar</button>
+			</form>
+
+			<div id = "painelAvisos">
+			</div>
 		</div>
 
 		<div id = "painelLista">
-		<div id = "Livros">
-			<table id = "tabelaLivros">
-				<thead>
-					<tr>
-						<th class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Livros</th>
-					</tr>
-					<tr>
-						<th class = "titulo" colspan="1" rowspan="" headers="">Nome</th>
-						<th class = "titulo" colspan="2" rowspan="" headers="" scope="">Classificação</th>
-						<th class = "titulo" colspan="3" rowspan="" headers="" scope="">Lista de bibliotecas desejadas</th>
-						<th class = "titulo" colspan="4" rowspan="" headers="" scope="">Ações</th>
-					</tr>
-				</thead>
-				<tbody id = "dadosTabelaLivros">
-				</tbody>
-			</table>
-		</div>
-
-		<div id = "Musicas">
-			<table id = "tabelaMusicas">
-				<thead>
-					<tr>
-						<th class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Músicas</th>
-					</tr>
-					<tr>
-						<th class = "titulo" colspan="1" rowspan="" headers="">Nome</th>
-						<th class = "titulo" colspan="2" rowspan="" headers="" scope="">Classificação</th>
-						<th class = "titulo" colspan="3" rowspan="" headers="" scope="">Lista de bibliotecas desejadas</th>
-						<th class = "titulo" colspan="4" rowspan="" headers="" scope="">Ações</th>
-					</tr>
-				</thead>
-				<tbody id = "dadosTabelaMusicas">
-				</tbody>
-			</table>
-		</div>
-
-		<div id = "Videos">
-			<table id = "tabelaVideos">
-				<thead>
-					<tr>
-						<th class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Vídeos</th>
-					</tr>
-					<tr>
-						<th class = "titulo" colspan="1" rowspan="" headers="">Nome</th>
-						<th class = "titulo" colspan="2" rowspan="" headers="" scope="">Classificação</th>
-						<th class = "titulo" colspan="3" rowspan="" headers="" scope="">Lista de bibliotecas desejadas</th>
-						<th class = "titulo" colspan="4" rowspan="" headers="" scope="">Ações</th>
-					</tr>
-				</thead>
-				<tbody id = "dadosTabelaVideos">
-				</tbody>
-			</table>
-		</div>
-		</div>
-
-		<div id = "painelAvisos">
-		</div>
-	
+			<div id = "Livros">
+				<table id = "tabelaLivros">
+					<thead>
+						<tr>
+							<th class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Livros</th>
+						</tr>
+						<tr>
+							<th class = "titulo" colspan="1" rowspan="" headers="">Nome</th>
+							<th class = "titulo" colspan="2" rowspan="" headers="" scope="">Classificação</th>
+							<th class = "titulo" colspan="3" rowspan="" headers="" scope="">Lista de bibliotecas desejadas</th>
+							<th class = "titulo" colspan="4" rowspan="" headers="" scope="">Ações</th>
+						</tr>
+					</thead>
+					<tbody id = "dadosTabelaLivros">
+					</tbody>
+				</table>
+			</div>
+			<div id = "Musicas">
+				<table id = "tabelaMusicas">
+					<thead>
+						<tr>
+							<th class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Músicas</th>
+						</tr>
+						<tr>
+							<th class = "titulo" colspan="1" rowspan="" headers="">Nome</th>
+							<th class = "titulo" colspan="2" rowspan="" headers="" scope="">Classificação</th>
+							<th class = "titulo" colspan="3" rowspan="" headers="" scope="">Lista de bibliotecas desejadas</th>
+							<th class = "titulo" colspan="4" rowspan="" headers="" scope="">Ações</th>
+						</tr>
+					</thead>
+					<tbody id = "dadosTabelaMusicas">
+					</tbody>
+				</table>
+			</div>
+			<div id = "Videos">
+				<table id = "tabelaVideos">
+					<thead>
+						<tr>
+							<th class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Vídeos</th>
+						</tr>
+						<tr>
+							<th class = "titulo" colspan="1" rowspan="" headers="">Nome</th>
+							<th class = "titulo" colspan="2" rowspan="" headers="" scope="">Classificação</th>
+							<th class = "titulo" colspan="3" rowspan="" headers="" scope="">Lista de bibliotecas desejadas</th>
+							<th class = "titulo" colspan="4" rowspan="" headers="" scope="">Ações</th>
+						</tr>
+					</thead>
+					<tbody id = "dadosTabelaVideos">
+					</tbody>
+				</table>
+			</div>
+		</div>	
 	</div>
-
 	<script src="js/ConexaoBancoDados.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="js/BibliotecaDAO.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="js/BibliotecaControle.js" type="text/javascript" charset="utf-8" async defer></script>

@@ -4,6 +4,7 @@ var BibliotecaControle = {
         document.getElementById("dadosTabelaVideos").innerHTML = "";
         document.getElementById("dadosTabelaLivros").innerHTML = "";
         document.getElementById("dadosTabelaMusicas").innerHTML = "";
+        document.getElementById("nome").focus();
         ConexaoBancoDados.abrirBancoDados(function() {
             BibliotecaDAO.obterBibliotecas(function(biblioteca) {
                 BibliotecaControle.listarBibliotecas(biblioteca);
@@ -32,20 +33,23 @@ var BibliotecaControle = {
         var desejado = null;
                 
         switch(biblioteca.value.classificacao) {
+                case "0":
+                classificacao = "Não classificado";
+                break;
                 case "1":
-                classificacao = "Adorei";
+                classificacao = "Exelente";
                 break;
                 case "2":
-                classificacao = "Gostei muito";
+                classificacao = "Muito bom";
                 break;
                 case "3":
-                classificacao = "Gostei";
+                classificacao = "Bom";
                 break;
                 case "4":
-                classificacao = "Não gostei";
+                classificacao = "Regular";
                 break;
                 case "5":
-                classificacao = "Detestei";
+                classificacao = "Ruim";
                 break;
         };
 
@@ -105,7 +109,7 @@ var BibliotecaControle = {
                 var classificacao = document.getElementById("classificacao");
                 var desejado = document.getElementById("desejado");
 
-                if (nome.value != "" && tipo.value != "" && tipo.value != "0" && classificacao.value != "" && classificacao.value != "0") {
+                if (nome.value != "" && tipo.value != "" && tipo.value != "0" && classificacao.value != "") {
                 	
                 	if (bibliotecaId.value == "") {
 	                	document.getElementById("dadosTabelaVideos").innerHTML = "";
@@ -132,10 +136,9 @@ var BibliotecaControle = {
                 	};
 
                 } else {
-                	document.getElementById("painelAvisos").innerHTML = "<div id = \"painelAvisos\"> <span id = \"avisoTipoClassificacao\">Informe corretamente os campos acima</span></div>";
+                	document.getElementById("painelAvisos").innerHTML = "<div id = \"painelAvisos\"> <span id = \"avisoCamposIncorretos\">Informe corretamente os campos acima</span></div>";
                     window.setTimeout( function() {
                     document.getElementById("painelAvisos").innerHTML = "";
-                    document.getElementById("nome").focus();
                 } , 3000
             );
                 } ;
