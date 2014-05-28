@@ -12,10 +12,26 @@ var emprestimosDAO = {
 		    var nome = document.getElementById("nome").value;
 		    var descric = document.getElementById("text").value;
 
+
+		    var dataUser = new Date(data);
+		    var diaUser = dataUser.getDate() + 1;
+		    var mesUser = dataUser.getMonth() + 1;
+			var anoUser = dataUser.getFullYear();
+
+			var dataSys = new Date();
+		    var diaSys = dataSys.getDate();
+		    var mesSys = dataSys.getMonth() + 1;
+		    var anoSys = dataSys.getFullYear();
+
+
 		    if((bib=="") || (data=="") || (nome=="")){
 		    	alert("Por favor, preencha todos os campos");
 		    }else{
- 				emprestimosDAO.atualizar(verifica,bib,item,data,nome,descric);
+		    	if((anoUser>anoSys) || (mesUser>mesSys) || (diaUser>diaSys)){
+		    		alert("A data é maior que a data corrente");
+		   		}else{
+ 					emprestimosDAO.atualizar(verifica,bib,item,data,nome,descric);
+ 				}
 		    }
 		    
  		}else{
@@ -33,23 +49,39 @@ var emprestimosDAO = {
 		    var item = document.getElementById("item");
 		    var data = document.getElementById("data");
 		    var nome = document.getElementById("nome");
-		    var descric = document.getElementById("text");  
+		    var descric = document.getElementById("text");
 
+		    var dataUser = new Date(data.value);
+		    var diaUser = dataUser.getDate() + 1;
+		    var mesUser = dataUser.getMonth() + 1;
+			var anoUser = dataUser.getFullYear();
+
+			var dataSys = new Date();
+		    var diaSys = dataSys.getDate();
+		    var mesSys = dataSys.getMonth() + 1;
+		    var anoSys = dataSys.getFullYear();
+
+		   
 		    if((bib.value=="") || (data.value=="") || (nome.value=="")){
 		    	alert("Por favor, preencha todos os campos");
 		    }else{
-			    var transaction = bancoDados.transaction(["emprestimos"], "readwrite");
-			    var objectUser = transaction.objectStore("emprestimos");
-			    var emp = {biblioteca: bib.value, item: item.value, data: data.value, nome: nome.value, descricao: descric.value, status: 1};
-			    var request = objectUser.add(emp);
+		    	
+		    	if((anoUser>anoSys) || (mesUser>mesSys) || (diaUser>diaSys)){
+		    		alert("A data é maior que a data corrente");
+		   		}else{
+		   			var transaction = bancoDados.transaction(["emprestimos"], "readwrite");
+				    var objectUser = transaction.objectStore("emprestimos");
+				    var emp = {biblioteca: bib.value, item: item.value, data: data.value, nome: nome.value, descricao: descric.value, status: 1};
+				    var request = objectUser.add(emp);
 
-			    bib.value = 0;
-			    item.value = 0;
-			    data.value = "";
-			    nome.value = "";
-			    descric.value = "";
+				    bib.value = 0;
+				    item.value = 0;
+				    data.value = "";
+				    nome.value = "";
+				    descric.value = "";
 
-			    alert("Dado inserido com sucesso");	    	
+				    alert("Dado inserido com sucesso");	 
+		   		}  	
 		    }  
 		}
 	},
