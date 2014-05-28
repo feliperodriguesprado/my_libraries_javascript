@@ -66,10 +66,6 @@ var BibliotecaDAO = {
     },
 
     obterBibliotecas: function(callback) {
-    	
-        document.getElementById("dadosTabelaVideos").innerHTML = "";
-        document.getElementById("dadosTabelaLivros").innerHTML = "";
-        document.getElementById("dadosTabelaMusicas").innerHTML = "";
 
     	ConexaoBancoDados.abrirBancoDados(function() {
     		
@@ -86,8 +82,6 @@ var BibliotecaDAO = {
         	   	
         	   	request.onsuccess = function(event) {
                     var biblioteca = request.result;
-                    
-                    var bibliotecas = [];
 
                     if (biblioteca) {
                         if (biblioteca.value.usuarioid == sessao.value.usuarioid) {

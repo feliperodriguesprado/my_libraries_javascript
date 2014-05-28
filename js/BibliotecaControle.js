@@ -1,6 +1,9 @@
 var BibliotecaControle = {
 
 	inicializar: function() {
+        document.getElementById("dadosTabelaVideos").innerHTML = "";
+        document.getElementById("dadosTabelaLivros").innerHTML = "";
+        document.getElementById("dadosTabelaMusicas").innerHTML = "";
         ConexaoBancoDados.abrirBancoDados(function() {
             BibliotecaDAO.obterBibliotecas(function(biblioteca) {
                 BibliotecaControle.listarBibliotecas(biblioteca);
@@ -105,7 +108,10 @@ var BibliotecaControle = {
                 if (nome.value != "" && tipo.value != "" && tipo.value != "0" && classificacao.value != "" && classificacao.value != "0") {
                 	
                 	if (bibliotecaId.value == "") {
-	                	var biblioteca = {tipo: tipo.value, usuarioid: null, nome: nome.value, classificacao: classificacao.value, desejado: desejado.checked};
+	                	document.getElementById("dadosTabelaVideos").innerHTML = "";
+                        document.getElementById("dadosTabelaLivros").innerHTML = "";
+                        document.getElementById("dadosTabelaMusicas").innerHTML = "";
+                        var biblioteca = {tipo: tipo.value, usuarioid: null, nome: nome.value, classificacao: classificacao.value, desejado: desejado.checked};
 	                	BibliotecaDAO.obterSessao(biblioteca, function(sessao, biblioteca) {
 	            			if (sessao) {
 	            				biblioteca.usuarioid = sessao.value.usuarioid;
@@ -113,6 +119,9 @@ var BibliotecaControle = {
 	            			};
 	            		});                		
                 	} else {
+                        document.getElementById("dadosTabelaVideos").innerHTML = "";
+                        document.getElementById("dadosTabelaLivros").innerHTML = "";
+                        document.getElementById("dadosTabelaMusicas").innerHTML = "";
                 		var biblioteca = {bibliotecaid: bibliotecaId.value, tipo: tipo.value, usuarioid: null, nome: nome.value, classificacao: classificacao.value, desejado: desejado.checked};
                 		BibliotecaDAO.obterSessao(biblioteca, function(sessao, biblioteca) {
                 			if (sessao) {
@@ -151,6 +160,9 @@ var BibliotecaControle = {
 
 
     botaoExcluir: function(bibliotecaid) {
+        document.getElementById("dadosTabelaVideos").innerHTML = "";
+        document.getElementById("dadosTabelaLivros").innerHTML = "";
+        document.getElementById("dadosTabelaMusicas").innerHTML = "";
     	BibliotecaDAO.excluirBiblioteca(bibliotecaid);
     }
 };
