@@ -24,12 +24,12 @@
 	</div>
 
 
-		<form id="for" action="">
+		<form id="for" name="formEmp" action="">
 			<fieldset>
 				<legend>Cadastrar Empréstimos</legend>
 
 					<label>Biblioteca:</label>
-						<select name="teste" id="biblioteca" class="biblioteca">
+						<select name="lib" id="biblioteca" class="biblioteca" onchange="emprestimosDAO.select()">
 							<option value="0">Escolha a biblioteca</option>
 							<option value="livros">Livros</option>
 							<option value="musicas">Músicas</option>
@@ -37,10 +37,10 @@
 						</select>
 				
 				
-				<label>Item:</label>
-					<select name="" id="item" class="item">
-						<option value="0">Escolha o item</option>
-					</select>
+					<label>Item:</label>
+						<select name="" id="item" class="item" id="selectItem">
+							<option value="0">Escolha o item</option>
+						</select>
 				
 
 
@@ -134,28 +134,6 @@
 				</table>
 			</div>
 
-
-
-
-			<!--<table id="tabela">
-			
-				
-			
-			<thead>
-				<th>BIBLIOTECA</th>
-				<th>ITEM</th>
-				<th>NOME</th>
-			</thead>
-			<tbody>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td id="tabelaLinha_1"></td>
-				</tr>
-			</tbody>
-		</table>
-		-->
 	</fieldset>
 
 

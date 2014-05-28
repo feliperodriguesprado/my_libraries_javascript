@@ -1,7 +1,12 @@
 var emprestimosDAO = {
 
- 	insert: function(){
+	testes:function(){
+		alert("Jesus é o Rei");
+	},
 
+ 	insert: function(){
+ 		//teste
+ 		
 
  		var verifica = document.getElementById("cod").value;
  		
@@ -176,20 +181,33 @@ var emprestimosDAO = {
 		        		alert("emprestimo concluido com sucesso!");
 		        	}
 		        }
-
 		}
 			
 	},
 
 	select:function(){
-	    var transaction = bancoDados.transaction(["emprestimos"]);
-	    var objectUser = transaction.objectStore("emprestimos");
-	    var request = objectUser.get(12);
+
+		var bancoDados = ConexaoBancoDados.bancoDados;
+		var i = document.getElementById('biblioteca').selectedIndex;
+ 		var b = formEmp.lib.options[i].value;
+
+	    var transaction = bancoDados.transaction(["biblioteca"], "readonly");
+	    var objectUser = transaction.objectStore("biblioteca");
+	    var request = objectUser.openCursor();
+
 	    request.onerror = function(event) {
 	        alert("erro");
 	    }
 	    request.onsuccess = function(event) {
-	       console.log(request.result.nome);
+	       var retorno = event.target.result;
+	        if(retorno) {
+	            
+	            var name = retorno.value.nome;
+	            	   			
+	   			document.getElementById("selectItem").innerHTML += "<option>teste</option>";
+	            
+	            retorno.continue();
+	        }
 	    }
 	},
 
@@ -269,12 +287,6 @@ var emprestimosDAO = {
 			}
 
 		}
-	    
-	    /*var col1 = "<tr><td> " + biblioteca + "</td><td> " + item + "</td><td> " + nome + "</td>";
-	    var col2 = "<td id='tabelaLinha_>" +ids + "'><input type='button' ";
-	    var col3 = " value='Excluir' onclick=\"javascript:emprestimosDAO.deletar("+ids+"); window.location.reload();\"></input> <input id='a' type='button' value='Alterar' onclick=\"javascript:emprestimosDAO.update("+ids+")\"></input> <input id='e' type='button' value='Encerrar' onclick=\"javascript:emprestimosDAO.concluir("+ids+"); window.location.reload();\"></input>";
-	    document.getElementById("tabela").innerHTML += col1 + col2 + col3;
-	    document.getElementById("tabela").innerHTML += "</td></tr>";*/
 	 
 	}
 };
