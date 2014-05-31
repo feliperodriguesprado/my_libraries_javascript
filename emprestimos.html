@@ -9,132 +9,132 @@
 </head>
 <body>
 
-
-	<fieldset id = "painelPrincipal">
-
+	<div>
 		<h1>My Libraries</h1>
 		<h2>Empréstimos</h2>
 
 
-	<div id = "menuPrincipal">
+		<div id = "menuPrincipal">
 		<a class = "menu" href="principal.html">Principal</a>
 		<a class = "menu" href="bibliotecas.html">Bibliotecas</a>
 		<a class = "menu" href="emprestimos.html">Empréstimos</a>
 		<a class = "menu" href="">Relatórios</a>
+		</div>
 	</div>
 
-	<div id="painel">
-		<form id="for" name="formEmp" action="">
-			<fieldset>
-				<legend>Cadastrar Empréstimos</legend>
+	<div id="painelPrincipal">
 
-					<label>Biblioteca:</label>
-						<select name="lib" id="biblioteca" class="biblioteca" onchange="emprestimosControle.obterItens()">
-							<option value="0">Escolha a biblioteca</option>
-							<option value="livros">Livros</option>
-							<option value="musicas">Músicas</option>
-							<option value="videos">Vídeos</option>
-						</select>
-				
-				
-					<label>Item:</label>
-						<select name="" id="item" class="item">
-							<option value="0">Escolha o item</option>
-						</select>
-				
+		<div id = "painelFormulario">
+
+			<form id="for" name="formEmp" action="">
+				<fieldset>
+					<legend>Cadastrar Empréstimos</legend>
+
+						<!-- <label>Biblioteca:</label> -->
+							<select name="lib" id="biblioteca" class="biblioteca" onchange="emprestimosControle.obterItens()">
+								<option value="0">Escolha a biblioteca</option>
+								<option value="livros">Livros</option>
+								<option value="musicas">Músicas</option>
+								<option value="videos">Vídeos</option>
+							</select>
+					
+					
+						<!-- <label>Item:</label> -->
+							<select name="" id="item" class="item">
+								<option value="0">Escolha o item</option>
+							</select>
+					
 
 
-				<input type="date" id="data">
+					<input type="date" id="data">
 
-				<input type="text" id="nome" placeholder="Nome">
+					<input type="text" id="nome" placeholder="Para quem será emprestado?">
 
-				<input type="hidden" id="cod">
+					<input type="hidden" id="cod">
 
-				<textarea id="text" name="" id="" cols="30" rows="10"></textarea>
+					<textarea id="text" name="" id="" cols="30" rows="10"></textarea>
 
-				<input id="salvar" type="submit" value="Salvar" class="botao" onclick="window.location.reload()">
+					<input id="salvar" type="submit" value="Salvar" class="botao"> <!-- onclick="window.location.reload()" -->
 
-				<input type="reset" value="Limpar" class="botao">
+					<input type="reset" value="Limpar" class="botao">
 
-				<label id="error" for=""></label>
+					<label id="error" for=""></label>
+			
+				</fieldset>
+			</form>
 
-			</fieldset>
-		</form>
-	</fieldset>
+		</div>
+		
+		<div id = "painelLista">
 
-	
+				<div id="livros">
+					<table id="tableLivros">
+						<thead>
+							<tr>
+								<th class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Livros</th>
+							</tr>
+							<tr>
+								<th class = "titulo" colspan="1" rowspan="" headers="" scope="">Item</th>
+								<th class = "titulo" colspan="1" rowspan="" headers="" scope="">Nome</th>
+								<th class = "titulo" colspan="4" rowspan="" headers="" scope="">Ações</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</tbody>		
+					</table>
+				</div>
 
-	<fieldset>
-		<h2 id="titleEmp">Itens Emprestados</h2>
+				<div id="Musicas">
+					<table id="tableMusicas">
+						<thead>
+							<tr>
+								<th class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Músicas</th>
+							</tr>
+							<tr>
+								<th class = "titulo" colspan="1" rowspan="" headers="" scope="">Item</th>
+								<th class = "titulo" colspan="1" rowspan="" headers="" scope="">Nome</th>
+								<th class = "titulo" colspan="4" rowspan="" headers="" scope="">Ações</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</tbody>		
+					</table>
+				</div>
 
-			<div id="livros">
-				<table id="tableLivros">
-					<thead>
-						<tr>
-							<th class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Livros</th>
-						</tr>
-						<tr>
-							<th class = "titulo" colspan="1" rowspan="" headers="" scope="">Item</th>
-							<th class = "titulo" colspan="1" rowspan="" headers="" scope="">Nome</th>
-							<th class = "titulo" colspan="4" rowspan="" headers="" scope="">Ações</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</tbody>		
-				</table>
-			</div>
+				<div id="videos">
+					<table id="tableVideos">
+						<thead>
+							<tr>
+								<th class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Vídeos</th>
+							</tr>
+							<tr>
+								<th class = "titulo" colspan="1" rowspan="" headers="" scope="">Item</th>
+								<th class = "titulo" colspan="1" rowspan="" headers="" scope="">Nome</th>
+								<th class = "titulo" colspan="4" rowspan="" headers="" scope="">Ações</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</tbody>		
+					</table>
+				</div>
+		</div>		
 
-			<div id="Musicas">
-				<table id="tableMusicas">
-					<thead>
-						<tr>
-							<th class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Músicas</th>
-						</tr>
-						<tr>
-							<th class = "titulo" colspan="1" rowspan="" headers="" scope="">Item</th>
-							<th class = "titulo" colspan="1" rowspan="" headers="" scope="">Nome</th>
-							<th class = "titulo" colspan="4" rowspan="" headers="" scope="">Ações</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</tbody>		
-				</table>
-			</div>
-
-			<div id="videos">
-				<table id="tableVideos">
-					<thead>
-						<tr>
-							<th class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Vídeos</th>
-						</tr>
-						<tr>
-							<th class = "titulo" colspan="1" rowspan="" headers="" scope="">Item</th>
-							<th class = "titulo" colspan="1" rowspan="" headers="" scope="">Nome</th>
-							<th class = "titulo" colspan="4" rowspan="" headers="" scope="">Ações</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</tbody>		
-				</table>
-			</div>
-
-	</fieldset>
-</div>
+	</div>
 
 	<script src="js\ConexaoBancoDados.js"></script>
 	<script src="js\emprestimosDAO.js"></script>

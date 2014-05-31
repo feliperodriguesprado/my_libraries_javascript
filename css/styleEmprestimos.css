@@ -4,37 +4,38 @@
 
 * {
   font-family: Lucida, sans-serif;
-    margin: 0;
-    padding: 0;
-    border-spacing: 0;
-    font-weight: normal;
+  margin: 0;
+  padding: 0;
+  border-spacing: 0;
+  font-weight: normal;
+  font-size: 12px;
 }
 
 
 table {
-    /*border: 1px solid #000000;*/
-    border-spacing: 0;
-    border-radius: 4px;
-    width: 1000px;
-    margin: 30px auto;
-    text-align: left;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
+  /*border: 1px solid #000000;*/
+  border-spacing: 0;
+  border-radius: 4px;
+  width: 1000px;
+  margin: 30px auto;
+  text-align: left;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
 }
 
 table:last-child {
-    border-bottom-width: 0;
+  border-bottom-width: 0;
 }
 
 td {
-    /*border-left: 1px solid #696969;*/
-    /*border-bottom: 1px solid #000000;*/
-    width: 200px;
-    padding: 5px;
+  /*border-left: 1px solid #696969;*/
+  /*border-bottom: 1px solid #000000;*/
+  width: 200px;
+  padding: 5px;
 }
 
 td:first-child {
-    border-left-width: 0;
+  border-left-width: 0;
 
 }
 
@@ -44,27 +45,28 @@ tr {
 }
 
 tr:nth-child(2n-0) {
-    background-color: #E8E8E8;
+  background-color: #E8E8E8;
 }
 
 .titulo {
-    padding: 8px;
-    /*border-left: 1px solid #696969;*/
+  padding: 8px;
+  /*border-left: 1px solid #696969;*/
   background-color: #BEBEBE;
-    /*border-bottom: 1px solid #000000;*/
+  /*border-bottom: 1px solid #000000;*/
   font-weight: bold;
+  font-size: 14px;
 }
 
 .titulo:first-child {
-    border-left-width: 0;
+  border-left-width: 0;
 }
 
 .cabecalho {
-    padding: 10px;
-    text-align: center;
+  padding: 10px;
+  text-align: center;
   /*background-color: #000000;*/
   border-top: 1px solid #BEBEBE;
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .cabecalho:bottom-child{
@@ -73,7 +75,7 @@ tr:nth-child(2n-0) {
 
 body {
     background-image: url(images/fundoLogin2.jpg);
-    background-repeat: no-repeat;
+    /*background-repeat: no-repeat;*/
 }
 
 h1 {
@@ -99,7 +101,8 @@ h2 {
     margin-bottom: 20px;
 }
 
-#painel {
+
+#painelPrincipal {
   background-color: #FFFFFF;
   margin: 20px auto;
   width: 1000px;
@@ -147,7 +150,6 @@ h2 {
     color: #FFFFFF;
     font-size: 12px;
     margin-right: 5px;
-    margin-left: 6px;
     opacity: 0.5;
     padding: 5px;
     text-align: center;
@@ -159,6 +161,16 @@ h2 {
     background-color: #696969;
     color: #FFFFFF;
     cursor: pointer;
+}
+
+#painelFormulario {
+  width: 400px;
+}
+
+#painelFormulario input[type = "text"], select{
+  display: block;
+  padding: 5px;
+  margin-bottom: 10px;
 }
 
 #a {

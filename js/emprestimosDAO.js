@@ -1,13 +1,7 @@
 var emprestimosDAO = {
 
-	testes:function(){
-		alert("Jesus é o Rei");
-	},
-
  	insert: function(){
- 		//teste
  		
-
  		var verifica = document.getElementById("cod").value;
  		
  		if(verifica != ""){
@@ -30,10 +24,18 @@ var emprestimosDAO = {
 
 
 		    if((bib=="") || (data=="") || (nome=="")){
-		    	alert("Por favor, preencha todos os campos");
+		    	document.getElementById('error').innerHTML = "Por favor preencha todos os campos";
+		    		window.setTimeout( function() {
+		    	 		window.location.reload();
+		    	 },3000
+		    	 );	 
 		    }else{
 		    	if((anoUser>anoSys) || (mesUser>mesSys) || (diaUser>diaSys)){
-		    		alert("A data é maior que a data corrente");
+		    		document.getElementById('error').innerHTML = "A data informada é maior que a data atual";
+		    		window.setTimeout( function() {
+		    	 		window.location.reload();
+		    	 },3000
+		    	 );	 
 		   		}else{
  					emprestimosDAO.atualizar(verifica,bib,item,data,nome,descric);
  				}
@@ -56,6 +58,8 @@ var emprestimosDAO = {
 		    var nome = document.getElementById("nome");
 		    var descric = document.getElementById("text");
 
+		    alert(item.value);
+
 		    var dataUser = new Date(data.value);
 		    var diaUser = dataUser.getDate() + 1;
 		    var mesUser = dataUser.getMonth() + 1;
@@ -68,11 +72,19 @@ var emprestimosDAO = {
 
 		   
 		    if((bib.value=="") || (data.value=="") || (nome.value=="")){
-		    	alert("Por favor, preencha todos os campos");
+		    	document.getElementById('error').innerHTML = "Preencha todos os campos";
+		    	 window.setTimeout( function() {
+		    	 	window.location.reload();
+		    	 },3000
+		    	 );
 		    }else{
 		    	
 		    	if((anoUser>anoSys) || (mesUser>mesSys) || (diaUser>diaSys)){
-		    		alert("A data é maior que a data corrente");
+		    		document.getElementById('error').innerHTML = "A data informada é maior que a data atual";
+		    	 	window.setTimeout( function() {
+		    	 		window.location.reload();
+		    	 },3000
+		    	 );
 		   		}else{
 		   			var transaction = bancoDados.transaction(["emprestimos"], "readwrite");
 				    var objectUser = transaction.objectStore("emprestimos");
@@ -85,7 +97,11 @@ var emprestimosDAO = {
 				    nome.value = "";
 				    descric.value = "";
 
-				    alert("Dado inserido com sucesso");	 
+				    document.getElementById('error').innerHTML = "Empréstimo realizado com sucesso";
+		    		window.setTimeout( function() {
+		    	 		window.location.reload();
+		    	 },1000
+		    	 );	 
 		   		}  	
 		    }  
 		}
@@ -142,7 +158,12 @@ var emprestimosDAO = {
 			        document.getElementById("data").value = "";
 			        document.getElementById("nome").value = "";
 			        document.getElementById("text").value = "";
-	        		alert("Dados atualizados com Sucesso");
+
+	        		document.getElementById('error').innerHTML = "Dados atulizados com Sucesso";
+		    		window.setTimeout( function() {
+		    	 		window.location.reload();
+		    	 },1000
+		    	 );	 
 	        	}
 	        }
 	},
@@ -178,21 +199,23 @@ var emprestimosDAO = {
 		        		alert("Não foi possivel concluir o emprestimo");
 		        	}
 		        	requestUpdate.onsuccess=function(event){
-		        		alert("emprestimo concluido com sucesso!");
+		        		document.getElementById('error').innerHTML = "Empréstimo concluido com sucesso";
+		    			window.setTimeout( function() {
+		    	 			window.location.reload();
+		    			},1000
+		    	 		);	 
 		        	}
 		        }
 		}
 			
 	},
 
-	select:function(){
+	select:function(biblioteca){
 
 		var bancoDados = ConexaoBancoDados.bancoDados;
-		var i = document.getElementById('biblioteca').selectedIndex;
- 		var b = formEmp.lib.options[i].value;
 
-	    var transaction = bancoDados.transaction(["biblioteca"], "readonly");
-	    var objectUser = transaction.objectStore("biblioteca");
+	    var transaction = bancoDados.transaction(["emprestimos"], "readonly");
+	    var objectUser = transaction.objectStore("emprestimos");
 	    var request = objectUser.openCursor();
 
 	    request.onerror = function(event) {
@@ -201,18 +224,19 @@ var emprestimosDAO = {
 	    request.onsuccess = function(event) {
 	       var retorno = event.target.result;
 	        if(retorno) {
-	            
-	            var name = retorno.value.nome;
-	            	   			
-	   			document.getElementById("selectItem").innerHTML += "<option>teste</option>";
+	        	var nome = retorno.value.item;
+
+	        	if(biblioteca==nome){
+	        		alert("ops");
+	        	}
 	            
 	            retorno.continue();
 	        }
+	       // document.getElementById("item").innerHTML +=  "<option>"+ biblioteca.value.nome+"</option>";
 	    }
 	},
 
 	selectAll:function(){
-
 		var bancoDados = ConexaoBancoDados.bancoDados;
 	    var form = document.getElementById('for');
 	    if(form){
@@ -251,7 +275,11 @@ var emprestimosDAO = {
 			var bancoDados = ConexaoBancoDados.bancoDados;
 		    var request = bancoDados.transaction(["emprestimos"], "readwrite").objectStore("emprestimos").delete(id);
 		    request.onsuccess = function(event){
-		        alert("Dado removido com sucesso");
+		       document.getElementById('error').innerHTML = "Empréstimo excluido com sucesso";
+		    		window.setTimeout( function() {
+		    	 		window.location.reload();
+		    	 },1000
+		    	 );	 
 		    } 
 		    request.onerror = function(event){
 		        alert("erro");
@@ -260,33 +288,44 @@ var emprestimosDAO = {
 	},
 
 	result:function(biblioteca,item,nome,ids){
+		var bancoDados = ConexaoBancoDados.bancoDados;
+		var transaction = bancoDados.transaction(["biblioteca"], "readonly");
+	    var objectUser = transaction.objectStore("biblioteca");
+	    var request = objectUser.get(item);
 
-		if(biblioteca == 'musicas'){
+	    request.onsuccess=function(event){
+	    	var retorno = event.target.result;
+		    	if(biblioteca == 'musicas'){
 
-			var col1 = "<tr><td> " + item + "</td><td> " + nome + "</td>";
-		    var col2 = "<td><input type='button' ";
-		    var col3 = " value='Excluir' id='d' onclick=\"javascript:emprestimosDAO.deletar("+ids+"); window.location.reload();\"></input> <input id='a' type='button' value='Alterar' onclick=\"javascript:emprestimosDAO.update("+ids+")\"></input> <input id='e' type='button' value='Encerrar' onclick=\"javascript:emprestimosDAO.concluir("+ids+"); window.location.reload();\"></input>";
-		    document.getElementById("tableMusicas").innerHTML += col1 + col2 + col3;
-		    document.getElementById("tableMusicas").innerHTML += "</td></tr>";
-
-		}else{
-			if(biblioteca == 'livros'){
-
-					var col1 = "<tr><td> " + item + "</td><td> " + nome + "</td>";
-				    var col2 = "<td><input type='button' ";
-				    var col3 = " value='Excluir' id='d' onclick=\"javascript:emprestimosDAO.deletar("+ids+"); window.location.reload();\"></input> <input id='a' type='button' value='Alterar' onclick=\"javascript:emprestimosDAO.update("+ids+")\"></input> <input id='e' type='button' value='Encerrar' onclick=\"javascript:emprestimosDAO.concluir("+ids+"); window.location.reload();\"></input>";
-				    document.getElementById("tableLivros").innerHTML += col1 + col2 + col3;
-				    document.getElementById("tableLivros").innerHTML += "</td></tr>";
+				var col1 = "<tr><td> " + item + "</td><td> " + nome + "</td>";
+			    var col2 = "<td><input type='button' ";
+			    var col3 = " value='Excluir' id='d' onclick=\"javascript:emprestimosDAO.deletar("+ids+"); window.location.reload();\"></input> <input id='a' type='button' value='Alterar' onclick=\"javascript:emprestimosDAO.update("+ids+")\"></input> <input id='e' type='button' value='Encerrar' onclick=\"javascript:emprestimosDAO.concluir("+ids+"); window.location.reload();\"></input>";
+			    document.getElementById("tableMusicas").innerHTML += col1 + col2 + col3;
+			    document.getElementById("tableMusicas").innerHTML += "</td></tr>";
 
 			}else{
-					var col1 = "<tr><td> " + item + "</td><td> " + nome + "</td>";
-				    var col2 = "<td><input type='button' ";
-				    var col3 = " value='Excluir' id='d' onclick=\"javascript:emprestimosDAO.deletar("+ids+"); window.location.reload();\"></input> <input id='a' type='button' value='Alterar' onclick=\"javascript:emprestimosDAO.update("+ids+")\"></input> <input id='e' type='button' value='Encerrar' onclick=\"javascript:emprestimosDAO.concluir("+ids+"); window.location.reload();\"></input>";
-				    document.getElementById("tableVideos").innerHTML += col1 + col2 + col3;
-				    document.getElementById("tableVideos").innerHTML += "</td></tr>";
+				if(biblioteca == 'livros'){
+						 
+						 //alert(retorno.nome);
+						var col1 = "<tr><td> " + item + "</td><td> " + nome + "</td>";
+					    var col2 = "<td><input type='button' ";
+					    var col3 = " value='Excluir' id='d' onclick=\"javascript:emprestimosDAO.deletar("+ids+"); window.location.reload();\"></input> <input id='a' type='button' value='Alterar' onclick=\"javascript:emprestimosDAO.update("+ids+")\"></input> <input id='e' type='button' value='Encerrar' onclick=\"javascript:emprestimosDAO.concluir("+ids+"); window.location.reload();\"></input>";
+					    document.getElementById("tableLivros").innerHTML += col1 + col2 + col3;
+					    document.getElementById("tableLivros").innerHTML += "</td></tr>";
+
+				}else{
+						var col1 = "<tr><td> " + item + "</td><td> " + nome + "</td>";
+					    var col2 = "<td><input type='button' ";
+					    var col3 = " value='Excluir' id='d' onclick=\"javascript:emprestimosDAO.deletar("+ids+"); window.location.reload();\"></input> <input id='a' type='button' value='Alterar' onclick=\"javascript:emprestimosDAO.update("+ids+")\"></input> <input id='e' type='button' value='Encerrar' onclick=\"javascript:emprestimosDAO.concluir("+ids+"); window.location.reload();\"></input>";
+					    document.getElementById("tableVideos").innerHTML += col1 + col2 + col3;
+					    document.getElementById("tableVideos").innerHTML += "</td></tr>";
+				}
+
 			}
 
-		}
+	    } 
+
+		
 	 
 	}
 };

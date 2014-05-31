@@ -21,21 +21,21 @@ var emprestimosControle = {
 	},
 
 	listarItens:function(biblioteca){
-		console.log(document.getElementById('biblioteca').value);
-		console.log(biblioteca.value.tipo);
-
+		
 		switch(document.getElementById('biblioteca').value){
 			case "livros":
-				if((biblioteca.value.tipo == 1) && (biblioteca.value.desejado == false))
-					document.getElementById("item").innerHTML +=  "<option>"+ biblioteca.value.nome+"</option>";
+				if((biblioteca.value.tipo == 1) && (biblioteca.value.desejado == false)){
+					alert(biblioteca.primaryKey);
+					document.getElementById("item").innerHTML +=  "<option value= '"+biblioteca.primaryKey+"'>"+ biblioteca.value.nome+"</option>";
+				}
 				break;
 			case "musicas":
 				if((biblioteca.value.tipo == 2)&&(biblioteca.value.desejado == false))
-					document.getElementById("item").innerHTML += "<option>"+ biblioteca.value.nome+"</option>";
+					document.getElementById("item").innerHTML += "<option value= '"+biblioteca.primaryKey+"'>"+ biblioteca.value.nome+"</option>";
 				break;
 			case "videos":
 				if((biblioteca.value.tipo == 3)&&(biblioteca.value.desejado == false))
-					document.getElementById("item").innerHTML += "<option>"+ biblioteca.value.nome+"</option>";
+					document.getElementById("item").innerHTML += "<option value= '"+biblioteca.primaryKey+"'>"+ biblioteca.value.nome+"</option>";
 				break;
 						
 		} 
