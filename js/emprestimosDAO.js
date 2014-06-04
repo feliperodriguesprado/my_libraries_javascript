@@ -11,7 +11,6 @@ var emprestimosDAO = {
 		    var nome = document.getElementById("nome").value;
 		    var descric = document.getElementById("text").value;
 
-
 		    var dataUser = new Date(data);
 		    var diaUser = dataUser.getDate() + 1;
 		    var mesUser = dataUser.getMonth() + 1;
@@ -21,7 +20,6 @@ var emprestimosDAO = {
 		    var diaSys = dataSys.getDate();
 		    var mesSys = dataSys.getMonth() + 1;
 		    var anoSys = dataSys.getFullYear();
-
 
 		    if((bib=="") || (data=="") || (nome=="")){
 		    	document.getElementById('error').innerHTML = "Por favor preencha todos os campos";
@@ -58,8 +56,6 @@ var emprestimosDAO = {
 		    var nome = document.getElementById("nome");
 		    var descric = document.getElementById("text");
 
-		    alert(item.value);
-
 		    var dataUser = new Date(data.value);
 		    var diaUser = dataUser.getDate() + 1;
 		    var mesUser = dataUser.getMonth() + 1;
@@ -70,7 +66,6 @@ var emprestimosDAO = {
 		    var mesSys = dataSys.getMonth() + 1;
 		    var anoSys = dataSys.getFullYear();
 
-		   
 		    if((bib.value=="") || (data.value=="") || (nome.value=="")){
 		    	document.getElementById('error').innerHTML = "Preencha todos os campos";
 		    	 window.setTimeout( function() {
@@ -178,10 +173,17 @@ var emprestimosDAO = {
 
 		    data = new Date();
 		    dia = data.getDate();
-		    mes = data.getMonth();
+		    mes = data.getMonth()+1;
 		    ano = data.getFullYear();
 
-		    dataEncerramento = dia + '/' + mes + '/' + ano;
+		    if(mes<10){
+		    	mes = '0'+mes;
+		    }
+		    if(dia<10){
+		    	dia ='0'+dia;
+		    }
+
+		    dataEncerramento = ano + '-' + mes + '-' + dia;
 
 		    request.onerror = function(event){
 		        	alert("Houve um erro ao atualizar");
@@ -288,35 +290,39 @@ var emprestimosDAO = {
 	},
 
 	result:function(biblioteca,item,nome,ids){
-		var bancoDados = ConexaoBancoDados.bancoDados;
-		var transaction = bancoDados.transaction(["biblioteca"], "readonly");
-	    var objectUser = transaction.objectStore("biblioteca");
-	    var request = objectUser.get(item);
+
+			var codigo = parseInt (item);
+			var bancoDados = ConexaoBancoDados.bancoDados;
+	    	var objectStore = bancoDados.transaction(["biblioteca"], "readwrite").objectStore("biblioteca");
+	    	var request = objectStore.get(codigo);
+
+
 
 	    request.onsuccess=function(event){
-	    	var retorno = event.target.result;
-		    	if(biblioteca == 'musicas'){
 
-				var col1 = "<tr><td> " + item + "</td><td> " + nome + "</td>";
+	    	var retorno = request.result;
+
+		    if(biblioteca == 'musicas'){
+
+				var col1 = "<tr><td> " + retorno.nome + "</td><td> " + nome + "</td>";
 			    var col2 = "<td><input type='button' ";
-			    var col3 = " value='Excluir' id='d' onclick=\"javascript:emprestimosDAO.deletar("+ids+"); window.location.reload();\"></input> <input id='a' type='button' value='Alterar' onclick=\"javascript:emprestimosDAO.update("+ids+")\"></input> <input id='e' type='button' value='Encerrar' onclick=\"javascript:emprestimosDAO.concluir("+ids+"); window.location.reload();\"></input>";
+			    var col3 = " value='Excluir' id='d' onclick=\"javascript:emprestimosDAO.deletar("+ids+"); window.location.reload();\"></input> <input id='a' type='button' value='Alterar' onclick=\"javascript:emprestimosDAO.update("+ids+")\"></input> <input id='e' type='button' value='Encerrar' onclick=\"javascript:emprestimosDAO.concluir("+ids+")\"></input>";
 			    document.getElementById("tableMusicas").innerHTML += col1 + col2 + col3;
 			    document.getElementById("tableMusicas").innerHTML += "</td></tr>";
 
 			}else{
 				if(biblioteca == 'livros'){
 						 
-						 //alert(retorno.nome);
-						var col1 = "<tr><td> " + item + "</td><td> " + nome + "</td>";
+						var col1 = "<tr><td> " + retorno.nome + "</td><td> " + nome + "</td>";
 					    var col2 = "<td><input type='button' ";
-					    var col3 = " value='Excluir' id='d' onclick=\"javascript:emprestimosDAO.deletar("+ids+"); window.location.reload();\"></input> <input id='a' type='button' value='Alterar' onclick=\"javascript:emprestimosDAO.update("+ids+")\"></input> <input id='e' type='button' value='Encerrar' onclick=\"javascript:emprestimosDAO.concluir("+ids+"); window.location.reload();\"></input>";
+					    var col3 = " value='Excluir' id='d' onclick=\"javascript:emprestimosDAO.deletar("+ids+"); window.location.reload();\"></input> <input id='a' type='button' value='Alterar' onclick=\"javascript:emprestimosDAO.update("+ids+")\"></input> <input id='e' type='button' value='Encerrar' onclick=\"javascript:emprestimosDAO.concluir("+ids+")\"></input>";
 					    document.getElementById("tableLivros").innerHTML += col1 + col2 + col3;
 					    document.getElementById("tableLivros").innerHTML += "</td></tr>";
 
 				}else{
-						var col1 = "<tr><td> " + item + "</td><td> " + nome + "</td>";
+						var col1 = "<tr><td> " + retorno.nome + "</td><td> " + nome + "</td>";
 					    var col2 = "<td><input type='button' ";
-					    var col3 = " value='Excluir' id='d' onclick=\"javascript:emprestimosDAO.deletar("+ids+"); window.location.reload();\"></input> <input id='a' type='button' value='Alterar' onclick=\"javascript:emprestimosDAO.update("+ids+")\"></input> <input id='e' type='button' value='Encerrar' onclick=\"javascript:emprestimosDAO.concluir("+ids+"); window.location.reload();\"></input>";
+					    var col3 = " value='Excluir' id='d' onclick=\"javascript:emprestimosDAO.deletar("+ids+"); window.location.reload();\"></input> <input id='a' type='button' value='Alterar' onclick=\"javascript:emprestimosDAO.update("+ids+")\"></input> <input id='e' type='button' value='Encerrar' onclick=\"javascript:emprestimosDAO.concluir("+ids+")\"></input>";
 					    document.getElementById("tableVideos").innerHTML += col1 + col2 + col3;
 					    document.getElementById("tableVideos").innerHTML += "</td></tr>";
 				}

@@ -25,7 +25,6 @@ var emprestimosControle = {
 		switch(document.getElementById('biblioteca').value){
 			case "livros":
 				if((biblioteca.value.tipo == 1) && (biblioteca.value.desejado == false)){
-					alert(biblioteca.primaryKey);
 					document.getElementById("item").innerHTML +=  "<option value= '"+biblioteca.primaryKey+"'>"+ biblioteca.value.nome+"</option>";
 				}
 				break;
