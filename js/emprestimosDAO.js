@@ -238,11 +238,14 @@ var emprestimosDAO = {
 	    request.onsuccess = function(event) {
 	        
 	        var retorno = event.target.result;
+	        var flag = false;
+
 	        if(retorno) {
 	         
 	            var item = retorno.value.item;
 	            
 	            if(cod == item){
+	            	flag = true;
 	            	if(retorno.value.status == 0){
 	            		alert(biblioteca.primaryKey);
 	            		alert('No' + cod + ' ' + verifica);
@@ -252,9 +255,14 @@ var emprestimosDAO = {
 	            		alert('sim ' + cod+ ' ' + verifica);	
 	            		alert(n);
 	            	}        	
+	            } else {
+	            	alert("Não está emprestado");
+	            	flag = true;
 	            }
 
-	            retorno.continue();
+	            if (flag) {
+	            	retorno.continue();
+	            };
 	        }
 	    }
 	},
