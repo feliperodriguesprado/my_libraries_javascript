@@ -20,7 +20,14 @@ var emprestimosControle = {
 		});
 	},
 
+	
+
 	listarItens:function(biblioteca){
+
+		//alert(biblioteca.primaryKey);
+		//emprestimosDAO.select(biblioteca.primaryKey, biblioteca.value.nome);
+
+		emprestimosDAO.selectEmp(biblioteca);
 		
 		switch(document.getElementById('biblioteca').value){
 			case "livros":

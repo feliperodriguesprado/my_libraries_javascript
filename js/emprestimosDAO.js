@@ -212,10 +212,21 @@ var emprestimosDAO = {
 			
 	},
 
-	select:function(biblioteca){
+	selectEmp:function(biblioteca){
+		//alert(biblioteca.primaryKey);
+		//alert(biblioteca.value.nome);
+		//biblioteca.primaryKey = -1;
+		//alert(biblioteca.primaryKey);
+		//alert(biblioteca.value.nome);
+
+		var cod = biblioteca.primaryKey;
+		var n = biblioteca.value.nome;
+
+		var verifica = 0;
+
 
 		var bancoDados = ConexaoBancoDados.bancoDados;
-
+	    
 	    var transaction = bancoDados.transaction(["emprestimos"], "readonly");
 	    var objectUser = transaction.objectStore("emprestimos");
 	    var request = objectUser.openCursor();
@@ -223,18 +234,28 @@ var emprestimosDAO = {
 	    request.onerror = function(event) {
 	        alert("erro");
 	    }
+	    
 	    request.onsuccess = function(event) {
-	       var retorno = event.target.result;
+	        
+	        var retorno = event.target.result;
 	        if(retorno) {
-	        	var nome = retorno.value.item;
-
-	        	if(biblioteca==nome){
-	        		alert("ops");
-	        	}
+	         
+	            var item = retorno.value.item;
 	            
+	            if(cod == item){
+	            	if(retorno.value.status == 0){
+	            		alert(biblioteca.primaryKey);
+	            		alert('No' + cod + ' ' + verifica);
+	            	}else{
+	            		alert(biblioteca.primaryKey);
+	            		verifica = -1;
+	            		alert('sim ' + cod+ ' ' + verifica);	
+	            		alert(n);
+	            	}        	
+	            }
+
 	            retorno.continue();
 	        }
-	       // document.getElementById("item").innerHTML +=  "<option>"+ biblioteca.value.nome+"</option>";
 	    }
 	},
 
