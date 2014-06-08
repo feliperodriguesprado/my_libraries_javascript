@@ -62,39 +62,54 @@ var BibliotecaControle = {
         };
 
         if (biblioteca.value.tipo == 1) {
-                document.getElementById("dadosTabelaLivros").innerHTML += "<tr>" +
-                "<td colspan = \"1\">" + biblioteca.value.nome + "</td>" + 
-                "<td colspan = \"2\">" + classificacao +"</td>" +
-                "<td colspan = \"3\">" +
-                    "<input type = \"checkbox\" disabled " + desejado + ">" +
-                "<td colspan = \"4\">" +
-                    "<button id = \"botaoEditar\" type=\"button\" onClick = BibliotecaControle.botaoEditar(" + biblioteca.primaryKey + ");>Editar</button>" +
-                    "<button id = \"botaoExcluir\" type=\"button\" onClick = BibliotecaControle.botaoExcluir(" + biblioteca.primaryKey + ");>Excluir</button>" +
-                "</td></tr>";
+                document.getElementById("dadosTabelaLivros").innerHTML += 
+                "<tr>" +
+                    "<td colspan = \"1\">" + biblioteca.value.nome + "</td>" + 
+                    "<td class = \"classificacao\" colspan = \"2\">" + classificacao +"</td>" +
+                    "<td colspan = \"3\">" +
+                        "<input class = \"inputBibliotecaDesejada\" type = \"checkbox\" disabled " + desejado + ">" +
+                    "<td colspan = \"4\">" +
+                        "<button class = \"botaoEditar\" type=\"button\" onClick = BibliotecaControle.botaoEditar(" + biblioteca.primaryKey + ");>Editar</button>" +
+                        "<button class = \"botaoExcluir\" type=\"button\" onClick = BibliotecaControle.botaoExcluir(" + biblioteca.primaryKey + ");>Excluir</button>" +
+                    "</td>" +
+                "</tr>" +
+                
+                "<div id = " + biblioteca.primaryKey + ">" + 
+                "</div>";
         };
 
         if (biblioteca.value.tipo == 2) {
-                document.getElementById("dadosTabelaMusicas").innerHTML += "<tr>" +
-                "<td colspan = \"1\">" + biblioteca.value.nome + "</td>" + 
-                "<td colspan = \"2\">" + classificacao +"</td>" +
-                "<td colspan = \"3\">" +
-                    "<input type = \"checkbox\" disabled " + desejado + ">" +
-                "<td colspan = \"4\">" +
-                    "<button id = \"botaoEditar\" type=\"button\" onClick = BibliotecaControle.botaoEditar(" + biblioteca.primaryKey + ");>Editar</button>" +
-                    "<button id = \"botaoExcluir\" type=\"button\" onClick = BibliotecaControle.botaoExcluir(" + biblioteca.primaryKey + ");>Excluir</button>" +
-                "</td></tr>";
+                document.getElementById("dadosTabelaMusicas").innerHTML += 
+                "<tr>" +
+                    "<td colspan = \"1\">" + biblioteca.value.nome + "</td>" + 
+                    "<td class = \"classificacao\" colspan = \"2\">" + classificacao +"</td>" +
+                    "<td colspan = \"3\">" +
+                        "<input class = \"inputBibliotecaDesejada\" type = \"checkbox\" disabled " + desejado + ">" +
+                    "<td colspan = \"4\">" +
+                        "<button class = \"botaoEditar\" type=\"button\" onClick = BibliotecaControle.botaoEditar(" + biblioteca.primaryKey + ");>Editar</button>" +
+                        "<button class = \"botaoExcluir\" type=\"button\" onClick = BibliotecaControle.botaoExcluir(" + biblioteca.primaryKey + ");>Excluir</button>" +
+                    "</td>" +
+                "</tr>" +
+                
+                "<div id = " + biblioteca.primaryKey + ">" + 
+                "</div>";
         };
 
         if (biblioteca.value.tipo == 3) {
-                document.getElementById("dadosTabelaVideos").innerHTML += "<tr>" +
-                "<td colspan = \"1\">" + biblioteca.value.nome + "</td>" + 
-                "<td colspan = \"2\">" + classificacao +"</td>" +
-                "<td colspan = \"3\">" +
-                    "<input type = \"checkbox\" disabled " + desejado + ">" +
-                "<td colspan = \"4\">" +
-                    "<button id = \"botaoEditar\" type=\"button\" onClick = BibliotecaControle.botaoEditar(" + biblioteca.primaryKey + ");>Editar</button>" +
-                    "<button id = \"botaoExcluir\" type=\"button\" onClick = BibliotecaControle.botaoExcluir(" + biblioteca.primaryKey + ");>Excluir</button>" +
-                "</td></tr>";
+                document.getElementById("dadosTabelaVideos").innerHTML += 
+                "<tr>" +
+                    "<td colspan = \"1\">" + biblioteca.value.nome + "</td>" + 
+                    "<td class = \"classificacao\" colspan = \"2\">" + classificacao +"</td>" +
+                    "<td colspan = \"3\">" +
+                        "<input class = \"inputBibliotecaDesejada\" type = \"checkbox\" disabled " + desejado + ">" +
+                    "<td colspan = \"4\">" +
+                        "<button class = \"botaoEditar\" type=\"button\" onClick = BibliotecaControle.botaoEditar(" + biblioteca.primaryKey + ");>Editar</button>" +
+                        "<button class = \"botaoExcluir\" type=\"button\" onClick = BibliotecaControle.botaoExcluir(" + biblioteca.primaryKey + ");>Excluir</button>" +
+                    "</td>" +
+                "</tr>" +
+                
+                "<div id = " + biblioteca.primaryKey + ">" + 
+                "</div>";
         };
     },
 
@@ -111,6 +126,9 @@ var BibliotecaControle = {
 
                 if (nome.value != "" && tipo.value != "" && tipo.value != "0" && classificacao.value != "") {
                 	
+                    document.getElementById("tituloFormulario").innerHTML = "Cadastrar biblioteca";
+                    painelFormulario.style.border = "1px solid #bdbdbd";
+
                 	if (bibliotecaId.value == "") {
 	                	document.getElementById("dadosTabelaVideos").innerHTML = "";
                         document.getElementById("dadosTabelaLivros").innerHTML = "";
@@ -136,10 +154,10 @@ var BibliotecaControle = {
                 	};
 
                 } else {
-                	document.getElementById("painelAvisos").innerHTML = "<div id = \"painelAvisos\"> <span id = \"avisoCamposIncorretos\">Informe corretamente os campos acima</span></div>";
+                	document.getElementById("painelAvisos").innerHTML = "<div id = \"avisoCamposIncorretos\"> <span id = \"camposIncorretos\">Informe corretamente os campos acima</span></div>";
                     window.setTimeout( function() {
                     document.getElementById("painelAvisos").innerHTML = "";
-                } , 3000
+                } , 5000
             );
                 } ;
 
@@ -148,6 +166,16 @@ var BibliotecaControle = {
     },
 
     botaoEditar: function(bibliotecaid) {
+
+        
+        var nodes = document.getElementById("painelTabela").getElementsByTagName('*');
+        for(var i = 0; i < nodes.length; i++) {
+            nodes[i].disabled = true;
+        };
+
+        document.getElementById("tituloFormulario").innerHTML = "Alterar biblioteca";
+        painelFormulario.style.border = "2px solid red";
+
     	BibliotecaDAO.buscaBibliotecaPorPrimaryKey(bibliotecaid, function(biblioteca) {
     		BibliotecaControle.exibirDadosBibliotecaParaAlteracao(biblioteca);
     	});
@@ -163,10 +191,44 @@ var BibliotecaControle = {
 
 
     botaoExcluir: function(bibliotecaid) {
-        document.getElementById("dadosTabelaVideos").innerHTML = "";
-        document.getElementById("dadosTabelaLivros").innerHTML = "";
-        document.getElementById("dadosTabelaMusicas").innerHTML = "";
-    	BibliotecaDAO.excluirBiblioteca(bibliotecaid);
+
+        document.getElementById("botaoSalvar").disabled = true;
+
+        var nodes = document.getElementById("painelTabela").getElementsByTagName('*');
+        for(var i = 0; i < nodes.length; i++) {
+            nodes[i].disabled = true;
+        };
+
+        document.getElementById(bibliotecaid.toString()).innerHTML += 
+        "<div id = \"confirmacao\">" +
+        "<label>Tem certeza que deseja excluir essa biblioteca?</label>" +
+        "<div>" + 
+            "<button id = \"botaoConfirmacaoSim\" class = \"botaoConfirmacao\" type = \"button\">Sim</button>" +
+            "<button id = \"botaoConfirmacaoNao\" class = \"botaoConfirmacao\" type = \"button\">Não</button>" +
+        "</div>" +
+        "</div>";
+
+        botaoSim = document.getElementById("botaoConfirmacaoSim");
+        botaoNao = document.getElementById("botaoConfirmacaoNao");
+
+        botaoSim.addEventListener("click", function(){
+            document.getElementById(bibliotecaid.toString()).innerHTML = "";
+            
+            document.getElementById("dadosTabelaVideos").innerHTML = "";
+            document.getElementById("dadosTabelaLivros").innerHTML = "";
+            document.getElementById("dadosTabelaMusicas").innerHTML = "";
+            BibliotecaDAO.excluirBiblioteca(bibliotecaid);
+        });
+
+        botaoNao.addEventListener("click", function(){
+            document.getElementById(bibliotecaid.toString()).innerHTML = "";
+            document.getElementById("botaoSalvar").disabled = false;
+            
+            var nodes = document.getElementById("painelTabela").getElementsByTagName('*');
+            for(var i = 0; i < nodes.length; i++) {
+                nodes[i].disabled = false;
+            };
+        });
     }
 };
 

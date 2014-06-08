@@ -5,26 +5,50 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Bibliotecas</title>
 	<link rel="stylesheet" href="css/styleBibliotecas.css">
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300italic' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
-	<div>
-		<h1>My Libraries</h1>
-		<h2>Bibliotecas</h2>
+	<div id = "painelCabecalho">
 
+		<div id = "painelLogoCabecalho">
+			
+		</div>
 
-		<div id = "menuPrincipal">
+		<div id = "painelTituloCabecalho">
+			<h1>MyLibraries</h1>
+		</div>
+	
+
+		<div id = "painelUsuario">
+			<div id = "areaUsuarioBotoes">
+	
+				<a id = "botaoContaUsuario" class = "botao" href="contaUsuario.html">Conta</a>
+				<button id = "botaoSair" class = "botao" type="button">Sair</button>
+			</div>
+	
+			<div id = "areaUsuario">
+				
+			</div>
+		</div>
+	</div>
+
+	<div id = "menuPrincipal">
 		<a class = "menu" href="principal.html">Principal</a>
 		<a class = "menu" href="bibliotecas.html">Bibliotecas</a>
 		<a class = "menu" href="emprestimos.html">Empréstimos</a>
 		<a class = "menu" href="">Relatórios</a>
-		</div>
 	</div>
 
 	<div id = "painelPrincipal">
 
 		<div id = "painelFormulario">
+
+
+			<h2 id = "tituloFormulario">Cadastrar bibliotecas</h2>
+
+			<div id = "formulario">
+				
+			</div>
 
 			<form id = "formularioBiblioteca" action="" method = "POST" accept-charset = "utf-8">
 				<input id = "bibliotecaId" type="hidden">
@@ -46,25 +70,33 @@
 				
 				<input id = "desejado" type="checkbox">
 				<label for = "desejado">Adicionar a minha lista de bibliotecas desejadas</label>
-				<button id="botaoSalvar" class="botao" type="submit">Salvar</button>
-			</form>
+				
+				<div id = "painelAvisos">
+				
+				</div>
 
-			<div id = "painelAvisos">
-			</div>
+				<div class = "botoes">
+					<button id="botaoSalvar" class="botao" type="submit">Salvar</button>
+				</div>
+					
+			</form>
+		
 		</div>
 
-		<div id = "painelLista">
+		<div id = "painelTabela">
+			
+
 			<div id = "Livros">
-				<table id = "tabelaLivros">
+				<table id = "tabelaLivros" class = "tabela">
 					<thead>
 						<tr>
-							<th class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Livros</th>
+							<th id = "cabecalhoLivro" class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Livros</th>
 						</tr>
 						<tr>
-							<th class = "titulo" colspan="1" rowspan="" headers="">Nome</th>
-							<th class = "titulo" colspan="2" rowspan="" headers="" scope="">Classificação</th>
-							<th class = "titulo" colspan="3" rowspan="" headers="" scope="">Lista de bibliotecas desejadas</th>
-							<th class = "titulo" colspan="4" rowspan="" headers="" scope="">Ações</th>
+							<th class = "titulo titulo1" colspan="1" rowspan="" headers="">Nome</th>
+							<th class = "titulo titulo2" colspan="2" rowspan="" headers="" scope="">Classificação</th>
+							<th class = "titulo titulo3" colspan="3" rowspan="" headers="" scope="">Lista de bibliotecas desejadas</th>
+							<th class = "titulo titulo4" colspan="4" rowspan="" headers="" scope="">Ações</th>
 						</tr>
 					</thead>
 					<tbody id = "dadosTabelaLivros">
@@ -72,16 +104,16 @@
 				</table>
 			</div>
 			<div id = "Musicas">
-				<table id = "tabelaMusicas">
+				<table id = "tabelaMusicas" class = "tabela">
 					<thead>
 						<tr>
 							<th class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Músicas</th>
 						</tr>
 						<tr>
-							<th class = "titulo" colspan="1" rowspan="" headers="">Nome</th>
-							<th class = "titulo" colspan="2" rowspan="" headers="" scope="">Classificação</th>
-							<th class = "titulo" colspan="3" rowspan="" headers="" scope="">Lista de bibliotecas desejadas</th>
-							<th class = "titulo" colspan="4" rowspan="" headers="" scope="">Ações</th>
+							<th class = "titulo titulo1" colspan="1" rowspan="" headers="">Nome</th>
+							<th class = "titulo titulo2" colspan="2" rowspan="" headers="" scope="">Classificação</th>
+							<th class = "titulo titulo3" colspan="3" rowspan="" headers="" scope="">Lista de bibliotecas desejadas</th>
+							<th class = "titulo titulo4" colspan="4" rowspan="" headers="" scope="">Ações</th>
 						</tr>
 					</thead>
 					<tbody id = "dadosTabelaMusicas">
@@ -89,26 +121,30 @@
 				</table>
 			</div>
 			<div id = "Videos">
-				<table id = "tabelaVideos">
+				<table id = "tabelaVideos" class = "tabela">
 					<thead>
 						<tr>
 							<th class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Vídeos</th>
 						</tr>
 						<tr>
-							<th class = "titulo" colspan="1" rowspan="" headers="">Nome</th>
-							<th class = "titulo" colspan="2" rowspan="" headers="" scope="">Classificação</th>
-							<th class = "titulo" colspan="3" rowspan="" headers="" scope="">Lista de bibliotecas desejadas</th>
-							<th class = "titulo" colspan="4" rowspan="" headers="" scope="">Ações</th>
+							<th class = "titulo titulo1" colspan="1" rowspan="" headers="">Nome</th>
+							<th class = "titulo titulo2" colspan="2" rowspan="" headers="" scope="">Classificação</th>
+							<th class = "titulo titulo3" colspan="3" rowspan="" headers="" scope="">Lista de bibliotecas desejadas</th>
+							<th class = "titulo titulo4" colspan="4" rowspan="" headers="" scope="">Ações</th>
 						</tr>
 					</thead>
 					<tbody id = "dadosTabelaVideos">
 					</tbody>
 				</table>
 			</div>
+		
+
 		</div>	
 	</div>
 	<script src="js/ConexaoBancoDados.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="js/BibliotecaDAO.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="js/UsuarioDAO.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="js/PrincipalControle.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="js/BibliotecaControle.js" type="text/javascript" charset="utf-8" async defer></script>
 </body>
 </html>

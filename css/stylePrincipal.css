@@ -1,136 +1,129 @@
+/***************************************************************************
+CSS padrão para todas as páginas
+****************************************************************************/
+
 * {
-  font-family: Lucida, sans-serif;
-    margin: 0;
-    padding: 0;
-    border-spacing: 0;
-}
-
-.titulo {
-  padding: 8px;
-  /*border-left: 1px solid #696969;*/
-  background-color: #BEBEBE;
-  /*border-bottom: 1px solid #000000;*/
-  font-weight: bold;
-}
-
-.titulo:first-child {
-  border-left-width: 0;
-}
-
-.cabecalho {
-  padding: 10px;
-  text-align: center;
-  /*background-color: #000000;*/
-  border-top: 1px solid #BEBEBE;
-  font-size: 20px;
-}
-
-.cabecalho:bottom-child{
-  border-radius: 0px;
+  border-spacing: 0;
+  font-family: Calibri Light;
+  margin: 0px;
+  padding: 0px;
 }
 
 body {
-    background-image: url(images/fundoLogin2.jpg);
-    background-repeat: no-repeat;
+  background-color: #F5F5F5;
 }
 
 h1 {
-    color: white;
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 50px;
-    font-style: italic;
-    font-weight: normal;
-    opacity: 0.4;
-    margin-left: 30px;
-    margin-top: 10px;
+  color: #696969;
+  font-size: 36px;
+  font-weight: normal;
+    
 }
 
-h2 {
-    color: white;
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 30px;
-    font-style: italic;
-    font-weight: normal;
-    opacity: 0.4;
-    margin-left: 30px;
-    margin-top: 10px;
-    margin-bottom: 20px;
+#painelCabecalho {
+  height: 30px;
+  margin: 10px auto;
+  padding: 20px;
+  width: 790px;
 }
 
-
-#painelPrincipal {
-  background-color: #FFFFFF;
-  margin: 20px auto;
-  width: 1000px;
-  padding: 30px;
-  border-radius: 4px;
-  opacity: 0.8;
+@media screen and (min-width: 800px) {
+  #painelCabecalho {   
+    height: 30px;
+    margin: 10px auto;
+    padding: 20px;
+    width: 95%;
+  }
 }
 
-#menuPrincipal {
-  background-color: #FFFFFF;
-  opacity: 0.6;
-  /*margin: 30px auto;*/
-  padding: 14px;
-  font-weight: bolder;
-
+#painelLogoCabecalho{
+  background-image: url(images/logoCabecalho.png);
+  background-repeat: no-repeat;
+  float: left;
+  height: 60px;
+  width: 50px;
 }
 
-.menu {
-  padding: 14px;
-  text-align: center;
-  text-decoration: none;
-  color: #000000;
-  opacity: 0.8;
+#painelTituloCabecalho{
+  float: left;
+  width: 200px;
 }
-
-.menu:hover {
-    background-color: #BEBEBE;
-    cursor: pointer;
-}
-
 
 #painelUsuario {
-  float: right;
-  color: #000000;
-  padding: 10px;
   background-color: #FFFFFF;
-  border-radius: 4px;
-  opacity: 0.6;
-  width: 400px;
-  margin-right: 20px;
-  margin-top: -60px;
+  border: 1px solid #bdbdbd;
+  color: #696969;
+  float: right;
+  padding: 5px;
+  margin-right: -20px;
 }
 
 #areaUsuario {
-  margin-top: 5px;
   float: right;
+  margin-left: 10px;
   margin-right: 20px;
-  font-weight: bolder;
-  opacity: 0.8;
+  padding: 5px;
+
 }
 
 #areaUsuarioBotoes {
   float: right;
 }
 
-.botao {
-    background-color: #696969;
-    border: 1px solid #696969;
-    border-radius: 4px;
-    color: #FFFFFF;
-    font-size: 12px;
-    margin-right: 5px;
-    margin-left: 6px;
-    opacity: 0.5;
-    padding: 5px;
-    text-align: center;
-    text-decoration: none;
+#botaoContaUsuario, #botaoSair {
+  border-radius: 2px;
+  color: #FFFFFF;
+  cursor: pointer;
+  float: left;
+  font-size: 14px;
+  margin-left: 6px;
+  margin-right: 5px;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
 }
 
-.botao:hover {
-    border: 1px solid #696969;
-    background-color: #696969;
-    color: #FFFFFF;
-    cursor: pointer;
+#botaoContaUsuario {
+  background-color: #00008B;
+  border: 1px solid #00008B;
 }
+
+#botaoContaUsuario:hover {
+  background-color: #0000CD;
+  border: 1px solid #0000CD;
+}
+
+#botaoSair {
+  background-color: #8B0000;
+  border: 1px solid #8B0000;
+}
+
+#botaoSair:hover {
+  background-color: #C60000;
+  border: 1px solid #C60000;
+}
+
+#menuPrincipal {
+  background-color: #F5F5F5;
+  border-top: 1px solid #bdbdbd;
+  padding: 10px;
+}
+
+.menu {
+  color: #696969;
+  font-size: 18px;
+  font-weight: bolder;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.menu:hover {
+  color: #4F4F4F;
+  cursor: pointer;
+  font-weight: bolder;
+}
+
+/****************************************************************************
+Fim do CSS padrão para todas as páginas
+****************************************************************************/

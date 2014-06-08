@@ -4,47 +4,45 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
-	<title>My Libraries</title>
-	<link rel="stylesheet" href="css/styleLogin.css">
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300italic' rel='stylesheet' type='text/css'>
+	<title>MyLibraries</title>
+	<link rel="stylesheet" href="css/styleIndex.css">
 </head>
 <body>
 
 	<div id = "painelPrincipal">
 
-		<h1>My Libraries</h1>
+		<h1>MyLibraries</h1>
 
 		<form id="formularioLogin" action="" method="POST" accept-charset="utf-8">
 			
 			<div id = "painelLogin">
 
 				<h2>Acesse sua conta</h2>
-
-				<!-- <label for="email">E-mail</label> -->
+				
 				<input id="email" type="email" placeholder="E-mail" title="Informe seu e-mail" 
 					   pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$"
 					   required="required">
 
-				<!-- <label for="senha">Senha</label> -->
 				<input id="senha" type="password" placeholder="Senha" title="Informe sua senha" required="required">
 				
-				<div class="botoes">
-					<button id="botaoAcessar" class="botao" type="submit">Acessar</button>
-					
-					<a id="botaoCadastrar" class="botao" href="cadastroUsuario.html" >Cadastrar-se</a>
-				</div>
-
 				<div id = "painelAvisos">
 
 				</div>
+				
+				<div class="botoes">
 
-			</div>
-
-			<div id = "logoLogin">
+					<button id="botaoAcessar" class="botao" type="submit">Acessar</button>
 					
+					<a id="linkCadastrar" class="botao" href="cadastroUsuario.html" >Criar nova conta</a>
+				</div>
+
 			</div>
 
 		</form>
+
+		<div id = "painelLogo">
+					
+		</div>
 
 	</div>
 

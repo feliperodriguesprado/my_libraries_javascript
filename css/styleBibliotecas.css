@@ -1,228 +1,372 @@
+/***************************************************************************
+CSS padrão para todas as páginas
+****************************************************************************/
+
 * {
-  font-family: Lucida, sans-serif;
-  margin: 0;
-  padding: 0;
   border-spacing: 0;
-  font-weight: normal;
-  font-size: 12px;
-}
-
-
-table {
-	/*border: 1px solid #000000;*/
-	border-spacing: 0;
-	border-radius: 4px;
-	width: 1000px;
-	margin: 30px auto;
-	text-align: left;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 14px;
-}
-
-table:last-child {
-	border-bottom-width: 0;
-}
-
-td {
-	/*border-left: 1px solid #696969;*/
-	/*border-bottom: 1px solid #000000;*/
-	width: 200px;
-	padding: 5px;
-}
-
-td:first-child {
-	border-left-width: 0;
-
-}
-
-tr {
-  /*background-color: #000000;*/
-  /*color: #FFFFFF;*/
-}
-
-tr:nth-child(2n-0) {
-	background-color: #E8E8E8;
-}
-
-.titulo {
-	padding: 8px;
-	/*border-left: 1px solid #696969;*/
-  background-color: #BEBEBE;
-	/*border-bottom: 1px solid #000000;*/
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.titulo:first-child {
-	border-left-width: 0;
-}
-
-.cabecalho {
-	padding: 10px;
-	text-align: center;
-  /*background-color: #000000;*/
-  border-top: 1px solid #BEBEBE;
-	font-size: 20px;
-}
-
-.cabecalho:bottom-child{
-  border-radius: 0px;
+  font-family: Calibri Light;
+  margin: 0px;
+  padding: 0px;
+  color: #696969;
 }
 
 body {
-    background-image: url(images/fundoLogin2.jpg);
-    /*background-repeat: no-repeat;*/
+  background-color: #F5F5F5;
 }
 
 h1 {
-    color: white;
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 50px;
-    font-style: italic;
-    font-weight: normal;
-    opacity: 0.4;
-    margin-left: 30px;
-    margin-top: 10px;
+  color: #696969;
+  font-size: 36px;
+  font-weight: normal;
+    
 }
 
-h2 {
-    color: white;
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 30px;
-    font-style: italic;
-    font-weight: normal;
-    opacity: 0.4;
-    margin-left: 30px;
-    margin-top: 10px;
-    margin-bottom: 20px;
+#painelCabecalho {
+  height: 30px;
+  margin: 10px auto;
+  padding: 20px;
+  width: 790px;
 }
 
+@media screen and (min-width: 800px) {
+  #painelCabecalho {   
+    height: 30px;
+    margin: 10px auto;
+    padding: 20px;
+    width: 95%;
+  }
+}
 
-#painelPrincipal {
+#painelLogoCabecalho{
+  background-image: url(images/logoCabecalho.png);
+  background-repeat: no-repeat;
+  float: left;
+  height: 60px;
+  width: 50px;
+}
+
+#painelTituloCabecalho{
+  float: left;
+  width: 200px;
+}
+
+#painelUsuario {
   background-color: #FFFFFF;
-  margin: 20px auto;
-  width: 1000px;
-  padding: 30px;
-  border-radius: 4px;
-  opacity: 0.6;
-}
-
-#menuPrincipal {
-  background-color: #FFFFFF;
-  opacity: 0.6;
-  /*margin: 30px auto;*/
-  padding: 14px;
-}
-
-.menu {
-  padding: 14px;
-  text-align: center;
-  text-decoration: none;
-  color: #000000;
-  font-weight: bolder;
-  opacity: 0.8;
-}
-
-.menu:hover {
-    background-color: #BEBEBE;
-    cursor: pointer;
+  border: 1px solid #bdbdbd;
+  color: #696969;
+  float: right;
+  padding: 5px;
+  margin-right: -20px;
 }
 
 #areaUsuario {
-  margin-top: 5px;
   float: right;
+  margin-left: 10px;
   margin-right: 20px;
-  opacity: 0.5;
+  padding: 5px;
+
 }
 
 #areaUsuarioBotoes {
   float: right;
 }
 
-.botao {
-    background-color: #696969;
-    border: 1px solid #696969;
-    border-radius: 4px;
-    color: #FFFFFF;
-    font-size: 12px;
-    margin-right: 5px;
-    opacity: 0.5;
-    padding: 5px;
-    text-align: center;
-    text-decoration: none;
+#botaoContaUsuario, #botaoSair {
+  border-radius: 2px;
+  color: #FFFFFF;
+  cursor: pointer;
+  float: left;
+  font-size: 14px;
+  margin-left: 6px;
+  margin-right: 5px;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
 }
 
-.botao:hover {
-    border: 1px solid #696969;
-    background-color: #696969;
-    color: #FFFFFF;
-    cursor: pointer;
+#botaoContaUsuario {
+  background-color: #00008B;
+  border: 1px solid #00008B;
 }
+
+#botaoContaUsuario:hover {
+  background-color: #0000CD;
+  border: 1px solid #0000CD;
+}
+
+#botaoSair {
+  background-color: #8B0000;
+  border: 1px solid #8B0000;
+}
+
+#botaoSair:hover {
+  background-color: #C60000;
+  border: 1px solid #C60000;
+}
+
+#menuPrincipal {
+  background-color: #F5F5F5;
+  border-top: 1px solid #bdbdbd;
+  padding: 10px;
+}
+
+.menu {
+  color: #696969;
+  font-size: 18px;
+  font-weight: bolder;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.menu:hover {
+  color: #4F4F4F;
+  cursor: pointer;
+  font-weight: bolder;
+}
+
+/****************************************************************************
+Fim do CSS padrão para todas as páginas
+****************************************************************************/
+
+
+/* Painel principal */
+
+#painelPrincipal {
+  margin: 10px auto;
+  width: 1300px;
+}
+
+@media screen and (min-width: 1315px) {
+  #painelPrincipal {   
+    margin: 10px auto;
+    width: 98%;
+  }
+}
+
+
+/****************************************************************************
+CSS Formulário
+****************************************************************************/
 
 #painelFormulario {
-  width: 400px;
+  background-color: white;
+  border: 1px solid #bdbdbd;
+  float: left;
+  margin-right: 20px;
+  margin-top: 30px;
+  padding: 5px;
+  position: absolute;
+  width: 300px;
+}
+
+h2 {
+    color: #696969;
+    font-size: 20px;
+    font-weight: normal;
+    margin-bottom: 30px;
 }
 
 #painelFormulario input[type = "text"], select{
+  border: 1px solid #D3D3D3;
   display: block;
-  padding: 5px;
   margin-bottom: 10px;
+  padding: 5px;
+}
+
+
+#nome {
+  width: 269px;
+}
+
+#tipo, #classificacao {
+  width: 281px;
+}
+
+#painelFormulario {
+  font-size: 14px;
+  padding: 10px;
+}
+
+#painelAvisos {
+  height: 20px;
+  margin-top: 20px;
+}
+
+#avisoCamposIncorretos{
+  background-color: #800000;
+  border: 1px solid #800000;
+  text-align: center;
+  width: 280px;
+}
+
+#camposIncorretos {
+  color: #FFFFFF;
+  display: inline-block;
+  font-size: 14px;
+  padding: 3px;
+}
+
+.botoes{
+  margin-top: 15px;
 }
 
 #botaoSalvar {
+  background-color: #00008B;
+  border: 1px solid #00008B;
+  border-radius: 2px;
+  color: #FFFFFF;
+  cursor: pointer;
+  float: left;
+  font-size: 14px;
+  margin-right: 5px;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+}
+
+#botaoSalvar:hover {
+  background-color: #0000CD;
+  border: 1px solid #0000CD;
+}
+
+/****************************************************************************
+CSS Tabela
+****************************************************************************/
+
+#painelTabela {
+  background-color: white;
+  border: 1px solid #bdbdbd;
+  float: right;
+  margin: 10px auto;
+  margin-top: 30px;
+  padding: 5px;
+  position: relative;
+  width: 73%;
+}
+
+.tabela {
+  font-family: Calibri Light;
+  margin: 10px auto;
+  margin-bottom: 40px;
+  text-align: left;
+  width: 98%;
+}
+
+.cabecalho {
+  border-top: 1px solid #bdbdbd;
+  font-size: 20px;
+  padding: 10px;
+  text-align: center;
+}
+
+#cabecalhoLivro {
+  border-top: none;
+}
+
+
+.titulo {
+  background-color: #E8E8E8;
+  font-size: 14px; 
+  padding: 8px;
+}
+
+.inputBibliotecaDesejada {
+  margin-left: 100px;
+}
+
+.titulo1 {
+  width: 400px;
+}
+
+.titulo2 {
+  width: 150px;
+}
+
+.titulo4 {
+  text-indent: 40px;
+}
+
+td {
+	padding: 5px;
+}
+
+tr:nth-child(2n-0) {
+  background-color: #F5F5F5;
+}
+
+.botaoSalvar {
   display: block;
   margin-top: 10px;
 }
 
-#botaoEditar {
+.botaoEditar {
   background-color: #006400;
   border: 1px solid #006400;
-  border-radius: 4px;
-  padding: 5px;
-  margin-right: 5px;
+  border-radius: 2px;
   color: #FFFFFF;
   cursor: pointer;
+  float: right;
+  font-size: 14px;
+  margin-right: 5px;
+  padding: 5px;
 }
 
-#botaoEditar:hover {
+.botaoEditar:hover {
   background-color: #008B00;
   border: 1px solid #008B00;
-  border-radius: 4px;
-  padding: 5px;
-  margin-right: 5px;
+  border-radius: 2px;
   color: #FFFFFF;
   cursor: pointer;
+  font-size: 14px;
+  margin-right: 5px;
+  padding: 5px;
 }
 
-#botaoExcluir {
+.botaoExcluir {
   background-color: #8B0000;
   border: 1px solid #8B0000;
-  border-radius: 4px;
-  padding: 5px;
+  border-radius: 2px;
   color: #FFFFFF;
   cursor: pointer;
+  float: right;
+  font-size: 14px;
+  margin-right: 10px;
+  padding: 5px;
 }
 
-#botaoExcluir:hover {
+.botaoExcluir:hover {
   background-color: #C60000;
   border: 1px solid #C60000;
-  border-radius: 4px;
-  padding: 5px;
+  border-radius: 2px;
   color: #FFFFFF;
   cursor: pointer;
+  font-size: 14px;
+  padding: 5px;
 }
 
-#avisoCamposIncorretos {
-    background-color: #800000;
-    border-color: #800000;
-    border-radius: 5px;
-    color: #FFFFFF;
-    display: block;
-    margin-top: 20px;
-    text-align: center;
-    width: 300px;
-    font-size: 12px;
-    font-style: italic;
-    opacity: 0.8;
-    padding: 10px;
+#confirmacao {
+  text-align: center;
+  margin-left: 62%;
+  background-color: #F5F5F5;
+  border: 1px solid #bdbdbd;
+  width: 100%;
+  padding: 5px;
+}
+
+#confirmacao label {
+  font-size: 14px;
+}
+
+.botaoConfirmacao {
+  margin-top: 10px;
+  background-color: #00008B;
+  border: 1px solid #00008B;
+  border-radius: 2px;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 5px;
+  padding: 5px;
+  width: 50px;
 }
