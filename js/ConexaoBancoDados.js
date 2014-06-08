@@ -2,7 +2,7 @@ var ConexaoBancoDados = {
 
     bancoDados: null,
     nomeBancoDados: "mylibraries",
-    versaoBancoDados: 2,
+    versaoBancoDados: 1,
 
     abrirBancoDados: function(callback) {
 

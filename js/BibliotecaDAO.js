@@ -152,9 +152,16 @@ var BibliotecaDAO = {
 
             if (tipo == null) {
                 ConexaoBancoDados.bancoDados.close();
+                /*document.getElementById("bibliotecaId").value = "";
+                document.getElementById("nome").value = "";
+                document.getElementById("tipo").value = "0";
+                document.getElementById("classificacao").value = "0";
+                document.getElementById("desejado").checked = false;
+                document.getElementById("nome").focus();
                 BibliotecaDAO.obterBibliotecas(function(biblioteca) {
                     BibliotecaControle.listarBibliotecas(biblioteca);
-                });                
+                });*/                
+                window.location = "bibliotecas.html";
             };
         };
     }
