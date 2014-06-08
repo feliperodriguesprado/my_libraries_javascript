@@ -86,6 +86,9 @@ var emprestimosDAO = {
 				    var emp = {biblioteca: bib.value, item: item.value, data: data.value, nome: nome.value, descricao: descric.value, status: 1};
 				    var request = objectUser.add(emp);
 
+				    var opcao = 0;
+				    emprestimosDAO.atualzarVerifica(item.value, opcao);
+
 				    bib.value = 0;
 				    item.value = 0;
 				    data.value = "";
@@ -114,12 +117,45 @@ var emprestimosDAO = {
 	    request.onsuccess = function(event){
 	        var data = request.result;
 	        document.getElementById("biblioteca").value = data.biblioteca;
-	        document.getElementById("item").value = data.item;
+	        //document.getElementById("item").value = data.item;
+	        var cod = parseInt(data.item);
+	        var obUser = bancoDados.transaction(["biblioteca"], "readwrite").objectStore("biblioteca");
+	        var req = obUser.get(cod);
+
+	        req.onsuccess = function(event){
+	        	var retorno = request.result;
+	        	document.getElementById("item").value = retorno.nome;
+	        }
+
+
 	        document.getElementById("data").value = data.data;
 	        document.getElementById("nome").value = data.nome;
 	        document.getElementById("text").value = data.descricao;
 	        document.getElementById("cod").value = ids;
 	    }
+	},
+
+	atualzarVerifica:function(item, opcao){
+			var codigo = parseInt (item);
+			var bancoDados = ConexaoBancoDados.bancoDados;
+	    	var objectStore = bancoDados.transaction(["biblioteca"], "readwrite").objectStore("biblioteca");
+	    	var request = objectStore.get(codigo);
+			
+	        request.onerror = function(event){
+	        	alert("Houve um erro ao atualizar");
+	        }
+
+	        request.onsuccess = function(event){
+	        
+	        	var datas = request.result;
+	        	
+	        	if(opcao == 0)
+	        		datas.verifica = -1;
+	        	else
+	        		datas.verifica = 1;
+	        	
+	        	var requestUpdate=objectStore.put(datas,codigo);
+	        }
 	},
 
 	atualizar:function(ids,bib,item,data,nome,descric){
@@ -197,6 +233,8 @@ var emprestimosDAO = {
 		        	datas.dataEncerramento = dataEncerramento;
 		        	
 		        	var requestUpdate=objectStore.put(datas,codigo);
+		        	var opcao = 1;
+				    emprestimosDAO.atualzarVerifica(datas.item, opcao);
 		        	requestUpdate.onerror=function(event){
 		        		alert("Não foi possivel concluir o emprestimo");
 		        	}
@@ -247,16 +285,12 @@ var emprestimosDAO = {
 	            if(cod == item){
 	            	flag = true;
 	            	if(retorno.value.status == 0){
-	            		alert(biblioteca.primaryKey);
-	            		alert('No' + cod + ' ' + verifica);
+	            		alert('o item ' + n + ' foi emprestado mas foi devolvido');
 	            	}else{
-	            		alert(biblioteca.primaryKey);
-	            		verifica = -1;
-	            		alert('sim ' + cod+ ' ' + verifica);	
-	            		alert(n);
+	            		alert('o item ' + n + ' foi emprestado');
 	            	}        	
 	            } else {
-	            	alert("Não está emprestado");
+	            	alert('o item ' + n + ' não foi emprestado');
 	            	flag = true;
 	            }
 
@@ -305,6 +339,8 @@ var emprestimosDAO = {
 		if(decisao){
 			var bancoDados = ConexaoBancoDados.bancoDados;
 		    var request = bancoDados.transaction(["emprestimos"], "readwrite").objectStore("emprestimos").delete(id);
+		    //var opcao = 1;
+			//emprestimosDAO.atualzarVerifica(id, opcao);
 		    request.onsuccess = function(event){
 		       document.getElementById('error').innerHTML = "Empréstimo excluido com sucesso";
 		    		window.setTimeout( function() {

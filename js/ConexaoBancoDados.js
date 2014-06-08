@@ -54,6 +54,7 @@ var ConexaoBancoDados = {
                 objectBiblioteca.createIndex("nome", "nome", {unique: false});
                 objectBiblioteca.createIndex("classificacao", "classificacao", {unique: false});
                 objectBiblioteca.createIndex("desejado", "desejado", {unique: false});
+                objectBiblioteca.createIndex("verifica", "verifica", {unique: false});
                 
 
                 console.log("Tabela biblioteca criada.");
