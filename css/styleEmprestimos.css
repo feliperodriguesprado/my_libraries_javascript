@@ -199,6 +199,57 @@ h2 {
   margin-top: 15px;
 }
 
+#biblioteca, #item{
+  width: 280px;
+}
+
+#nome{
+  width: 265px;
+}
+
+#item, #data, #nome, #biblioteca{
+  margin-bottom: 15px;
+}
+
+#text{
+  margin-top: 15px;
+}
+
+#salvar {
+  background-color: #00008B;
+  border: 1px solid #00008B;
+  border-radius: 2px;
+  color: #FFFFFF;
+  float: left;
+  font-size: 14px;
+  margin-right: 5px;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+}
+
+#salvar:hover {
+  background-color: #0000CD;
+  border: 1px solid #0000CD;
+}
+
+#limp {
+  background-color: #8B0000;
+  border: 1px solid #8B0000;
+  padding: 5px;
+  color: #FFFFFF;
+  border-radius: 2px;
+ 
+}
+
+#limp:hover {
+  background-color: #C60000;
+  border: 1px solid #C60000;
+  padding: 5px;
+  color: #FFFFFF;
+  
+}
+
 
 
 

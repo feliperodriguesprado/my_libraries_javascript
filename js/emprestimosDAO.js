@@ -233,7 +233,7 @@ var emprestimosDAO = {
 		        	datas.dataEncerramento = dataEncerramento;
 		        	
 		        	var requestUpdate=objectStore.put(datas,codigo);
-		        	var opcao = 1;
+		        	var opcao = 0;
 				    emprestimosDAO.atualzarVerifica(datas.item, opcao);
 		        	requestUpdate.onerror=function(event){
 		        		alert("Não foi possivel concluir o emprestimo");
@@ -339,7 +339,7 @@ var emprestimosDAO = {
 		if(decisao){
 			var bancoDados = ConexaoBancoDados.bancoDados;
 		    var request = bancoDados.transaction(["emprestimos"], "readwrite").objectStore("emprestimos").delete(id);
-		    var opcao = 1;
+		    var opcao = 0;
 			emprestimosDAO.atualzarVerifica(item, opcao);
 		    request.onsuccess = function(event){
 		       document.getElementById('error').innerHTML = "Empréstimo excluido com sucesso";
