@@ -6,7 +6,8 @@ var emprestimosDAO = {
  		
  		if(verifica != ""){
  			var bib = document.getElementById("biblioteca").value;
-		    var item = document.getElementById("item").value;
+		    //var item = document.getElementById("item").value;
+
 		    var data = document.getElementById("data").value;
 		    var nome = document.getElementById("nome").value;
 		    var descric = document.getElementById("text").value;
@@ -117,7 +118,8 @@ var emprestimosDAO = {
 	    request.onsuccess = function(event){
 	        var data = request.result;
 	        document.getElementById("biblioteca").value = data.biblioteca;
-	        //document.getElementById("item").value = data.item;
+	        //emprestimosDAO.selectEmp(data.item);
+	        document.getElementById("item").value = data.item;
 	        var cod = parseInt(data.item);
 	        var obUser = bancoDados.transaction(["biblioteca"], "readwrite").objectStore("biblioteca");
 	        var req = obUser.get(cod);
@@ -259,55 +261,17 @@ var emprestimosDAO = {
 			
 	},
 
-	selectEmp:function(biblioteca){
-		//alert(biblioteca.primaryKey);
-		//alert(biblioteca.value.nome);
-		//biblioteca.primaryKey = -1;
-		//alert(biblioteca.primaryKey);
-		//alert(biblioteca.value.nome);
-
-		var cod = biblioteca.primaryKey;
-		var n = biblioteca.value.nome;
-
-		var verifica = 0;
-
-
+	selectEmp:function(item){
+		
+		var codigo = parseInt (item);
 		var bancoDados = ConexaoBancoDados.bancoDados;
-	    
-	    var transaction = bancoDados.transaction(["emprestimos"], "readonly");
-	    var objectUser = transaction.objectStore("emprestimos");
-	    var request = objectUser.openCursor();
-
-	    request.onerror = function(event) {
-	        alert("erro");
+	    var objectStore = bancoDados.transaction(["biblioteca"], "readwrite").objectStore("biblioteca");
+	    var request = objectStore.get(codigo);
+	    request.onsuccess=function(event){
+	    	var retorno = request.result;
+	    	document.getElementById("item").value = retorno.nome;
 	    }
-	    
-	    request.onsuccess = function(event) {
-	        
-	        var retorno = event.target.result;
-	        var flag = false;
 
-	        if(retorno) {
-	         
-	            var item = retorno.value.item;
-	            
-	            if(cod == item){
-	            	flag = true;
-	            	if(retorno.value.status == 0){
-	            		alert('o item ' + n + ' foi emprestado mas foi devolvido');
-	            	}else{
-	            		alert('o item ' + n + ' foi emprestado');
-	            	}        	
-	            } else {
-	            	alert('o item ' + n + ' não foi emprestado');
-	            	flag = true;
-	            }
-
-	            if (flag) {
-	            	retorno.continue();
-	            };
-	        }
-	    }
 	},
 
 	selectAll:function(){
@@ -373,22 +337,7 @@ var emprestimosDAO = {
 		    	 },1000
 		    );	
 		});
-		// if(decisao){
-		// 	var bancoDados = ConexaoBancoDados.bancoDados;
-		//     var request = bancoDados.transaction(["emprestimos"], "readwrite").objectStore("emprestimos").delete(id);
-		//     var opcao = 0;
-		// 	emprestimosDAO.atualzarVerifica(item, opcao);
-		//     request.onsuccess = function(event){
-		//        document.getElementById('message').innerHTML = "<p id='sucess'>Empréstimo excluido com sucesso</p>";
-		//     		window.setTimeout( function() {
-		//     	 		window.location.reload();
-		//     	 },1000
-		//     	 );	 
-		//     } 
-		//     request.onerror = function(event){
-		//         alert("erro");
-		//     }
-		// }
+		
 	},
 
 	result:function(biblioteca,item,nome,ids){

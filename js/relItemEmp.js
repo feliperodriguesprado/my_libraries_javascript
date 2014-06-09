@@ -1,26 +1,38 @@
 var relItemEmp = {
 
+	init:function(){
+		// var botao = document.getElementById('aplicar');
+		// botao.addEventListener('click', function(){
+		// 	relItemEmp.btnAplicar();
+		// });
+		ConexaoBancoDados.abrirBancoDados(function(){
+			var botao = document.getElementById('aplicar');
+			botao.addEventListener('click', function(){
+			relItemEmp.btnAplicar();
+		 });
+		});
+	},
 
 	btnAplicar:function(){
-
+		
 		var bancoDados = ConexaoBancoDados.bancoDados;
 
-		var botao = document.getElementById('aplicar');
-
-		botao.addEventListener('click', function(){
-
 			var dataInicial = document.getElementById('inicio').value;
-			var dataIni = new Date(dataInicial);
-		    var diaIni = dataIni.getDate() + 1;
-		    var mesIni = dataIni.getMonth() + 1;
-			var anoIni = dataIni.getFullYear();
+			var dataInicial = new Date();
+		    var diaIni = dataInicial.getDate();
+		    var mesIni = dataInicial.getMonth()+1;
+			var anoIni = dataInicial.getFullYear();
+
+			var inicio = anoIni + '-' + mesIni + '-' + diaIni;
+			//alert(inicio);
 			
 			var dataFinal = document.getElementById('fim').value;
-			var dataFim = new Date(dataInicial);
-		    var diaFim = dataFim.getDate() + 1;
-		    var mesFim = dataFim.getMonth() + 1;
-			var anoFim = dataFim.getFullYear();
+			var dataFinal = new Date();
+		    var diaFim = dataFinal.getDate();
+		    var mesFim = dataFinal.getMonth()+ 1;
+			var anoFim = dataFinal.getFullYear();
 
+			var fim = anoFim + '-' + mesFim + '-' + diaFim;
 
 			var transaction = bancoDados.transaction(["emprestimos"], "readonly");
 		    var objectUser = transaction.objectStore("emprestimos");
@@ -38,10 +50,10 @@ var relItemEmp = {
 		            var item = retorno.value.item;
 		            var name = retorno.value.nome;
 		            var ids = retorno.key;
-		            var dIini = retorno.value.data;
+		            var dIni = retorno.value.data;
 		            var dFim = retorno.value.dataEncerramento;
 
-		            if((dataIni>=dIini) && (dataFim<=dFim)){
+		            if((inicio>=dIni) && (fim<=dIni)){
 		            	alert(name);
 		            }
 
@@ -49,8 +61,7 @@ var relItemEmp = {
 		        }
 		    }
 
-		});
-
 	}
 
-}
+};
+relItemEmp.init();
