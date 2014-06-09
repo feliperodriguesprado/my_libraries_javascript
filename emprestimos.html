@@ -9,22 +9,46 @@
 </head>
 <body>
 
-	<div>
-		<h1>My Libraries</h1>
-		<h2>Empréstimos</h2>
+	<div id = "painelCabecalho">
 
+		<div id = "painelLogoCabecalho">
+			
+		</div>
 
-		<div id = "menuPrincipal">
+		<div id = "painelTituloCabecalho">
+			<h1>MyLibraries</h1>
+		</div>
+	
+
+		<div id = "painelUsuario">
+			<div id = "areaUsuarioBotoes">
+	
+				<a id = "botaoContaUsuario" class = "botao" href="contaUsuario.html">Conta</a>
+				<button id = "botaoSair" class = "botao" type="button">Sair</button>
+			</div>
+	
+			<div id = "areaUsuario">
+				
+			</div>
+		</div>
+	</div>
+
+	<div id = "menuPrincipal">
 		<a class = "menu" href="principal.html">Principal</a>
 		<a class = "menu" href="bibliotecas.html">Bibliotecas</a>
 		<a class = "menu" href="emprestimos.html">Empréstimos</a>
 		<a class = "menu" href="">Relatórios</a>
-		</div>
 	</div>
 
 	<div id="painelPrincipal">
 
 		<div id = "painelFormulario">
+
+			<h2 id = "tituloFormulario">Cadastrar Empréstimos</h2>
+
+			<div id = "formulario">
+				
+			</div>
 
 			<form id="for" name="formEmp" action="">
 				<fieldset>
@@ -54,32 +78,37 @@
 
 					<textarea id="text" name="" id="" cols="30" rows="10"></textarea>
 
-					<input id="salvar" type="submit" value="Salvar" class="botao"> <!-- onclick="window.location.reload()" -->
+					<div id = "error">
+				
+					</div>
+					<div class = "botoes">
 
-					<input type="reset" value="Limpar" class="botao">
+						<input id="salvar" type="submit" value="Salvar" class="botao"> <!-- onclick="window.location.reload()" -->
 
-					<label id="error" for=""></label>
+						<input type="reset" value="Limpar" class="botao">
+					</div>
+					<!-- <label id="error" for=""></label> -->
 			
 				</fieldset>
 			</form>
 
 		</div>
 		
-		<div id = "painelLista">
+		<div id = "painelTabela">
 
 				<div id="livros">
-					<table id="tableLivros">
+					<table id="tableLivros" class="tabela">
 						<thead>
 							<tr>
-								<th class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Livros</th>
+								<th  id = "cabecalhoLivro" class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Livros</th>
 							</tr>
 							<tr>
-								<th class = "titulo" colspan="1" rowspan="" headers="" scope="">Item</th>
-								<th class = "titulo" colspan="1" rowspan="" headers="" scope="">Nome</th>
-								<th class = "titulo" colspan="4" rowspan="" headers="" scope="">Ações</th>
+								<th class = "titulo titulo1" colspan="1" rowspan="" headers="" scope="">Item</th>
+								<th class = "titulo titulo2" colspan="1" rowspan="" headers="" scope="">Nome</th>
+								<th class = "titulo titulo3" colspan="4" rowspan="" headers="" scope="">Ações</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id="dadosTabelaLivros">
 							<tr>
 								<td></td>
 								<td></td>
@@ -90,19 +119,19 @@
 				</div>
 
 				<div id="Musicas">
-					<table id="tableMusicas">
+					<table id="tableMusicas" class="tabela">
 						<thead>
 							<tr>
-								<th class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Músicas</th>
+								<th  id = "cabecalhoLivro" class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Músicas</th>
 							</tr>
 							<tr>
-								<th class = "titulo" colspan="1" rowspan="" headers="" scope="">Item</th>
-								<th class = "titulo" colspan="1" rowspan="" headers="" scope="">Nome</th>
-								<th class = "titulo" colspan="4" rowspan="" headers="" scope="">Ações</th>
+								<th class = "titulo titulo1" colspan="1" rowspan="" headers="" scope="">Item</th>
+								<th class = "titulo titulo2" colspan="1" rowspan="" headers="" scope="">Nome</th>
+								<th class = "titulo titulo3" colspan="4" rowspan="" headers="" scope="">Ações</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
+							<tr id="dadosTabelaMusicas">
 								<td></td>
 								<td></td>
 								<td></td>
@@ -112,19 +141,19 @@
 				</div>
 
 				<div id="videos">
-					<table id="tableVideos">
+					<table id="tableVideos" class="tabela">
 						<thead>
 							<tr>
 								<th class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Vídeos</th>
 							</tr>
 							<tr>
-								<th class = "titulo" colspan="1" rowspan="" headers="" scope="">Item</th>
-								<th class = "titulo" colspan="1" rowspan="" headers="" scope="">Nome</th>
-								<th class = "titulo" colspan="4" rowspan="" headers="" scope="">Ações</th>
+								<th class = "titulo titulo1" colspan="1" rowspan="" headers="" scope="">Item</th>
+								<th class = "titulo titulo2" colspan="1" rowspan="" headers="" scope="">Nome</th>
+								<th class = "titulo titulo3" colspan="4" rowspan="" headers="" scope="">Ações</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
+							<tr id = "dadosTabelaVideos">
 								<td></td>
 								<td></td>
 								<td></td>
