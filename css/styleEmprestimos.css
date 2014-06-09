@@ -176,17 +176,27 @@ h2 {
   padding: 10px;
 }
 
-#error {
+#message {
   height: 20px;
   margin-top: 20px;
 }
 
-#avisoCamposIncorretos{
+#error{
   background-color: #800000;
   border: 1px solid #800000;
   text-align: center;
   width: 280px;
+  color: #fff;
 }
+
+#sucess{
+  background-color: #006600;
+  border: 1px solid #006600;
+  text-align: center;
+  width: 280px;
+  color: #fff;
+}
+
 
 #camposIncorretos {
   color: #FFFFFF;
