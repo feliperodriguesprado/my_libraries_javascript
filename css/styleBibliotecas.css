@@ -211,7 +211,7 @@ h2 {
   margin-top: 15px;
 }
 
-#botaoSalvar {
+.botao {
   background-color: #00008B;
   border: 1px solid #00008B;
   border-radius: 2px;
@@ -225,7 +225,7 @@ h2 {
   text-decoration: none;
 }
 
-#botaoSalvar:hover {
+.botao:hover {
   background-color: #0000CD;
   border: 1px solid #0000CD;
 }
@@ -333,6 +333,7 @@ tr:nth-child(2n-0) {
   font-size: 14px;
   margin-right: 10px;
   padding: 5px;
+  text-decoration: none;
 }
 
 .botaoExcluir:hover {
@@ -343,30 +344,73 @@ tr:nth-child(2n-0) {
   cursor: pointer;
   font-size: 14px;
   padding: 5px;
+  text-decoration: none;
 }
 
-#confirmacao {
-  text-align: center;
-  margin-left: 62%;
-  background-color: #F5F5F5;
-  border: 1px solid #bdbdbd;
-  width: 100%;
-  padding: 5px;
+/***************************************************************************
+CSS para cofirmação com modal
+****************************************************************************/
+
+.modalConfirmacao {
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  background: rgba(0,0,0,0.8);
+  bottom: 0;
+  font-family: Calibri Light;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: opacity 400ms ease-in;
+  z-index: 99999;
 }
 
-#confirmacao label {
-  font-size: 14px;
+.modalConfirmacao:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modalConfirmacao > div {
+    background-color: #F5F5F5;
+    border: 1px solid #bdbdbd;
+    height: 90px;
+    margin: 10% auto;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    width: 400px;
+}
+
+#painelBotoesConfirmacao {
+    padding: 10px;
+    margin-top: 20px;
+    margin-left: 130px;
 }
 
 .botaoConfirmacao {
-  margin-top: 10px;
-  background-color: #00008B;
-  border: 1px solid #00008B;
-  border-radius: 2px;
-  color: #FFFFFF;
-  cursor: pointer;
-  font-size: 14px;
-  margin-right: 5px;
-  padding: 5px;
-  width: 50px;
+    background-color: #00008B;
+    border: 1px solid #00008B;
+    border-radius: 2px;
+    color: #FFFFFF;
+    float: left;
+    font-size: 14px;
+    margin-left: 6px;
+    margin-right: 5px;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 50px;
 }
+
+.botaoConfirmacao:hover {
+    background-color: #0000CD;
+    border: 1px solid #0000CD;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+/***************************************************************************
+Fim do CSS para cofirmação com modal 
+****************************************************************************/

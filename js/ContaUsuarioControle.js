@@ -15,7 +15,7 @@ var ContaUsuarioControle = {
                 ContaUsuarioControle.formularioLogin();
                 ContaUsuarioControle.botaoSalvarAlteracoes();
                 ContaUsuarioControle.botaoExcluirConta();
-            } , 1000
+            } , 0000
         );
 	},
 
@@ -58,13 +58,13 @@ var ContaUsuarioControle = {
                 			ContaUsuarioControle.usuario.value.senha = senha1.value;
                 			UsuarioDAO.alterarUsuario(ContaUsuarioControle.usuario);
                 		} else {
-                			document.getElementById("painelAvisos").innerHTML = "<div id = \"loginIncorreto\"> <span id = \"avisoSenha\">A senha informada e a confirmação da senha não são iguais.</span></div>";
+                			document.getElementById("painelAvisos").innerHTML = "<div id = \"loginIncorreto\"> <span id = \"avisoSenha\">A senha informada e a confirmação da senha não são iguais</span></div>";
                 		} ;
                 	} else {
-                		document.getElementById("painelAvisos").innerHTML = "<div id = \"loginIncorreto\"> <span id = \"avisoSenha\">Senha atual incorreta.</span></div>";	
+                		document.getElementById("painelAvisos").innerHTML = "<div id = \"loginIncorreto\"> <span id = \"avisoSenha\">Senha atual incorreta</span></div>";	
                 	} ;
                	} else {
-               		document.getElementById("painelAvisos").innerHTML = "<div id = \"loginIncorreto\"> <span id = \"avisoSenha\">Informe corretament os campos acima.</span></div>";
+               		document.getElementById("painelAvisos").innerHTML = "<div id = \"loginIncorreto\"> <span id = \"avisoSenha\">Informe corretament os campos acima</span></div>";
                	} ;
 
             }
@@ -76,17 +76,23 @@ var ContaUsuarioControle = {
         botaoExcluirConta = document.getElementById("botaoExcluirConta");
 
         botaoExcluirConta.addEventListener("click", function() {
-            
-            document.getElementById("confirmacao").innerHTML = 
-            "<label>Tem certeza que deseja excluir sua conta? Todas suas bibliotecas serão apagadas.</label>" + 
-            "<button id = \"botaoConfirmacaoSim\" type = \"button\">Sim</button>" +
-            "<button id = \"botaoConfirmacaoNao\" type = \"button\">Não</button>"
+
+            document.getElementById("painelConfirmacaoExcluirConta").innerHTML += 
+            "<div id = \"confirmacao\" class = \"modalConfirmacao\">" +
+            "<div>" +
+                "<label>Tem certeza que deseja excluir sua conta? Todas suas bibliotecas serão apagadas!</label>" + 
+                "<div id = \"painelBotoesConfirmacao\">" +
+                    "<button id = \"botaoConfirmacaoSim\" class = \"botaoConfirmacao\" type = \"button\">Sim</button>" +
+                    "<button id = \"botaoConfirmacaoNao\" class = \"botaoConfirmacao\" type = \"button\">Não</button>" +
+                "</div>" +
+            "</div>" +
+            "</div>";
 
             botaoSim = document.getElementById("botaoConfirmacaoSim");
             botaoNao = document.getElementById("botaoConfirmacaoNao");
 
             botaoSim.addEventListener("click", function(){
-                document.getElementById("confirmacao").innerHTML = "";
+                document.getElementById("painelConfirmacaoExcluirConta").innerHTML = "";
 
                 UsuarioDAO.obterSessao(function(usuario) {
                     UsuarioDAO.excluirConta(usuario);
@@ -94,7 +100,7 @@ var ContaUsuarioControle = {
             });
 
             botaoNao.addEventListener("click", function(){
-                document.getElementById("confirmacao").innerHTML = "";
+                document.getElementById("painelConfirmacaoExcluirConta").innerHTML = "";
             });
         });
     }

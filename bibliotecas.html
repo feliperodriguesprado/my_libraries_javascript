@@ -75,8 +75,11 @@
 				
 				</div>
 
-				<div class = "botoes">
-					<button id="botaoSalvar" class="botao" type="submit">Salvar</button>
+				<div id = "painelBotoes" class = "botoes">
+					<button id = "botaoSalvar" class = "botao" type = "submit">Salvar</button>
+					<div id = "painelBotaoCancelar">
+						
+					</div>
 				</div>
 					
 			</form>
@@ -138,13 +141,16 @@
 				</table>
 			</div>
 		
+		</div>
 
-		</div>	
+		<div id = "painelConfirmacaoExcluirBiblioteca">
+			
+		</div>
 	</div>
 	<script src="js/ConexaoBancoDados.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="js/BibliotecaDAO.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="js/UsuarioDAO.js" type="text/javascript" charset="utf-8" async defer></script>
-	<script src="js/PrincipalControle.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="js/ObterSessaoUsuario.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="js/BibliotecaControle.js" type="text/javascript" charset="utf-8" async defer></script>
 </body>
 </html>

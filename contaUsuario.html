@@ -9,38 +9,51 @@
 
 
 </head>
-<body>
-	<div>
-		<form id = "formularioLogin">
-			<fieldset>
-				<h1>Conta do usuário</h1>
+<body id = "corpoTela">
+	<div id = "painelPrincipal">
+
+		<h1>MyLibraries</h1>
+
+		<form id = "formularioLogin" action="" method="get" accept-charset="utf-8">
+			
+			<div id = "painelCadastro">
+
+				<h2>Conta do usuário</h2>
 	
 					<label id="email"></label>
 
-					<label for="nome">Nome</label>
 					<input id="nome" type="text" required="required">
 
-					<label for="senhaAtual">Informe sua senha atual</label>
-					<input id = "senhaAtual" type="password" required = "required">										
+					<input id = "senhaAtual" type="password" placeholder = "Informe sua senha atual" required = "required" >										
+					<input id="senha1" type="password" placeholder = "Nova Senha" required="required">
 		
-					<label for="senha1">Nova Senha</label>
-					<input id="senha1" type="password" required="required">
-		
-					<label for="senha2">Confirme a senha</label>
-					<input id="senha2" type="password" required="required">
+					<input id="senha2" type="password" placeholder = "Confirme a nova senha" required="required">
 
-					<button id = "botaoSalvarAlteracoes" class = "botao" type = "submit">Salvar alterações</button>
-					<button id = "botaoExcluirConta" class = "botao" type="button">Excluir conta</button>
-					<a id="botaoVoltar" class="botao" href="principal.html">Voltar</a>
-			</fieldset>
+					<div id = "painelAvisos">
+		
+					</div>
+
+					<div id = "painelBotoes1">
+						<button id = "botaoSalvarAlteracoes" class = "botao" type = "submit">Salvar alterações</button>
+						<a href="#confirmacao" id = "botaoExcluirConta" class = "botao" type="button">Excluir conta</a>
+						<!-- <button id = "botaoExcluirConta" class = "botao" type="button">Excluir conta</button> -->
+					</div>
+
+					<div id = "painelBotoes2">
+						<a id="linkVoltar" class="botao" href="principal.html">Cancelar</a>
+					</div>
+
+			</div>
 		</form>
-	</div>
 
-	<div id = "painelAvisos">
-		
-	</div>
+		<div id = "painelConfirmacaoExcluirConta">
+			
+		</div>
 
-	<div id = "confirmacao">
+		<div id = "painelLogo">
+					
+		</div>
+
 	</div>
 
 	<script src="js/ConexaoBancoDados.js" type="text/javascript" charset="utf-8" async defer></script>

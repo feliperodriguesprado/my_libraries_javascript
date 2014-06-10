@@ -70,12 +70,9 @@ var BibliotecaControle = {
                         "<input class = \"inputBibliotecaDesejada\" type = \"checkbox\" disabled " + desejado + ">" +
                     "<td colspan = \"4\">" +
                         "<button class = \"botaoEditar\" type=\"button\" onClick = BibliotecaControle.botaoEditar(" + biblioteca.primaryKey + ");>Editar</button>" +
-                        "<button class = \"botaoExcluir\" type=\"button\" onClick = BibliotecaControle.botaoExcluir(" + biblioteca.primaryKey + ");>Excluir</button>" +
+                        "<a href=\"#confirmacao\" class = \"botaoExcluir\" type=\"button\" onClick = BibliotecaControle.botaoExcluir(" + biblioteca.primaryKey + ");>Excluir</a>" +
                     "</td>" +
-                "</tr>" +
-                
-                "<div id = " + biblioteca.primaryKey + ">" + 
-                "</div>";
+                "</tr>";
         };
 
         if (biblioteca.value.tipo == 2) {
@@ -87,12 +84,9 @@ var BibliotecaControle = {
                         "<input class = \"inputBibliotecaDesejada\" type = \"checkbox\" disabled " + desejado + ">" +
                     "<td colspan = \"4\">" +
                         "<button class = \"botaoEditar\" type=\"button\" onClick = BibliotecaControle.botaoEditar(" + biblioteca.primaryKey + ");>Editar</button>" +
-                        "<button class = \"botaoExcluir\" type=\"button\" onClick = BibliotecaControle.botaoExcluir(" + biblioteca.primaryKey + ");>Excluir</button>" +
+                        "<a href=\"#confirmacao\" class = \"botaoExcluir\" type=\"button\" onClick = BibliotecaControle.botaoExcluir(" + biblioteca.primaryKey + ");>Excluir</a>" +
                     "</td>" +
-                "</tr>" +
-                
-                "<div id = " + biblioteca.primaryKey + ">" + 
-                "</div>";
+                "</tr>";
         };
 
         if (biblioteca.value.tipo == 3) {
@@ -104,12 +98,9 @@ var BibliotecaControle = {
                         "<input class = \"inputBibliotecaDesejada\" type = \"checkbox\" disabled " + desejado + ">" +
                     "<td colspan = \"4\">" +
                         "<button class = \"botaoEditar\" type=\"button\" onClick = BibliotecaControle.botaoEditar(" + biblioteca.primaryKey + ");>Editar</button>" +
-                        "<button class = \"botaoExcluir\" type=\"button\" onClick = BibliotecaControle.botaoExcluir(" + biblioteca.primaryKey + ");>Excluir</button>" +
+                        "<a href=\"#confirmacao\" class = \"botaoExcluir\" type=\"button\" onClick = BibliotecaControle.botaoExcluir(" + biblioteca.primaryKey + ");>Excluir</a>" +
                     "</td>" +
-                "</tr>" +
-                
-                "<div id = " + biblioteca.primaryKey + ">" + 
-                "</div>";
+                "</tr>";
         };
     },
 
@@ -127,6 +118,7 @@ var BibliotecaControle = {
                 if (nome.value != "" && tipo.value != "" && tipo.value != "0" && classificacao.value != "") {
                 	
                     document.getElementById("tituloFormulario").innerHTML = "Cadastrar biblioteca";
+                    document.getElementById("painelBotaoCancelar").innerHTML = "";
                     painelFormulario.style.border = "1px solid #bdbdbd";
 
                 	if (bibliotecaId.value == "") {
@@ -173,12 +165,33 @@ var BibliotecaControle = {
             nodes[i].disabled = true;
         };
 
+        document.getElementById("painelBotaoCancelar").innerHTML += 
+        "<button id = \"botaoCancelar\" class = \"botao\" type=\"button\">Cancelar</button>";
+
         document.getElementById("tituloFormulario").innerHTML = "Alterar biblioteca";
-        painelFormulario.style.border = "2px solid red";
+        painelFormulario.style.border = "1px solid red";
 
     	BibliotecaDAO.buscaBibliotecaPorPrimaryKey(bibliotecaid, function(biblioteca) {
     		BibliotecaControle.exibirDadosBibliotecaParaAlteracao(biblioteca);
     	});
+
+        var botaoCancelar = document.getElementById("botaoCancelar");
+        botaoCancelar.addEventListener("click", function() {
+            document.getElementById("tituloFormulario").innerHTML = "Cadastrar biblioteca";
+            document.getElementById("painelBotaoCancelar").innerHTML = "";
+            document.getElementById("nome").value = "";
+            document.getElementById("tipo").value = "0";
+            document.getElementById("classificacao").value = "0";
+            document.getElementById("desejado").checked = false;
+            document.getElementById("nome").focus();
+            painelFormulario.style.border = "1px solid #bdbdbd";
+            document.getElementById("dadosTabelaVideos").innerHTML = "";
+            document.getElementById("dadosTabelaLivros").innerHTML = "";
+            document.getElementById("dadosTabelaMusicas").innerHTML = "";
+            BibliotecaDAO.obterBibliotecas(function(biblioteca) {
+                BibliotecaControle.listarBibliotecas(biblioteca);
+            });
+        });
     },
 
     exibirDadosBibliotecaParaAlteracao: function (biblioteca) {
@@ -192,27 +205,23 @@ var BibliotecaControle = {
 
     botaoExcluir: function(bibliotecaid) {
 
-        document.getElementById("botaoSalvar").disabled = true;
-
-        var nodes = document.getElementById("painelTabela").getElementsByTagName('*');
-        for(var i = 0; i < nodes.length; i++) {
-            nodes[i].disabled = true;
-        };
-
-        document.getElementById(bibliotecaid.toString()).innerHTML += 
-        "<div id = \"confirmacao\">" +
-        "<label>Tem certeza que deseja excluir essa biblioteca?</label>" +
-        "<div>" + 
-            "<button id = \"botaoConfirmacaoSim\" class = \"botaoConfirmacao\" type = \"button\">Sim</button>" +
-            "<button id = \"botaoConfirmacaoNao\" class = \"botaoConfirmacao\" type = \"button\">Não</button>" +
-        "</div>" +
+        document.getElementById("painelConfirmacaoExcluirBiblioteca").innerHTML =
+        
+        "<div id = \"confirmacao\" class = \"modalConfirmacao\">" +
+            "<div>" +
+                "<label>Tem certeza que deseja excluir essa biblioteca?</label>" +
+                "<div id = \"painelBotoesConfirmacao\">" + 
+                    "<button id = \"botaoConfirmacaoSim\" class = \"botaoConfirmacao\" type = \"button\">Sim</button>" +
+                    "<button id = \"botaoConfirmacaoNao\" class = \"botaoConfirmacao\" type = \"button\">Não</button>" +
+                "</div>" +
+            "</div>"
         "</div>";
 
         botaoSim = document.getElementById("botaoConfirmacaoSim");
         botaoNao = document.getElementById("botaoConfirmacaoNao");
 
         botaoSim.addEventListener("click", function(){
-            document.getElementById(bibliotecaid.toString()).innerHTML = "";
+            document.getElementById("painelConfirmacaoExcluirBiblioteca").innerHTML = "";
             
             document.getElementById("dadosTabelaVideos").innerHTML = "";
             document.getElementById("dadosTabelaLivros").innerHTML = "";
@@ -221,13 +230,7 @@ var BibliotecaControle = {
         });
 
         botaoNao.addEventListener("click", function(){
-            document.getElementById(bibliotecaid.toString()).innerHTML = "";
-            document.getElementById("botaoSalvar").disabled = false;
-            
-            var nodes = document.getElementById("painelTabela").getElementsByTagName('*');
-            for(var i = 0; i < nodes.length; i++) {
-                nodes[i].disabled = false;
-            };
+            document.getElementById("painelConfirmacaoExcluirBiblioteca").innerHTML = "";
         });
     }
 };
