@@ -3,8 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<!-- <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE"> -->
-	<title>My Libraries</title>
+	<title>MyLibraries</title>
 	<link rel="stylesheet" href="css/stylePrincipal.css">
 </head>
 <body>
@@ -40,8 +39,124 @@
 		<a class = "menu" href="relItemEmp.html">Relatórios</a>
 	</div>
 
+	<div id = "painelPrincipal">
+		
+		<div id = "painelRelatorioBibliotecas">
+
+			<div id = "painelTabela1" class = "painelTabela">
+
+				<h2>Últimas bibliotecas cadastradas</h2>
+			
+				<div id = "Livros1">
+					<table id = "tabelaLivros1" class = "tabela">
+						<thead>
+							<tr>
+								<th id = "cabecalhoLivro1" class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Livros</th>
+							</tr>
+							<tr>
+								<th class = "titulo titulo1" colspan="1" rowspan="" headers="">Nome</th>
+								<th class = "titulo titulo2" colspan="2" rowspan="" headers="" scope="">Classificação</th>
+							</tr>
+						</thead>
+						<tbody id = "dadosTabelaLivros1">
+						</tbody>
+					</table>
+				</div>
+				<div id = "Musicas1">
+					<table id = "tabelaMusicas1" class = "tabela">
+						<thead>
+							<tr>
+								<th class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Músicas</th>
+							</tr>
+							<tr>
+								<th class = "titulo titulo1" colspan="1" rowspan="" headers="">Nome</th>
+								<th class = "titulo titulo2" colspan="2" rowspan="" headers="" scope="">Classificação</th>
+							</tr>
+						</thead>
+						<tbody id = "dadosTabelaMusicas1">
+						</tbody>
+					</table>
+				</div>
+				<div id = "Videos1">
+					<table id = "tabelaVideos1" class = "tabela">
+						<thead>
+							<tr>
+								<th class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Vídeos</th>
+							</tr>
+							<tr>
+								<th class = "titulo titulo1" colspan="1" rowspan="" headers="">Nome</th>
+								<th class = "titulo titulo2" colspan="2" rowspan="" headers="" scope="">Classificação</th>
+							</tr>
+						</thead>
+						<tbody id = "dadosTabelaVideos1">
+						</tbody>
+					</table>
+				</div>
+			</div>
+			
+		</div>
+
+		<div id = "painelRelatorioBibliotecasDesejadas">
+			
+			<div id = "painelTabela2" class = "painelTabela">
+
+				<h2>Bibliotecas desejadas</h2>
+			
+				<div id = "Livros2">
+					<table id = "tabelaLivros2" class = "tabela">
+						<thead>
+							<tr>
+								<th id = "cabecalhoLivro2" class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Livros</th>
+							</tr>
+							<tr>
+								<th class = "titulo titulo1" colspan="1" rowspan="" headers="">Nome</th>
+								<th class = "titulo titulo2" colspan="2" rowspan="" headers="" scope="">Classificação</th>
+							</tr>
+						</thead>
+						<tbody id = "dadosTabelaLivros2">
+						</tbody>
+					</table>
+				</div>
+				<div id = "Musicas">
+					<table id = "tabelaMusicas2" class = "tabela">
+						<thead>
+							<tr>
+								<th class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Músicas</th>
+							</tr>
+							<tr>
+								<th class = "titulo titulo1" colspan="1" rowspan="" headers="">Nome</th>
+								<th class = "titulo titulo2" colspan="2" rowspan="" headers="" scope="">Classificação</th>
+							</tr>
+						</thead>
+						<tbody id = "dadosTabelaMusicas2">
+						</tbody>
+					</table>
+				</div>
+				<div id = "Videos2">
+					<table id = "tabelaVideos2" class = "tabela">
+						<thead>
+							<tr>
+								<th class = "cabecalho" colspan="7" rowspan="" headers="" scope="">Vídeos</th>
+							</tr>
+							<tr>
+								<th class = "titulo titulo1" colspan="1" rowspan="" headers="">Nome</th>
+								<th class = "titulo titulo2" colspan="2" rowspan="" headers="" scope="">Classificação</th>
+							</tr>
+						</thead>
+						<tbody id = "dadosTabelaVideos2">
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
 	<script src="js/ConexaoBancoDados.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="js/UsuarioDAO.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="js/ObterSessaoUsuario.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="js/BibliotecaDAO.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="js/PrincipalControle.js" type="text/javascript" charset="utf-8" async defer></script>
 </body>
 </html>

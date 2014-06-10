@@ -159,6 +159,7 @@ var BibliotecaControle = {
 
     botaoEditar: function(bibliotecaid) {
 
+        scroll(0,0);
         
         var nodes = document.getElementById("painelTabela").getElementsByTagName('*');
         for(var i = 0; i < nodes.length; i++) {

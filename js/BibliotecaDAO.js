@@ -74,7 +74,7 @@ var BibliotecaDAO = {
         		var transaction = bancoDados.transaction(["biblioteca"], "readonly");
         		var objectStore = transaction.objectStore("biblioteca");
 	
-        		var request = objectStore.openCursor();
+        		var request = objectStore.openCursor(null, "prev");
 	
         		request.onerror = function(event) {
         	   	console.log("Erro ao listar bibliotecas");

@@ -80,7 +80,7 @@ var ContaUsuarioControle = {
             document.getElementById("painelConfirmacaoExcluirConta").innerHTML += 
             "<div id = \"confirmacao\" class = \"modalConfirmacao\">" +
             "<div>" +
-                "<label>Tem certeza que deseja excluir sua conta? Todas suas bibliotecas serão apagadas!</label>" + 
+                "<label>Tem certeza que deseja excluir sua conta? Todas seus dados serão excluídos!</label>" + 
                 "<div id = \"painelBotoesConfirmacao\">" +
                     "<button id = \"botaoConfirmacaoSim\" class = \"botaoConfirmacao\" type = \"button\">Sim</button>" +
                     "<button id = \"botaoConfirmacaoNao\" class = \"botaoConfirmacao\" type = \"button\">Não</button>" +

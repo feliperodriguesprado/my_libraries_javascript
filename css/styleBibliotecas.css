@@ -255,7 +255,8 @@ CSS Tabela
 
 .cabecalho {
   border-top: 1px solid #bdbdbd;
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: normal;
   padding: 10px;
   text-align: center;
 }
@@ -267,7 +268,8 @@ CSS Tabela
 
 .titulo {
   background-color: #E8E8E8;
-  font-size: 14px; 
+  font-size: 16px;
+  font-weight: normal;
   padding: 8px;
 }
 

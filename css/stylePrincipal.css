@@ -127,3 +127,155 @@ h1 {
 /****************************************************************************
 Fim do CSS padrão para todas as páginas
 ****************************************************************************/
+
+/* Painel principal */
+
+
+#painelRelatorioBibliotecas {
+  background-color: white;
+  border: 1px solid #bdbdbd;
+  float: left;
+  margin: 10px auto;
+  margin-right: 20px;
+  margin-top: 30px;
+  padding: 5px;
+  width: 48%;
+}
+
+#painelRelatorioBibliotecasDesejadas {
+  background-color: white;
+  border: 1px solid #bdbdbd;
+  float: right;
+  margin: 10px auto;
+  margin-top: 30px;
+  padding: 5px;
+  width: 48%;
+}
+
+
+
+/****************************************************************************
+CSS Tabela
+****************************************************************************/
+
+.painelTabela {
+  text-align: center;
+}
+
+h2 {
+    color: #696969;
+    font-size: 20px;
+    font-weight: normal;
+    margin-bottom: 30px;
+}
+
+.tabela {
+  color: #696969;
+  font-family: Calibri Light;
+  margin: 10px auto;
+  margin-bottom: 40px;
+  text-align: left;
+  width: 98%;
+}
+
+.cabecalho {
+  border-top: 1px solid #bdbdbd;
+  font-size: 18px;
+  font-weight: normal;
+  padding: 10px;
+  text-align: center;
+}
+
+.titulo {
+  background-color: #E8E8E8;
+  font-size: 16px;
+  font-weight: normal;
+  padding: 8px;
+}
+
+.inputBibliotecaDesejada {
+  margin-left: 100px;
+}
+
+.titulo1 {
+  width: 400px;
+}
+
+.titulo2 {
+  width: 150px;
+}
+
+.titulo4 {
+  text-indent: 40px;
+}
+
+td {
+  padding: 5px;
+}
+
+tr:nth-child(2n-0) {
+  background-color: #F5F5F5;
+}
+
+.botaoSalvar {
+  display: block;
+  margin-top: 10px;
+}
+
+.botaoEditar {
+  background-color: #006400;
+  border: 1px solid #006400;
+  border-radius: 2px;
+  color: #FFFFFF;
+  cursor: pointer;
+  float: right;
+  font-size: 14px;
+  margin-right: 5px;
+  padding: 5px;
+}
+
+.botaoEditar:hover {
+  background-color: #008B00;
+  border: 1px solid #008B00;
+  border-radius: 2px;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 5px;
+  padding: 5px;
+}
+
+.botaoExcluir {
+  background-color: #8B0000;
+  border: 1px solid #8B0000;
+  border-radius: 2px;
+  color: #FFFFFF;
+  cursor: pointer;
+  float: right;
+  font-size: 14px;
+  margin-right: 10px;
+  padding: 5px;
+  text-decoration: none;
+}
+
+.botaoExcluir:hover {
+  background-color: #C60000;
+  border: 1px solid #C60000;
+  border-radius: 2px;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 5px;
+  text-decoration: none;
+}
+
+#painelPrincipal {
+  margin: 10px auto;
+  width: 1300px;
+}
+
+@media screen and (min-width: 1315px) {
+  #painelPrincipal {   
+    margin: 10px auto;
+    width: 98%;
+}
