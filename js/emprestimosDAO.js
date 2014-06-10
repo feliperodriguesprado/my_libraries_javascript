@@ -6,7 +6,7 @@ var emprestimosDAO = {
  		
  		if(verifica != ""){
  			var bib = document.getElementById("biblioteca").value;
-		    //var item = document.getElementById("item").value;
+		    var item = document.getElementById("item").value;
 
 		    var data = document.getElementById("data").value;
 		    var nome = document.getElementById("nome").value;
@@ -126,7 +126,7 @@ var emprestimosDAO = {
 
 	        req.onsuccess = function(event){
 	        	var retorno = request.result;
-	        	document.getElementById("item").value = retorno.nome;
+	        	document.getElementById("item").value = data.item;
 	        }
 
 
